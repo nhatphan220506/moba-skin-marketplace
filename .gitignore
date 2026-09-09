@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+coverage/
+cache/
+artifacts/
+typechain-types/
+deployments/local/
+.env
+.env.local
+.env.*.local
+*.log
+*.tsbuildinfo
+.DS_Store
+uploads/
+tmp/
