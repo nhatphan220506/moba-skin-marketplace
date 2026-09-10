@@ -401,22 +401,25 @@ Suspension must stop new risky activity without trapping valid accounting claims
 
 Emergency cancellation must preserve bidder refunds and historical events. It must never erase balances or entitlement history.
 
-## 9. Controlled interface changes required before implementation
+## 9. Approved controlled interface changes
 
-The frozen skeleton does not currently expose every function required to enforce the approved master flow. Nhật must open one additive change request before implementing these items.
+The frozen skeleton does not currently expose every function required to enforce the approved master flow. CR-001 authorises the following additive changes.
 
-### CR-001 Proposed additions
+### CR-001 Approved additions
+
+Decision status: APPROVED
+
+These additions are authorised for implementation. Existing function names, event names, parameters and shared API fields remain unchanged.
 
 | Contract | Addition | Reason |
 | --- | --- | --- |
 | AssetRegistry | Configure trusted CommunityVoting address | Enforce that only a voting winner can record agreement without circular constructor deployment |
 | AssetRegistry | `getCommercialTerms(designId)` | Primary and Secondary markets must read artist BPS on-chain |
-| AssetRegistry | Expose publisher recipient or use a frozen publisher treasury | Payment contracts need an authoritative recipient |
 | PrimaryAuction | `cancelAuction(auctionId)` and cancellation event | Master flow includes cancellation and emergency suspension behavior |
-| PrimaryAuction | Unsold closing event or explicit outcome | AuctionStatus includes Unsold but current evidence surface does not describe it |
-| SkinEntitlement1155 | Explicit pause/unpause path or inherited role-managed path | Skeleton contains `EntitlementPaused` but no callable administrative control |
+| PrimaryAuction | `AuctionClosedUnsold` event | AuctionStatus includes Unsold and requires an explicit evidence surface |
+| SkinEntitlement1155 | `pause()` and `unpause()` | Skeleton contains `EntitlementPaused` but no callable administrative control |
 
-These are additive changes. Existing frozen function names and event parameters must remain unchanged. After approval:
+These are additive changes. Existing frozen function names and event parameters must remain unchanged. Under approved CR-001:
 
 1. Update `docs/interfaces.md`.
 2. Update the Solidity skeletons.
@@ -424,13 +427,19 @@ These are additive changes. Existing frozen function names and event parameters 
 4. Send the new shared-interface commit hash to Kat and Văn.
 5. Ask both contributors to merge the shared commit before continuing affected work.
 
+Rejected additions:
+
+- No generic `setStatus` function.
+- No per-design publisher payment recipient.
+- No additional smart contract.
+
 ## 10. Deployment specification
 
 ### 10.1 Deployment order
 
 1. Deploy AssetRegistry with initial admin.
 2. Deploy CommunityVoting with AssetRegistry address.
-3. Configure CommunityVoting as a trusted dependency in AssetRegistry if CR-001 is approved.
+3. Configure CommunityVoting as a trusted dependency in AssetRegistry under approved CR-001.
 4. Deploy CompatibilityRegistry with AssetRegistry address.
 5. Deploy MockVND with initial admin/minter.
 6. Deploy SkinEntitlement1155 with AssetRegistry and CompatibilityRegistry addresses.
@@ -534,4 +543,3 @@ Contract implementation is complete only when:
 5. Implement MockVND as the first low-dependency contract.
 6. Implement AssetRegistry after CR-001 is resolved.
 7. Compile after each contract and push a checkpoint commit for Văn.
-

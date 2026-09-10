@@ -45,6 +45,17 @@ abstract contract PrimaryAuction {
         address indexed winner,
         uint256 finalPrice
     );
+    event AuctionCancelled(
+        uint256 indexed auctionId,
+        uint256 indexed designId,
+        address indexed cancelledBy
+    );
+    event AuctionClosedUnsold(
+        uint256 indexed auctionId,
+        uint256 indexed designId,
+        address indexed highestBidder,
+        uint256 highestBid
+    );
     event ProceedsAvailable(address indexed recipient, uint256 amount, bytes32 indexed revenueType);
     event ProceedsWithdrawn(address indexed recipient, uint256 amount);
 
@@ -59,6 +70,7 @@ abstract contract PrimaryAuction {
     function placeBid(uint256 auctionId, uint256 amount) external virtual;
     function withdrawRefund(uint256 auctionId) external virtual;
     function settle(uint256 auctionId) external virtual;
+    function cancelAuction(uint256 auctionId) external virtual;
     function withdrawProceeds() external virtual;
     function pendingReturns(uint256 auctionId, address bidder) external view virtual returns (uint256);
     function pendingProceeds(address recipient) external view virtual returns (uint256);
