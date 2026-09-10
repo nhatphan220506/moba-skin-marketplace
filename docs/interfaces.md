@@ -1,6 +1,6 @@
 # Frozen interface contract — M0
 
-Status: **frozen at `m0-interface-freeze`**  
+Status: frozen at `m0-interface-freeze` with approved additive extension CR-001
 Owner: Nhật  
 Consumers: Kat, Văn and final frontend integration
 
@@ -81,6 +81,10 @@ The Solidity source files are abstract, compilable M0 skeletons. Nhật owns imp
 | `recordAgreement` | authorised Publisher | designId, agreementHash, artist BPS | selected winner | `AgreementRecorded` |
 | `suspendDesign` | Admin/authorised risk role | designId, reasonHash | design exists | `DesignSuspended` |
 | `reinstateDesign` | Admin/authorised risk role | designId | investigation resolved | `DesignReinstated` |
+| `setCommunityVoting` | Admin | voting contract address | non-zero; not previously configured | `CommunityVotingUpdated` |
+| `getCommercialTerms` | Any caller | designId | design and agreement exist | artist and artist BPS |
+
+`recordAgreement` must confirm that the configured CommunityVoting contract reports the design as a final voting winner.
 
 ### 5.2 CommunityVoting
 
@@ -108,6 +112,9 @@ Test-only ERC-20-compatible token. `approve` grants spending permission; it is n
 - Total supply may not exceed the compatibility registry supply cap.
 - Direct wallet transfer is disabled to prevent resale royalty bypass.
 - Transfer is allowed through the authorised secondary marketplace.
+- `pause` and `unpause` require Admin or `PAUSER_ROLE`.
+- Pausing blocks minting and entitlement transfer.
+- Pausing does not delete balances, supply or ownership history.
 
 ### 5.6 PrimaryAuction
 
@@ -117,7 +124,18 @@ Test-only ERC-20-compatible token. `approve` grants spending permission; it is n
 | `placeBid` | Buyer | MockVND moves buyer -> auction escrow |
 | `withdrawRefund` | outbid Buyer | pull-payment from `pendingReturns` |
 | `settle` | authorised/public after deadline | single settlement, record receivables, mint entitlement |
+| `cancelAuction` | Admin or authorised Publisher | stop the auction; move an active highest bid to `pendingReturns`; do not refund automatically |
 | `withdrawProceeds` | recipient | pull artist/publisher/marketplace proceeds |
+
+When an auction ends without meeting reserve:
+
+- Status becomes `UNSOLD`.
+- No entitlement is minted.
+- No recipient proceeds are created.
+- Any active highest bid is moved to `pendingReturns`.
+- `AuctionClosedUnsold` is emitted.
+
+Reserve is a settlement threshold for the prototype. A below-reserve bid may exist, but it cannot win or produce settlement proceeds.
 
 Primary example at winning bid 150:
 
@@ -167,6 +185,9 @@ Resale example at price 200:
 | `ResaleCompleted` | listingId, tokenId, seller, buyer, price, artistRoyalty | Resale evidence |
 | `EntitlementTransferred` | designId, tokenId, old owner, new owner | Inventory/game adapter |
 | `DesignSuspended` | designId, reasonHash | Admin risk UI |
+| `CommunityVotingUpdated` | txHash, previousVoting, newVoting, actor | Admin/Deployment evidence |
+| `AuctionCancelled` | txHash, auctionId, designId, cancelledBy | Auction/Evidence UI |
+| `AuctionClosedUnsold` | txHash, auctionId, designId, highestBidder, highestBid | Auction/Evidence UI |
 
 Văn normalizes receipt data into `EvidenceRow` from `types/evidence.ts`. Nhật styles and integrates the functional evidence component later.
 
@@ -221,6 +242,8 @@ DesignNotFound
 InvalidStateTransition
 DesignIsSuspended
 InvalidBpsTotal
+InvalidContractAddress
+DependencyAlreadyConfigured
 VotingNotOpen
 VotingStillOpen
 AlreadyVoted
