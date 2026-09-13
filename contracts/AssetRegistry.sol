@@ -38,11 +38,19 @@ abstract contract AssetRegistry {
         bool suspended;
     }
 
+    struct CommercialTerms {
+        uint16 artistPrimaryShareBps;
+        uint16 artistResaleRoyaltyBps;
+        bool recorded;
+    }
+
     error UnauthorizedRole(bytes32 requiredRole, address caller);
     error DesignNotFound(uint256 designId);
     error InvalidStateTransition(uint256 designId, DesignStatus current, DesignStatus requested);
     error DesignIsSuspended(uint256 designId);
     error InvalidBpsTotal(uint256 totalBps);
+    error InvalidContractAddress(address supplied);
+    error DependencyAlreadyConfigured(address current);
 
     event DesignSubmitted(
         uint256 indexed designId,
@@ -68,6 +76,10 @@ abstract contract AssetRegistry {
     );
     event DesignSuspended(uint256 indexed designId, bytes32 indexed reasonHash);
     event DesignReinstated(uint256 indexed designId);
+    event CommunityVotingUpdated(
+        address indexed previousVoting,
+        address indexed newVoting
+    );
 
     function submitDesign(
         string calldata metadataURI,
@@ -89,6 +101,19 @@ abstract contract AssetRegistry {
 
     function suspendDesign(uint256 designId, bytes32 reasonHash) external virtual;
     function reinstateDesign(uint256 designId) external virtual;
+    function setCommunityVoting(address votingContract) external virtual;
+
+    function getCommercialTerms(uint256 designId)
+        external
+        view
+        virtual
+        returns (
+            address artist,
+            uint16 artistPrimaryShareBps,
+            uint16 artistResaleRoyaltyBps,
+            bool recorded
+        );
+
     function getDesign(uint256 designId) external view virtual returns (DesignRecord memory);
     function isVerified(uint256 designId) external view virtual returns (bool);
     function isPublisherEligible(uint256 designId) external view virtual returns (bool);

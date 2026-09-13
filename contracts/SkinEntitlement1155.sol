@@ -43,6 +43,8 @@ abstract contract SkinEntitlement1155 {
 
     function setMarketplaceAuthorization(address marketplace, bool authorised) external virtual;
     function setTransferable(uint256 tokenId, bool transferable) external virtual;
+    function pause() external virtual;
+    function unpause() external virtual;
     function balanceOf(address account, uint256 tokenId) external view virtual returns (uint256);
     function totalSupply(uint256 tokenId) external view virtual returns (uint256);
     function isTransferable(uint256 tokenId) external view virtual returns (bool);
