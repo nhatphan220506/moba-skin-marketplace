@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useAccount, useChainId, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 
 import { explorerTransactionUrl } from "@/config/chains";
@@ -19,6 +19,17 @@ export function OnchainActionCard({ actionId }: { actionId: ProductActionId }) {
   const explorer = hash ? explorerTransactionUrl(chainId, hash) : null;
   const disabledReason = !isConnected ? "Connect wallet to sign" : !address ? "No deployment configured for this network" : null;
   const state = receipt.isSuccess ? "CONFIRMED" : receipt.isLoading ? "PENDING" : isPending ? "AWAITING SIGNATURE" : error || localError ? "REVERTED" : "IDLE";
+
+  useEffect(() => {
+    if (actionId !== "submit-design") return;
+    function useUploadedEvidence(event: Event) {
+      const detail = (event as CustomEvent<{ storageURI?: string; sha256?: string }>).detail;
+      if (!detail?.storageURI || !detail.sha256) return;
+      setValues((current) => ({ ...current, uri: detail.storageURI!, artwork: detail.sha256! }));
+    }
+    window.addEventListener("moba:evidence-uploaded", useUploadedEvidence);
+    return () => window.removeEventListener("moba:evidence-uploaded", useUploadedEvidence);
+  }, [actionId]);
   const args = useMemo(() => {
     try {
       const built = [...action.buildArgs(values, chainId)];

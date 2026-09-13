@@ -17,6 +17,7 @@ export type ProductAction = {
 };
 
 const hash = (value: string) => keccak256(stringToBytes(value));
+const evidenceHash = (value: string) => /^0x[0-9a-f]{64}$/i.test(value) ? value as `0x${string}` : hash(value);
 const integer = (value: string) => BigInt(value || "0");
 const token = (value: string) => parseUnits(value || "0", 18);
 const time = (value: string) => BigInt(Math.floor(new Date(value).getTime() / 1000));
@@ -24,7 +25,7 @@ const future = (minutes: number) => new Date(Date.now() + minutes * 60_000).toIS
 const field = (key: string, label: string, defaultValue: string, type: ActionInput["type"] = "text"): ActionInput => ({ key, label, defaultValue, type });
 
 export const productActions: Record<ProductActionId, ProductAction> = {
-  "submit-design": { id: "submit-design", title: "Submit design on-chain", description: "Anchor the metadata URI and integrity hashes from the uploaded evidence.", contract: "assetRegistry", abi: assetRegistryAbi, functionName: "submitDesign", inputs: [field("uri", "Metadata URI", "ipfs://verdant-sentinel"), field("artwork", "Artwork evidence", "verdant-sentinel-artwork"), field("disclosure", "AI disclosure", "ai-disclosure-v1"), field("provenance", "Provenance evidence", "creator-evidence-v1")], buildArgs: (v) => [v.uri, hash(v.artwork), hash(v.disclosure), hash(v.provenance)] },
+  "submit-design": { id: "submit-design", title: "Submit design on-chain", description: "Anchor the metadata URI and integrity hashes from the uploaded evidence.", contract: "assetRegistry", abi: assetRegistryAbi, functionName: "submitDesign", inputs: [field("uri", "Metadata URI", "ipfs://verdant-sentinel"), field("artwork", "Artwork evidence", "verdant-sentinel-artwork"), field("disclosure", "AI disclosure", "ai-disclosure-v1"), field("provenance", "Provenance evidence", "creator-evidence-v1")], buildArgs: (v) => [v.uri, evidenceHash(v.artwork), evidenceHash(v.disclosure), evidenceHash(v.provenance)] },
   "request-revision": { id: "request-revision", title: "Request revision", description: "Record a public reason hash while detailed review notes stay private.", contract: "assetRegistry", abi: assetRegistryAbi, functionName: "requestRevision", inputs: [field("designId", "Design ID", "1", "number"), field("reason", "Reason reference", "revision-required-v1")], buildArgs: (v) => [integer(v.designId), hash(v.reason)] },
   "verify-design": { id: "verify-design", title: "Approve verification", description: "Anchor the persisted human report hash.", contract: "assetRegistry", abi: assetRegistryAbi, functionName: "verifyDesign", inputs: [field("designId", "Design ID", "1", "number"), field("report", "Report reference", "verification-report-v1")], buildArgs: (v) => [integer(v.designId), hash(v.report)] },
   "publisher-eligibility": { id: "publisher-eligibility", title: "Approve concept eligibility", description: "Record the publisher review hash and unlock voting eligibility.", contract: "assetRegistry", abi: assetRegistryAbi, functionName: "approveConceptEligibility", inputs: [field("designId", "Design ID", "1", "number"), field("review", "Review reference", "publisher-review-v1")], buildArgs: (v) => [integer(v.designId), hash(v.review)] },
