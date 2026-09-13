@@ -14,6 +14,7 @@ type Journey = {
   result: string; steps: JourneyStep[]; evidence: Array<Omit<EvidenceRow, "blockNumber"> & { blockNumber: string | number }>;
   deployment: { chainId: number; contracts: Record<string, string> };
   accounting: Record<string, unknown>;
+  additionalChecks?: { adminRisk?: { result: string; actions: string[]; evidencePreserved: boolean; entitlementBalancePreserved: boolean } };
   finalOwner?: string;
   finalState: { buyerB?: string; buyerC?: string; buyerBGameAccess: string; buyerCGameAccess: string };
 };
@@ -83,6 +84,14 @@ export function FullJourneyDashboard() {
         </article>;
       })}</div>
 
+      <article className="panel risk-card"><h3>Admin risk</h3>
+        {journey?.additionalChecks?.adminRisk ? <>
+          <p><StatusLine label="Design control" value="Suspend → reinstate" /></p>
+          <p><StatusLine label="System control" value="Pause → unpause" /></p>
+          <p className="muted">Evidence and Buyer C&apos;s entitlement balance remained intact · {journey.additionalChecks.adminRisk.result}</p>
+        </> : <p className="muted">Run the journey to verify suspension, reinstatement, pause and unpause.</p>}
+      </article>
+
       {journey && <div className="final-state">
         <div><small>Final owner</small><strong className="mono">{journey.steps.find((step) => step.number === 21)?.actor}</strong></div>
         <div><small>Buyer B access</small><strong>{journey.finalState.buyerBGameAccess}</strong></div>
@@ -95,4 +104,8 @@ export function FullJourneyDashboard() {
       <BlockchainEvidenceTable rows={rows} />
     </section>
   );
+}
+
+function StatusLine({ label, value }: { label: string; value: string }) {
+  return <><strong>{label}</strong><small className="risk-value">{value}</small></>;
 }

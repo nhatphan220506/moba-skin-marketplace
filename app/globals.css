@@ -78,6 +78,9 @@ form button { margin-top: 12px; }
 .evidence-table th, .evidence-table td { padding: 12px; border-bottom: 1px solid #24364d; text-align: left; vertical-align: top; }
 .evidence-table th { color: #73e9bd; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
 .evidence-table small { display: block; color: #93a8c0; margin-top: 3px; }
+.risk-card { margin-top: 20px; }
+.risk-card p { border-top: 1px solid #24364d; padding-top: 12px; }
+.risk-value { display: block; color: #73e9bd; margin-top: 4px; }
 
 @media (max-width: 720px) {
   main { padding: 44px 0; }

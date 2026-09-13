@@ -246,6 +246,26 @@ async function main() {
     stateBefore: "BUYER_B_ACTIVE_BUYER_C_NONE", stateAfter: "BUYER_B_REVOKED_BUYER_C_ACTIVE", classification: "OFF_CHAIN_LINKED_TO_CHAIN",
     result: "PASS", offchainEvidence: { revokedB, pendingC, activeC } });
 
+  const evidenceBeforeRisk = await assetRegistry.getDesign(DESIGN_ID);
+  const ownerBeforePause = await entitlement.balanceOf(buyerC.address, TOKEN_ID);
+  const riskReceipts = [];
+  for (const send of [
+    () => assetRegistry.suspendDesign(DESIGN_ID, hash(ethers, "post-journey-risk-check")),
+    () => assetRegistry.reinstateDesign(DESIGN_ID),
+    () => entitlement.pause(),
+    () => entitlement.unpause(),
+  ]) {
+    const receipt = await (await send()).wait();
+    riskReceipts.push(receipt.hash);
+    evidence.push(...await decodeReceipt(receipt, contracts));
+  }
+  const evidenceAfterRisk = await assetRegistry.getDesign(DESIGN_ID);
+  if (evidenceBeforeRisk.artworkHash !== evidenceAfterRisk.artworkHash ||
+    evidenceBeforeRisk.agreementHash !== evidenceAfterRisk.agreementHash ||
+    await entitlement.balanceOf(buyerC.address, TOKEN_ID) !== ownerBeforePause) {
+    throw new Error("Admin risk check destroyed accounting or evidence");
+  }
+
   if (steps.length !== 22 || steps.some((step, index) => step.number !== index + 1 || step.result !== "PASS")) throw new Error("Mandatory step coverage failed");
   const final = {
     generatedAt: new Date().toISOString(), network: { name: network.name, chainId: Number(chain.chainId) }, deployment,
@@ -253,6 +273,8 @@ async function main() {
     evidence: evidence.sort((a, b) => a.blockNumber - b.blockNumber || a.logIndex - b.logIndex),
     finalState: { owner: buyerC.address, buyerBEntitlement: "0", buyerCEntitlement: "1", buyerBGameAccess: "REVOKED",
       buyerCGameAccess: "ACTIVE", listingActive: false, manualDataCorrection: false },
+    additionalChecks: { adminRisk: { result: "PASS", actions: ["suspend", "reinstate", "pause", "unpause"],
+      transactionHashes: riskReceipts, evidencePreserved: true, entitlementBalancePreserved: true } },
     accounting: { buyerABidDeduction: "120", buyerARefund: "120", auctionEscrowBeforeSettlement: "150",
       primary: { artist: "120", publisher: "15", marketplace: "15" }, resale: { seller: "180", artist: "10", publisher: "6", marketplace: "4" } },
   };
