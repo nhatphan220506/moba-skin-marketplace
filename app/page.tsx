@@ -1,5 +1,6 @@
 import { DEMO_CONFIG } from "@/config/demo";
 import { KatIntegrationDashboard } from "@/components/ui/KatIntegrationDashboard";
+import { FullJourneyDashboard } from "@/components/ui/FullJourneyDashboard";
 import { DesignStatus } from "@/types/design";
 
 const gates = [
@@ -16,7 +17,7 @@ export default function HomePage() {
   return (
     <main>
       <section className="hero">
-        <p className="eyebrow">M0 INTERFACE FREEZE</p>
+        <p className="eyebrow">LOCAL INTEGRATION</p>
         <h1>MOBA Skin Marketplace</h1>
         <p className="subtitle">
           Authorised community contribution, verifiable entitlements and transparent
@@ -41,11 +42,9 @@ export default function HomePage() {
         </article>
       </section>
 
-      <section className="notice">
-        This integration screen remains functional-first. Văn&apos;s receipt parser and final
-        evidence run are intentionally outside Kat&apos;s module.
-      </section>
+      <section className="notice">Blockchain ownership and off-chain game access are displayed separately. This is a local deterministic prototype; it does not confer copyright or game-IP ownership.</section>
 
+      <FullJourneyDashboard />
       <KatIntegrationDashboard />
     </main>
   );

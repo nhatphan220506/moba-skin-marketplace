@@ -1,13 +1,9 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 import {
-  retryKatDelivery,
-  syncKatEntitlementEvent,
   type KatApiError,
-  type MintedEntitlementEvidence,
-  type TransferredEntitlementEvidence,
 } from "@/lib/blockchain/katEventAdapter";
 import type { ActivationRecord } from "@/types/activation";
 import type { VerificationReport } from "@/types/verification";
@@ -51,6 +47,13 @@ export function KatIntegrationDashboard() {
   const [productionVersion, setProductionVersion] = useState("");
   const [buyerBStatus, setBuyerBStatus] = useState<ActivationRecord | null>(null);
   const [buyerCStatus, setBuyerCStatus] = useState<ActivationRecord | null>(null);
+
+  useEffect(() => {
+    void Promise.all([
+      api<ActivationRecord>(`/api/game/status/${buyerB}/1`),
+      api<ActivationRecord>(`/api/game/status/${buyerC}/1`),
+    ]).then(([b, c]) => { setBuyerBStatus(b); setBuyerCStatus(c); }).catch(() => undefined);
+  }, []);
 
   async function run<T extends Result>(label: string, action: () => Promise<T>, after?: (value: T) => void) {
     setBusy(label);
@@ -130,49 +133,14 @@ export function KatIntegrationDashboard() {
     });
   }
 
-  function activatePrimary() {
-    const evidence: MintedEntitlementEvidence = {
-      transactionHash: `0x${"31".repeat(32)}`,
-      eventName: "EntitlementMinted",
-      designId: 1,
-      tokenId: 1,
-      amount: 1,
-      owner: buyerB,
-    };
-    void run("Activating Buyer B", async () => {
-      const synced = await syncKatEntitlementEvent(evidence);
-      setBuyerBStatus(synced.activated);
-      return synced as unknown as Result;
-    });
-  }
-
-  function syncResale() {
-    const evidence: TransferredEntitlementEvidence = {
-      transactionHash: `0x${"42".repeat(32)}`,
-      eventName: "EntitlementTransferred",
-      designId: 1,
-      tokenId: 1,
-      amount: 1,
-      previousOwner: buyerB,
-      newOwner: buyerC,
-    };
-    void run("Syncing resale", async () => {
-      const synced = await syncKatEntitlementEvent(evidence);
-      setBuyerBStatus(synced.revoked ?? null);
-      setBuyerCStatus(synced.activated);
-      return synced as unknown as Result;
-    });
-  }
-
-  function retry() {
-    if (!buyerCStatus || buyerCStatus.status !== "DELIVERY_PENDING") {
-      setError("Buyer C has no pending delivery to retry.");
-      return;
-    }
-    void run("Retrying delivery", async () => {
-      const updated = await retryKatDelivery(buyerCStatus.activationId);
-      setBuyerCStatus(updated);
-      return updated as unknown as Result;
+  function loadAccessStatus() {
+    void run("Loading access status", async () => {
+      const [b, c] = await Promise.all([
+        api<ActivationRecord>(`/api/game/status/${buyerB}/1`),
+        api<ActivationRecord>(`/api/game/status/${buyerC}/1`),
+      ]);
+      setBuyerBStatus(b); setBuyerCStatus(c);
+      return { buyerB: b, buyerC: c };
     });
   }
 
@@ -181,7 +149,7 @@ export function KatIntegrationDashboard() {
       <div className="section-heading">
         <p className="eyebrow">KAT OFF-CHAIN INTEGRATION</p>
         <h2 id="integration-heading">Local functional console</h2>
-        <p>Every action below calls Kat&apos;s real local API. Receipt values are clearly labelled fixtures pending Văn&apos;s parser.</p>
+        <p>Every action below calls Kat&apos;s real local API. Entitlement delivery is sourced only from the confirmed receipt journey above.</p>
       </div>
 
       {(busy || error) && <div className={error ? "feedback error" : "feedback"} role="status">{error || `${busy}…`}</div>}
@@ -212,8 +180,8 @@ export function KatIntegrationDashboard() {
 
         <article className="panel workflow-card">
           <span className="step">04</span><h3>Inventory &amp; delivery</h3>
-          <p className="fixture">Fixture receipts only — blockchain remains authoritative.</p>
-          <div className="actions"><button disabled={Boolean(busy)} onClick={linkSeededAccounts}>Resolve accounts</button><button disabled={Boolean(busy)} onClick={activatePrimary}>Primary activation</button><button disabled={Boolean(busy)} onClick={syncResale}>Resale sync</button><button disabled={Boolean(busy) || buyerCStatus?.status !== "DELIVERY_PENDING"} onClick={retry}>Retry Buyer C</button></div>
+          <p className="fixture">Activation and transfer are accepted only from the confirmed receipts produced by the 22-step journey above.</p>
+          <div className="actions"><button disabled={Boolean(busy)} onClick={linkSeededAccounts}>Resolve accounts</button><button disabled={Boolean(busy)} onClick={loadAccessStatus}>Refresh access status</button></div>
           <div className="access-row"><span>Buyer B</span><Status value={buyerBStatus?.status ?? "NOT_SYNCED"} /></div>
           <div className="access-row"><span>Buyer C</span><Status value={buyerCStatus?.status ?? "NOT_SYNCED"} /></div>
         </article>
