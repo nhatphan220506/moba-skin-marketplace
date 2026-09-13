@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MOBA Skin Marketplace | M0",
-  description: "Technical foundation for the authorised skin marketplace prototype",
+  title: "MOBA Forge | Verifiable Skin Marketplace",
+  description: "Publisher-authorised community skin marketplace with verifiable blockchain settlement and usage entitlements.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

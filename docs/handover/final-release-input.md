@@ -14,7 +14,7 @@ npm run build
 npm run dev
 ```
 
-Do not overwrite an existing `.env.local`; the `cp` line is for a clean checkout only. Open `http://127.0.0.1:3000`, choose **Run clean 22-step journey**, and wait for `CONFIRMED`.
+Do not overwrite an existing `.env.local`; the `cp` line is for a clean checkout only. Open `http://127.0.0.1:3000`. Use **Guided roles** to present individual stakeholder actions, or choose **Automatic 22-step** for the full regression. Wait for `CONFIRMED` before reading ownership or evidence.
 
 For command-line execution while the app is running:
 

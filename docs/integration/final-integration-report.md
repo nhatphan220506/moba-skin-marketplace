@@ -51,7 +51,11 @@ An initial sandboxed journey could not connect to local port 3000 and several su
 
 Implemented functional sections for role/wallet, artist upload, verification, publisher review, voting, production/QA, primary auction, inventory/game access, secondary market, blockchain evidence, and Admin Risk. The single deterministic action runs real contract/API logic and automatically refreshes the full status/evidence view. Kat preparation actions remain available as focused API controls. Loading, empty, success, error, confirmed/reverted, and responsive table/card states are present.
 
-Remaining frontend work is visual-only: final brand system, animation, marketing copy, and recording treatment.
+The completion pass added a presentation-grade MOBA Forge visual system and a Guided Role Mode covering all 22 stakeholder checkpoints. Each checkpoint runs the canonical contract/API journey on a fresh deterministic Hardhat chain through the selected step, then displays its real receipt or explicit off-chain record. The original automatic 22-step regression remains available. Evidence now supports search, contract filtering and runtime JSON download, while the on-chain/off-chain boundary is presented explicitly.
+
+Computer Use verified the redesigned desktop UI, role selection, Verifier checkpoint progression, automatic full run, final ownership/access states and the evidence table. The final automatic evidence snapshot contains 48 decoded receipt events, including proceeds-withdrawal transfers that were previously represented only by transaction-hash arrays.
+
+Optional future frontend work is limited to injected browser-wallet signing and public-testnet explorer links. Those are not required for the deterministic assessment prototype.
 
 ## Artifacts and limitations
 

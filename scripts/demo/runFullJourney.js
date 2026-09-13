@@ -7,8 +7,18 @@ const API = process.env.KAT_API_BASE_URL || "http://127.0.0.1:3000";
 const DESIGN_ID = 1n;
 const ROUND_ID = 1n;
 const TOKEN_ID = 1n;
+const STOP_AFTER = Number(process.env.JOURNEY_STOP_AFTER || 0);
 
 const jsonSafe = (value) => JSON.parse(JSON.stringify(value, (_, item) => typeof item === "bigint" ? item.toString() : item));
+
+async function writeJourney(snapshot) {
+  const statePath = path.join(process.cwd(), "scripts", "demo", ".state", "journey.json");
+  const evidencePath = path.join(process.cwd(), "docs", "integration", "evidence", "full-journey.json");
+  await fs.mkdir(path.dirname(statePath), { recursive: true });
+  await fs.mkdir(path.dirname(evidencePath), { recursive: true });
+  await fs.writeFile(statePath, `${JSON.stringify(jsonSafe(snapshot), null, 2)}\n`);
+  await fs.writeFile(evidencePath, `${JSON.stringify(jsonSafe(snapshot), null, 2)}\n`);
+}
 
 async function api(route, method = "GET", body) {
   const response = await fetch(`${API}${route}`, {
@@ -82,6 +92,36 @@ async function main() {
   let mintEvent;
   let transferEvent;
 
+  async function checkpoint(number) {
+    if (STOP_AFTER !== number) return false;
+    const snapshot = {
+      generatedAt: new Date().toISOString(),
+      network: { name: network.name, chainId: Number(chain.chainId) },
+      deployment,
+      result: "IN_PROGRESS",
+      completedSteps: steps.length,
+      totalSteps: 22,
+      steps,
+      evidence: evidence.sort((a, b) => a.blockNumber - b.blockNumber || a.logIndex - b.logIndex),
+      finalState: {
+        owner: number >= 19 ? buyerC.address : number >= 15 ? buyerB.address : null,
+        buyerBEntitlement: number >= 19 ? "0" : number >= 15 ? "1" : "0",
+        buyerCEntitlement: number >= 19 ? "1" : "0",
+        buyerBGameAccess: number >= 22 ? "REVOKED" : number >= 17 ? "ACTIVE" : "NOT_ACTIVATED",
+        buyerCGameAccess: number >= 22 ? "ACTIVE" : number >= 19 ? "ACTIVATION_PENDING" : "NOT_ACTIVATED",
+        listingActive: number >= 18 && number < 19,
+        manualDataCorrection: false,
+      },
+      accounting: {
+        primary: number >= 16 ? { artist: "120", publisher: "15", marketplace: "15" } : null,
+        resale: number >= 20 ? { seller: "180", artist: "10", publisher: "6", marketplace: "4" } : null,
+      },
+    };
+    await writeJourney(snapshot);
+    console.log(`GUIDED JOURNEY CHECKPOINT ${number}/22`);
+    return true;
+  }
+
   async function txStep(number, actor, role, action, service, stateBefore, stateAfter, txPromise, amount) {
     const tx = await txPromise;
     const receipt = await tx.wait();
@@ -105,6 +145,7 @@ async function main() {
   const s1 = await txStep(1, artist, "ARTIST", "submitDesign", "AssetRegistry", "DRAFT", "SUBMITTED",
     assetRegistry.connect(artist).submitDesign(uploaded.storageURI, artworkHash, hash(ethers, "ai-disclosure"), hash(ethers, "provenance")));
   if (!s1.decoded.some((event) => event.eventName === "DesignSubmitted")) throw new Error("Step 1 missing DesignSubmitted");
+  if (await checkpoint(1)) return;
 
   const automatedSummary = await api("/api/verification/pre-screen", "POST", { designId: 1, aiUsed: true, disclosureComplete: true,
     evidenceFileIds: [uploaded.fileId, "creation-evidence-0001"] });
@@ -115,31 +156,39 @@ async function main() {
     decision: "APPROVED", verifierAddress: verifier.address, notes: "Human verification for deterministic demo" });
   await txStep(2, verifier, "VERIFIER", "verifyDesign", "AssetRegistry + Kat verification", "SUBMITTED", "VERIFIED",
     assetRegistry.connect(verifier).verifyDesign(DESIGN_ID, report.reportHash));
+  if (await checkpoint(2)) return;
   await txStep(3, publisher, "PUBLISHER", "approveConceptEligibility", "AssetRegistry", "VERIFIED", "VOTING_ELIGIBLE",
     assetRegistry.connect(publisher).approveConceptEligibility(DESIGN_ID, hash(ethers, "publisher-review")));
+  if (await checkpoint(3)) return;
 
   let now = Number((await ethers.provider.getBlock("latest")).timestamp);
   const voteStart = now + 2;
   const voteEnd = now + 30;
   await txStep(4, admin, "ADMIN", "openVoting", "CommunityVoting", "VOTING_ELIGIBLE", "VOTING",
     voting.openVoting(ROUND_ID, [DESIGN_ID], voteStart, voteEnd));
+  if (await checkpoint(4)) return;
   await network.provider.send("evm_setNextBlockTimestamp", [voteStart]);
   await network.provider.send("evm_mine");
   await txStep(5, fanA, "FAN", "vote", "CommunityVoting", "NOT_VOTED", "VOTED",
     voting.connect(fanA).vote(ROUND_ID, DESIGN_ID));
+  if (await checkpoint(5)) return;
   await txStep(6, fanB, "FAN", "vote", "CommunityVoting", "NOT_VOTED", "VOTED",
     voting.connect(fanB).vote(ROUND_ID, DESIGN_ID));
+  if (await checkpoint(6)) return;
   await network.provider.send("evm_setNextBlockTimestamp", [voteEnd]);
   await network.provider.send("evm_mine");
   await txStep(7, admin, "ADMIN", "finalizeVoting", "CommunityVoting", "VOTING", "SELECTED",
     voting.finalizeVoting(ROUND_ID));
+  if (await checkpoint(7)) return;
   await txStep(8, publisher, "PUBLISHER", "recordAgreement", "AssetRegistry", "SELECTED", "AGREEMENT_RECORDED",
     assetRegistry.connect(publisher).recordAgreement(DESIGN_ID, hash(ethers, "agreement"), 8000, 500));
+  if (await checkpoint(8)) return;
 
   const production = await api("/api/production/records", "POST", { designId: 1, productionStudio: "Authorised Demo Studio",
     modelFileURI: "/mock-production/design-1-v1.glb", approvedGame: "Demo MOBA" });
   steps.push({ number: 9, actor: publisher.address, role: "PUBLISHER", action: "POST /api/production/records", service: "Kat production API",
     stateBefore: "NO_PRODUCTION", stateAfter: `VERSION_${production.version}`, classification: "OFF_CHAIN", result: "PASS", offchainEvidence: production });
+  if (await checkpoint(9)) return;
 
   const prodTx = await compatibility.connect(publisher).submitProduction(DESIGN_ID, production.productionHash, production.compatibilityHash, String(production.version));
   const prodReceipt = await prodTx.wait(); evidence.push(...await decodeReceipt(prodReceipt, contracts));
@@ -150,12 +199,14 @@ async function main() {
     compatibility.connect(gameDeveloper).approveCompatibility(DESIGN_ID, hash(ethers, "approved-game"), 1n), "1");
   s10.decoded.unshift(...await decodeReceipt(prodReceipt, contracts));
   steps[steps.length - 1].offchainEvidence = qa;
+  if (await checkpoint(10)) return;
 
   now = Number((await ethers.provider.getBlock("latest")).timestamp);
   const auctionStart = now + 2;
   const auctionEnd = now + 30;
   await txStep(11, publisher, "PUBLISHER", "createAuction", "PrimaryAuction", "MARKET_READY", "AUCTION_OPEN",
     primary.connect(publisher).createAuction(DESIGN_ID, 100n, 10n, auctionStart, auctionEnd), "100");
+  if (await checkpoint(11)) return;
   await network.provider.send("evm_setNextBlockTimestamp", [auctionStart]);
   await network.provider.send("evm_mine");
 
@@ -166,28 +217,37 @@ async function main() {
   const s12 = await txStep(12, buyerA, "BUYER_SELLER", "approve MockVND + placeBid", "MockVND + PrimaryAuction", "BALANCE_1000", "ESCROW_120",
     primary.connect(buyerA).placeBid(1n, 120n), "120");
   steps[steps.length - 1].transactionHashes = [approveA.hash, s12.receipt.hash];
+  if (await checkpoint(12)) return;
   const approveB = await (await payment.connect(buyerB).approve(await primary.getAddress(), 150n)).wait();
   const s13 = await txStep(13, buyerB, "BUYER_SELLER", "approve MockVND + placeBid", "MockVND + PrimaryAuction", "HIGHEST_120", "HIGHEST_150",
     primary.connect(buyerB).placeBid(1n, 150n), "150");
   steps[steps.length - 1].transactionHashes = [approveB.hash, s13.receipt.hash];
   if (await primary.pendingReturns(1n, buyerA.address) !== 120n) throw new Error("Buyer A pending refund mismatch");
+  if (await checkpoint(13)) return;
   await txStep(14, buyerA, "BUYER_SELLER", "withdrawRefund", "PrimaryAuction", "PENDING_REFUND_120", "REFUNDED_120",
     primary.connect(buyerA).withdrawRefund(1n), "120");
   if (await payment.balanceOf(buyerA.address) !== 1000n) throw new Error("Buyer A refund balance mismatch");
+  if (await checkpoint(14)) return;
   await network.provider.send("evm_setNextBlockTimestamp", [auctionEnd]);
   await network.provider.send("evm_mine");
   const settled = await txStep(15, admin, "ADMIN", "settle", "PrimaryAuction", "ESCROW_150", "SETTLED_ENTITLEMENT_ISSUED",
     primary.settle(1n), "150");
   mintEvent = settled.decoded.find((event) => event.eventName === "EntitlementMinted");
   if (!mintEvent) throw new Error("Step 15 missing EntitlementMinted receipt evidence");
+  if (await checkpoint(15)) return;
 
   const primaryExpected = [[artist, 120n], [publisherTreasury, 15n], [marketplaceTreasury, 15n]];
   for (const [recipient, expected] of primaryExpected) if (await primary.pendingProceeds(recipient.address) !== expected) throw new Error("Primary split mismatch");
   const primaryWithdrawals = [];
-  for (const [recipient] of primaryExpected) primaryWithdrawals.push((await (await primary.connect(recipient).withdrawProceeds()).wait()).hash);
+  for (const [recipient] of primaryExpected) {
+    const receipt = await (await primary.connect(recipient).withdrawProceeds()).wait();
+    primaryWithdrawals.push(receipt.hash);
+    evidence.push(...await decodeReceipt(receipt, contracts));
+  }
   steps.push({ number: 16, actor: admin.address, role: "ACCOUNTING_ASSERTION", action: "verify and withdraw primary proceeds",
     service: "PrimaryAuction + MockVND", transactionHashes: primaryWithdrawals, stateBefore: "PENDING_120_15_15", stateAfter: "PAID_120_15_15",
     amount: "150", classification: "ON_CHAIN", result: "PASS", accounting: { artist: "120", publisher: "15", marketplace: "15" } });
+  if (await checkpoint(16)) return;
 
   await api("/api/accounts/link", "POST", { walletAddress: buyerB.address, gameAccountId: "moba-player-b" });
   await api("/api/accounts/link", "POST", { walletAddress: buyerC.address, gameAccountId: "moba-player-c-pending-once" });
@@ -198,26 +258,32 @@ async function main() {
   steps.push({ number: 17, actor: buyerB.address, role: "BUYER_SELLER", action: "sync EntitlementMinted -> activate",
     service: "Kat game API", transactionHash: mintEvent.transactionHash, blockNumber: mintEvent.blockNumber, decodedEvents: [mintEvent],
     stateBefore: "NOT_ACTIVATED", stateAfter: "ACTIVE", classification: "OFF_CHAIN_LINKED_TO_CHAIN", result: "PASS", offchainEvidence: activeB });
+  if (await checkpoint(17)) return;
 
   await txStep(18, buyerB, "BUYER_SELLER", "listForResale", "SecondaryMarketplace", "OWNED_ACTIVE", "LISTED_200",
     secondary.connect(buyerB).listForResale(DESIGN_ID, TOKEN_ID, 200n), "200");
+  if (await checkpoint(18)) return;
   const approveC = await (await payment.connect(buyerC).approve(await secondary.getAddress(), 200n)).wait();
   const purchased = await txStep(19, buyerC, "BUYER_SELLER", "approve MockVND + buyResale", "MockVND + SecondaryMarketplace",
     "LISTED_200", "PURCHASED_INACTIVE", secondary.connect(buyerC).buyResale(1n), "200");
   steps[steps.length - 1].transactionHashes = [approveC.hash, purchased.receipt.hash];
   transferEvent = purchased.decoded.find((event) => event.eventName === "EntitlementTransferred");
   if (!transferEvent) throw new Error("Step 19 missing EntitlementTransferred receipt evidence");
+  if (await checkpoint(19)) return;
 
   const resaleExpected = [[buyerB, 180n], [artist, 10n], [publisherTreasury, 6n], [marketplaceTreasury, 4n]];
   const resaleWithdrawals = [];
   for (const [recipient, expected] of resaleExpected) {
     const before = await payment.balanceOf(recipient.address);
-    resaleWithdrawals.push((await (await secondary.connect(recipient).withdrawProceeds()).wait()).hash);
+    const receipt = await (await secondary.connect(recipient).withdrawProceeds()).wait();
+    resaleWithdrawals.push(receipt.hash);
+    evidence.push(...await decodeReceipt(receipt, contracts));
     if ((await payment.balanceOf(recipient.address)) - before !== expected) throw new Error("Resale split mismatch");
   }
   steps.push({ number: 20, actor: admin.address, role: "ACCOUNTING_ASSERTION", action: "verify and withdraw resale proceeds",
     service: "SecondaryMarketplace + MockVND", transactionHashes: resaleWithdrawals, stateBefore: "PENDING_180_10_6_4", stateAfter: "PAID_180_10_6_4",
     amount: "200", classification: "ON_CHAIN", result: "PASS", accounting: { seller: "180", artist: "10", publisher: "6", marketplace: "4" } });
+  if (await checkpoint(20)) return;
 
   const listing = await secondary.getListing(1n);
   const ownerB = await entitlement.balanceOf(buyerB.address, TOKEN_ID);
@@ -230,6 +296,7 @@ async function main() {
     service: "SkinEntitlement1155 + SecondaryMarketplace", transactionHash: transferEvent.transactionHash, blockNumber: transferEvent.blockNumber,
     decodedEvents: [transferEvent], stateBefore: "BUYER_B_1_BUYER_C_0", stateAfter: "BUYER_B_0_BUYER_C_1_LISTING_INACTIVE",
     amount: "1", classification: "ON_CHAIN", result: "PASS", repurchaseBlocked });
+  if (await checkpoint(21)) return;
 
   const transferEvidence = { transactionHash: transferEvent.transactionHash, eventName: "EntitlementTransferred", designId: 1, tokenId: 1,
     amount: 1, previousOwner: buyerB.address, newOwner: buyerC.address };
@@ -245,6 +312,7 @@ async function main() {
     service: "Kat game API", transactionHash: transferEvent.transactionHash, blockNumber: transferEvent.blockNumber, decodedEvents: [transferEvent],
     stateBefore: "BUYER_B_ACTIVE_BUYER_C_NONE", stateAfter: "BUYER_B_REVOKED_BUYER_C_ACTIVE", classification: "OFF_CHAIN_LINKED_TO_CHAIN",
     result: "PASS", offchainEvidence: { revokedB, pendingC, activeC } });
+  if (await checkpoint(22)) return;
 
   const evidenceBeforeRisk = await assetRegistry.getDesign(DESIGN_ID);
   const ownerBeforePause = await entitlement.balanceOf(buyerC.address, TOKEN_ID);
@@ -278,12 +346,7 @@ async function main() {
     accounting: { buyerABidDeduction: "120", buyerARefund: "120", auctionEscrowBeforeSettlement: "150",
       primary: { artist: "120", publisher: "15", marketplace: "15" }, resale: { seller: "180", artist: "10", publisher: "6", marketplace: "4" } },
   };
-  const statePath = path.join(process.cwd(), "scripts", "demo", ".state", "journey.json");
-  const evidencePath = path.join(process.cwd(), "docs", "integration", "evidence", "full-journey.json");
-  await fs.mkdir(path.dirname(statePath), { recursive: true });
-  await fs.mkdir(path.dirname(evidencePath), { recursive: true });
-  await fs.writeFile(statePath, `${JSON.stringify(jsonSafe(final), null, 2)}\n`);
-  await fs.writeFile(evidencePath, `${JSON.stringify(jsonSafe(final), null, 2)}\n`);
+  await writeJourney(final);
   console.log(`FULL JOURNEY PASS ${final.completedSteps}/${final.totalSteps}`);
   console.log(`Buyer B access: ${final.finalState.buyerBGameAccess}`);
   console.log(`Buyer C access: ${final.finalState.buyerCGameAccess}`);

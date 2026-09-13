@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-13T09:44:08.880Z",
+  "generatedAt": "2026-09-13T10:57:23.095Z",
   "network": {
     "name": "hardhat",
     "chainId": 31337
   },
   "deployment": {
     "chainId": 31337,
-    "generatedAt": "2026-09-13T09:44:07.830Z",
+    "generatedAt": "2026-09-13T10:57:22.921Z",
     "contracts": {
       "payment": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       "assetRegistry": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
@@ -39,7 +39,7 @@
           "eventName": "DesignSubmitted",
           "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
           "designId": "1",
-          "timestamp": 1789292666,
+          "timestamp": 1789297061,
           "args": {
             "designId": "1",
             "artist": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
@@ -73,7 +73,7 @@
           "eventName": "DesignVerified",
           "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
           "designId": "1",
-          "timestamp": 1789292667,
+          "timestamp": 1789297062,
           "args": {
             "designId": "1",
             "verifier": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
@@ -104,7 +104,7 @@
           "eventName": "ConceptEligibilityUpdated",
           "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
           "designId": "1",
-          "timestamp": 1789292668,
+          "timestamp": 1789297063,
           "args": {
             "designId": "1",
             "publisher": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
@@ -124,22 +124,22 @@
       "role": "ADMIN",
       "action": "openVoting",
       "service": "CommunityVoting",
-      "transactionHash": "0x02d2e54ade3d433613dd00aeda2a657b7bd4f362a88753b9feabfc14a7f94aa0",
+      "transactionHash": "0x64d4cfece983e13006b0412e4fdec20f0e5d7de65e8d3a04e5ed0787b0f1fc09",
       "blockNumber": 22,
       "decodedEvents": [
         {
-          "transactionHash": "0x02d2e54ade3d433613dd00aeda2a657b7bd4f362a88753b9feabfc14a7f94aa0",
+          "transactionHash": "0x64d4cfece983e13006b0412e4fdec20f0e5d7de65e8d3a04e5ed0787b0f1fc09",
           "blockNumber": 22,
           "logIndex": 0,
           "contractName": "voting",
           "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
           "eventName": "VotingOpened",
           "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-          "timestamp": 1789292669,
+          "timestamp": 1789297064,
           "args": {
             "roundId": "1",
-            "startTime": "1789292670",
-            "endTime": "1789292698",
+            "startTime": "1789297065",
+            "endTime": "1789297093",
             "candidateDesignIds": [
               "1"
             ]
@@ -169,7 +169,7 @@
           "eventName": "VoteRecorded",
           "actor": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc",
           "designId": "1",
-          "timestamp": 1789292671,
+          "timestamp": 1789297066,
           "args": {
             "roundId": "1",
             "designId": "1",
@@ -200,7 +200,7 @@
           "eventName": "VoteRecorded",
           "actor": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
           "designId": "1",
-          "timestamp": 1789292672,
+          "timestamp": 1789297067,
           "args": {
             "roundId": "1",
             "designId": "1",
@@ -230,7 +230,7 @@
           "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
           "eventName": "VotingFinalized",
           "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-          "timestamp": 1789292699,
+          "timestamp": 1789297094,
           "args": {
             "roundId": "1",
             "winnerDesignId": "1",
@@ -261,7 +261,7 @@
           "eventName": "AgreementRecorded",
           "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
           "designId": "1",
-          "timestamp": 1789292700,
+          "timestamp": 1789297095,
           "args": {
             "designId": "1",
             "agreementHash": "0xe1d5e7977e7776858f77e42aa5505a28cdb0b6c35bad05a57ec1ac95c5d42547",
@@ -315,7 +315,7 @@
           "eventName": "ProductionSubmitted",
           "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
           "designId": "1",
-          "timestamp": 1789292701,
+          "timestamp": 1789297096,
           "args": {
             "designId": "1",
             "productionHash": "0x0b7768b07241bf75df7e54b123192c79bd5871cab1004e6af4cd1b45e1790e75",
@@ -332,7 +332,7 @@
           "eventName": "CompatibilityApproved",
           "actor": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
           "designId": "1",
-          "timestamp": 1789292702,
+          "timestamp": 1789297097,
           "args": {
             "designId": "1",
             "gameDeveloper": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
@@ -367,11 +367,11 @@
       "role": "PUBLISHER",
       "action": "createAuction",
       "service": "PrimaryAuction",
-      "transactionHash": "0x77d66318a2b992ea19e4d50c6c9ae18d64790864817294fcbc8b8fb036e47046",
+      "transactionHash": "0xdf21919abdb664206535db50ab805c73960bf67aa23d87536bcefdf316d83d05",
       "blockNumber": 31,
       "decodedEvents": [
         {
-          "transactionHash": "0x77d66318a2b992ea19e4d50c6c9ae18d64790864817294fcbc8b8fb036e47046",
+          "transactionHash": "0xdf21919abdb664206535db50ab805c73960bf67aa23d87536bcefdf316d83d05",
           "blockNumber": 31,
           "logIndex": 0,
           "contractName": "primary",
@@ -380,14 +380,14 @@
           "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
           "designId": "1",
           "auctionId": "1",
-          "timestamp": 1789292703,
+          "timestamp": 1789297098,
           "args": {
             "auctionId": "1",
             "designId": "1",
             "reservePrice": "100",
             "minimumIncrement": "10",
-            "startTime": "1789292704",
-            "endTime": "1789292732"
+            "startTime": "1789297099",
+            "endTime": "1789297127"
           }
         }
       ],
@@ -414,7 +414,7 @@
           "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
           "eventName": "Transfer",
           "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
-          "timestamp": 1789292709,
+          "timestamp": 1789297104,
           "args": {
             "from": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
             "to": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
@@ -431,7 +431,7 @@
           "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
           "auctionId": "1",
           "amount": "120",
-          "timestamp": 1789292709,
+          "timestamp": 1789297104,
           "args": {
             "auctionId": "1",
             "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
@@ -466,7 +466,7 @@
           "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
           "eventName": "Transfer",
           "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
-          "timestamp": 1789292711,
+          "timestamp": 1789297106,
           "args": {
             "from": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
             "to": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
@@ -483,7 +483,7 @@
           "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
           "auctionId": "1",
           "amount": "120",
-          "timestamp": 1789292711,
+          "timestamp": 1789297106,
           "args": {
             "auctionId": "1",
             "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
@@ -500,7 +500,7 @@
           "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
           "auctionId": "1",
           "amount": "150",
-          "timestamp": 1789292711,
+          "timestamp": 1789297106,
           "args": {
             "auctionId": "1",
             "bidder": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
@@ -535,7 +535,7 @@
           "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
           "eventName": "Transfer",
           "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
-          "timestamp": 1789292712,
+          "timestamp": 1789297107,
           "args": {
             "from": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
             "to": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
@@ -552,7 +552,7 @@
           "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
           "auctionId": "1",
           "amount": "120",
-          "timestamp": 1789292712,
+          "timestamp": 1789297107,
           "args": {
             "auctionId": "1",
             "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
@@ -583,7 +583,7 @@
           "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
           "eventName": "TransferSingle",
           "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-          "timestamp": 1789292733,
+          "timestamp": 1789297128,
           "args": {
             "operator": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
             "from": "0x0000000000000000000000000000000000000000",
@@ -601,7 +601,7 @@
           "eventName": "TransferabilityUpdated",
           "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
           "tokenId": "1",
-          "timestamp": 1789292733,
+          "timestamp": 1789297128,
           "args": {
             "tokenId": "1",
             "transferable": true
@@ -618,7 +618,7 @@
           "designId": "1",
           "tokenId": "1",
           "amount": "1",
-          "timestamp": 1789292733,
+          "timestamp": 1789297128,
           "args": {
             "designId": "1",
             "tokenId": "1",
@@ -635,7 +635,7 @@
           "eventName": "ProceedsAvailable",
           "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
           "amount": "120",
-          "timestamp": 1789292733,
+          "timestamp": 1789297128,
           "args": {
             "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
             "amount": "120",
@@ -651,7 +651,7 @@
           "eventName": "ProceedsAvailable",
           "actor": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
           "amount": "15",
-          "timestamp": 1789292733,
+          "timestamp": 1789297128,
           "args": {
             "recipient": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
             "amount": "15",
@@ -667,7 +667,7 @@
           "eventName": "ProceedsAvailable",
           "actor": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
           "amount": "15",
-          "timestamp": 1789292733,
+          "timestamp": 1789297128,
           "args": {
             "recipient": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
             "amount": "15",
@@ -685,7 +685,7 @@
           "designId": "1",
           "auctionId": "1",
           "amount": "150",
-          "timestamp": 1789292733,
+          "timestamp": 1789297128,
           "args": {
             "auctionId": "1",
             "designId": "1",
@@ -742,7 +742,7 @@
           "designId": "1",
           "tokenId": "1",
           "amount": "1",
-          "timestamp": 1789292733,
+          "timestamp": 1789297128,
           "args": {
             "designId": "1",
             "tokenId": "1",
@@ -790,7 +790,7 @@
           "designId": "1",
           "tokenId": "1",
           "amount": "200",
-          "timestamp": 1789292737,
+          "timestamp": 1789297132,
           "args": {
             "listingId": "1",
             "designId": "1",
@@ -823,7 +823,7 @@
           "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
           "eventName": "Transfer",
           "actor": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
-          "timestamp": 1789292739,
+          "timestamp": 1789297134,
           "args": {
             "from": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
             "to": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
@@ -838,7 +838,7 @@
           "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
           "eventName": "TransferSingle",
           "actor": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
-          "timestamp": 1789292739,
+          "timestamp": 1789297134,
           "args": {
             "operator": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
             "from": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
@@ -858,7 +858,7 @@
           "designId": "1",
           "tokenId": "1",
           "amount": "1",
-          "timestamp": 1789292739,
+          "timestamp": 1789297134,
           "args": {
             "designId": "1",
             "tokenId": "1",
@@ -876,7 +876,7 @@
           "eventName": "ResaleProceedsAvailable",
           "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
           "amount": "180",
-          "timestamp": 1789292739,
+          "timestamp": 1789297134,
           "args": {
             "recipient": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
             "amount": "180",
@@ -892,7 +892,7 @@
           "eventName": "ResaleProceedsAvailable",
           "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
           "amount": "10",
-          "timestamp": 1789292739,
+          "timestamp": 1789297134,
           "args": {
             "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
             "amount": "10",
@@ -908,7 +908,7 @@
           "eventName": "ResaleProceedsAvailable",
           "actor": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
           "amount": "6",
-          "timestamp": 1789292739,
+          "timestamp": 1789297134,
           "args": {
             "recipient": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
             "amount": "6",
@@ -924,7 +924,7 @@
           "eventName": "ResaleProceedsAvailable",
           "actor": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
           "amount": "4",
-          "timestamp": 1789292739,
+          "timestamp": 1789297134,
           "args": {
             "recipient": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
             "amount": "4",
@@ -941,7 +941,7 @@
           "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
           "tokenId": "1",
           "amount": "200",
-          "timestamp": 1789292739,
+          "timestamp": 1789297134,
           "args": {
             "listingId": "1",
             "tokenId": "1",
@@ -1006,7 +1006,7 @@
           "designId": "1",
           "tokenId": "1",
           "amount": "1",
-          "timestamp": 1789292739,
+          "timestamp": 1789297134,
           "args": {
             "designId": "1",
             "tokenId": "1",
@@ -1043,7 +1043,7 @@
           "designId": "1",
           "tokenId": "1",
           "amount": "1",
-          "timestamp": 1789292739,
+          "timestamp": 1789297134,
           "args": {
             "designId": "1",
             "tokenId": "1",
@@ -1114,7 +1114,7 @@
       "eventName": "DesignSubmitted",
       "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
       "designId": "1",
-      "timestamp": 1789292666,
+      "timestamp": 1789297061,
       "args": {
         "designId": "1",
         "artist": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
@@ -1133,7 +1133,7 @@
       "eventName": "DesignVerified",
       "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
       "designId": "1",
-      "timestamp": 1789292667,
+      "timestamp": 1789297062,
       "args": {
         "designId": "1",
         "verifier": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
@@ -1149,7 +1149,7 @@
       "eventName": "ConceptEligibilityUpdated",
       "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
       "designId": "1",
-      "timestamp": 1789292668,
+      "timestamp": 1789297063,
       "args": {
         "designId": "1",
         "publisher": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
@@ -1158,18 +1158,18 @@
       }
     },
     {
-      "transactionHash": "0x02d2e54ade3d433613dd00aeda2a657b7bd4f362a88753b9feabfc14a7f94aa0",
+      "transactionHash": "0x64d4cfece983e13006b0412e4fdec20f0e5d7de65e8d3a04e5ed0787b0f1fc09",
       "blockNumber": 22,
       "logIndex": 0,
       "contractName": "voting",
       "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
       "eventName": "VotingOpened",
       "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-      "timestamp": 1789292669,
+      "timestamp": 1789297064,
       "args": {
         "roundId": "1",
-        "startTime": "1789292670",
-        "endTime": "1789292698",
+        "startTime": "1789297065",
+        "endTime": "1789297093",
         "candidateDesignIds": [
           "1"
         ]
@@ -1184,7 +1184,7 @@
       "eventName": "VoteRecorded",
       "actor": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc",
       "designId": "1",
-      "timestamp": 1789292671,
+      "timestamp": 1789297066,
       "args": {
         "roundId": "1",
         "designId": "1",
@@ -1200,7 +1200,7 @@
       "eventName": "VoteRecorded",
       "actor": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
       "designId": "1",
-      "timestamp": 1789292672,
+      "timestamp": 1789297067,
       "args": {
         "roundId": "1",
         "designId": "1",
@@ -1215,7 +1215,7 @@
       "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
       "eventName": "VotingFinalized",
       "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-      "timestamp": 1789292699,
+      "timestamp": 1789297094,
       "args": {
         "roundId": "1",
         "winnerDesignId": "1",
@@ -1231,7 +1231,7 @@
       "eventName": "AgreementRecorded",
       "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
       "designId": "1",
-      "timestamp": 1789292700,
+      "timestamp": 1789297095,
       "args": {
         "designId": "1",
         "agreementHash": "0xe1d5e7977e7776858f77e42aa5505a28cdb0b6c35bad05a57ec1ac95c5d42547",
@@ -1248,7 +1248,7 @@
       "eventName": "ProductionSubmitted",
       "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
       "designId": "1",
-      "timestamp": 1789292701,
+      "timestamp": 1789297096,
       "args": {
         "designId": "1",
         "productionHash": "0x0b7768b07241bf75df7e54b123192c79bd5871cab1004e6af4cd1b45e1790e75",
@@ -1265,7 +1265,7 @@
       "eventName": "CompatibilityApproved",
       "actor": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
       "designId": "1",
-      "timestamp": 1789292702,
+      "timestamp": 1789297097,
       "args": {
         "designId": "1",
         "gameDeveloper": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
@@ -1274,7 +1274,7 @@
       }
     },
     {
-      "transactionHash": "0x77d66318a2b992ea19e4d50c6c9ae18d64790864817294fcbc8b8fb036e47046",
+      "transactionHash": "0xdf21919abdb664206535db50ab805c73960bf67aa23d87536bcefdf316d83d05",
       "blockNumber": 31,
       "logIndex": 0,
       "contractName": "primary",
@@ -1283,14 +1283,14 @@
       "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
       "designId": "1",
       "auctionId": "1",
-      "timestamp": 1789292703,
+      "timestamp": 1789297098,
       "args": {
         "auctionId": "1",
         "designId": "1",
         "reservePrice": "100",
         "minimumIncrement": "10",
-        "startTime": "1789292704",
-        "endTime": "1789292732"
+        "startTime": "1789297099",
+        "endTime": "1789297127"
       }
     },
     {
@@ -1301,7 +1301,7 @@
       "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       "eventName": "Transfer",
       "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
-      "timestamp": 1789292709,
+      "timestamp": 1789297104,
       "args": {
         "from": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
         "to": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
@@ -1318,7 +1318,7 @@
       "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
       "auctionId": "1",
       "amount": "120",
-      "timestamp": 1789292709,
+      "timestamp": 1789297104,
       "args": {
         "auctionId": "1",
         "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
@@ -1333,7 +1333,7 @@
       "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       "eventName": "Transfer",
       "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
-      "timestamp": 1789292711,
+      "timestamp": 1789297106,
       "args": {
         "from": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
         "to": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
@@ -1350,7 +1350,7 @@
       "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
       "auctionId": "1",
       "amount": "120",
-      "timestamp": 1789292711,
+      "timestamp": 1789297106,
       "args": {
         "auctionId": "1",
         "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
@@ -1367,7 +1367,7 @@
       "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
       "auctionId": "1",
       "amount": "150",
-      "timestamp": 1789292711,
+      "timestamp": 1789297106,
       "args": {
         "auctionId": "1",
         "bidder": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
@@ -1382,7 +1382,7 @@
       "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       "eventName": "Transfer",
       "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
-      "timestamp": 1789292712,
+      "timestamp": 1789297107,
       "args": {
         "from": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
         "to": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
@@ -1399,7 +1399,7 @@
       "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
       "auctionId": "1",
       "amount": "120",
-      "timestamp": 1789292712,
+      "timestamp": 1789297107,
       "args": {
         "auctionId": "1",
         "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
@@ -1414,7 +1414,7 @@
       "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
       "eventName": "TransferSingle",
       "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-      "timestamp": 1789292733,
+      "timestamp": 1789297128,
       "args": {
         "operator": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
         "from": "0x0000000000000000000000000000000000000000",
@@ -1432,7 +1432,7 @@
       "eventName": "TransferabilityUpdated",
       "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
       "tokenId": "1",
-      "timestamp": 1789292733,
+      "timestamp": 1789297128,
       "args": {
         "tokenId": "1",
         "transferable": true
@@ -1449,7 +1449,7 @@
       "designId": "1",
       "tokenId": "1",
       "amount": "1",
-      "timestamp": 1789292733,
+      "timestamp": 1789297128,
       "args": {
         "designId": "1",
         "tokenId": "1",
@@ -1466,7 +1466,7 @@
       "eventName": "ProceedsAvailable",
       "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
       "amount": "120",
-      "timestamp": 1789292733,
+      "timestamp": 1789297128,
       "args": {
         "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
         "amount": "120",
@@ -1482,7 +1482,7 @@
       "eventName": "ProceedsAvailable",
       "actor": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
       "amount": "15",
-      "timestamp": 1789292733,
+      "timestamp": 1789297128,
       "args": {
         "recipient": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
         "amount": "15",
@@ -1498,7 +1498,7 @@
       "eventName": "ProceedsAvailable",
       "actor": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
       "amount": "15",
-      "timestamp": 1789292733,
+      "timestamp": 1789297128,
       "args": {
         "recipient": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
         "amount": "15",
@@ -1516,12 +1516,102 @@
       "designId": "1",
       "auctionId": "1",
       "amount": "150",
-      "timestamp": 1789292733,
+      "timestamp": 1789297128,
       "args": {
         "auctionId": "1",
         "designId": "1",
         "winner": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
         "finalPrice": "150"
+      }
+    },
+    {
+      "transactionHash": "0x03ea2bcbcb4f80cdc4d1135f6ce2946dd6dd0afc96f153d2bf68e7f396df1a9a",
+      "blockNumber": 43,
+      "logIndex": 0,
+      "contractName": "payment",
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "eventName": "Transfer",
+      "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "timestamp": 1789297129,
+      "args": {
+        "from": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+        "to": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "value": "120"
+      }
+    },
+    {
+      "transactionHash": "0x03ea2bcbcb4f80cdc4d1135f6ce2946dd6dd0afc96f153d2bf68e7f396df1a9a",
+      "blockNumber": 43,
+      "logIndex": 1,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "ProceedsWithdrawn",
+      "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "amount": "120",
+      "timestamp": 1789297129,
+      "args": {
+        "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "amount": "120"
+      }
+    },
+    {
+      "transactionHash": "0x28c633ad48fbc353a4367c3317987b3cf4d733bd983469f38467710d366e88f6",
+      "blockNumber": 44,
+      "logIndex": 0,
+      "contractName": "payment",
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "eventName": "Transfer",
+      "actor": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+      "timestamp": 1789297130,
+      "args": {
+        "from": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+        "to": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+        "value": "15"
+      }
+    },
+    {
+      "transactionHash": "0x28c633ad48fbc353a4367c3317987b3cf4d733bd983469f38467710d366e88f6",
+      "blockNumber": 44,
+      "logIndex": 1,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "ProceedsWithdrawn",
+      "actor": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+      "amount": "15",
+      "timestamp": 1789297130,
+      "args": {
+        "recipient": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+        "amount": "15"
+      }
+    },
+    {
+      "transactionHash": "0xbe268115255a63ee701540c717fc8675d1052f3d10f02c35501ac59177a3cbe9",
+      "blockNumber": 45,
+      "logIndex": 0,
+      "contractName": "payment",
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "eventName": "Transfer",
+      "actor": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+      "timestamp": 1789297131,
+      "args": {
+        "from": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+        "to": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+        "value": "15"
+      }
+    },
+    {
+      "transactionHash": "0xbe268115255a63ee701540c717fc8675d1052f3d10f02c35501ac59177a3cbe9",
+      "blockNumber": 45,
+      "logIndex": 1,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "ProceedsWithdrawn",
+      "actor": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+      "amount": "15",
+      "timestamp": 1789297131,
+      "args": {
+        "recipient": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+        "amount": "15"
       }
     },
     {
@@ -1535,7 +1625,7 @@
       "designId": "1",
       "tokenId": "1",
       "amount": "200",
-      "timestamp": 1789292737,
+      "timestamp": 1789297132,
       "args": {
         "listingId": "1",
         "designId": "1",
@@ -1552,7 +1642,7 @@
       "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       "eventName": "Transfer",
       "actor": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
-      "timestamp": 1789292739,
+      "timestamp": 1789297134,
       "args": {
         "from": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
         "to": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
@@ -1567,7 +1657,7 @@
       "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
       "eventName": "TransferSingle",
       "actor": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
-      "timestamp": 1789292739,
+      "timestamp": 1789297134,
       "args": {
         "operator": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
         "from": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
@@ -1587,7 +1677,7 @@
       "designId": "1",
       "tokenId": "1",
       "amount": "1",
-      "timestamp": 1789292739,
+      "timestamp": 1789297134,
       "args": {
         "designId": "1",
         "tokenId": "1",
@@ -1605,7 +1695,7 @@
       "eventName": "ResaleProceedsAvailable",
       "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
       "amount": "180",
-      "timestamp": 1789292739,
+      "timestamp": 1789297134,
       "args": {
         "recipient": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
         "amount": "180",
@@ -1621,7 +1711,7 @@
       "eventName": "ResaleProceedsAvailable",
       "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
       "amount": "10",
-      "timestamp": 1789292739,
+      "timestamp": 1789297134,
       "args": {
         "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
         "amount": "10",
@@ -1637,7 +1727,7 @@
       "eventName": "ResaleProceedsAvailable",
       "actor": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
       "amount": "6",
-      "timestamp": 1789292739,
+      "timestamp": 1789297134,
       "args": {
         "recipient": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
         "amount": "6",
@@ -1653,7 +1743,7 @@
       "eventName": "ResaleProceedsAvailable",
       "actor": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
       "amount": "4",
-      "timestamp": 1789292739,
+      "timestamp": 1789297134,
       "args": {
         "recipient": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
         "amount": "4",
@@ -1670,7 +1760,7 @@
       "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
       "tokenId": "1",
       "amount": "200",
-      "timestamp": 1789292739,
+      "timestamp": 1789297134,
       "args": {
         "listingId": "1",
         "tokenId": "1",
@@ -1678,6 +1768,66 @@
         "buyer": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
         "price": "200",
         "artistRoyalty": "10"
+      }
+    },
+    {
+      "transactionHash": "0x5997b2022da5ff38d49167837e4edc2252d882dee6edb3f574e2ac42a3fd7bda",
+      "blockNumber": 49,
+      "logIndex": 0,
+      "contractName": "payment",
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "eventName": "Transfer",
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "timestamp": 1789297135,
+      "args": {
+        "from": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+        "to": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "value": "180"
+      }
+    },
+    {
+      "transactionHash": "0x9181e65e0e5cc473139c0570ba639b303cf03d95eda164e90745906fa02ba659",
+      "blockNumber": 50,
+      "logIndex": 0,
+      "contractName": "payment",
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "eventName": "Transfer",
+      "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "timestamp": 1789297136,
+      "args": {
+        "from": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+        "to": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "value": "10"
+      }
+    },
+    {
+      "transactionHash": "0x5fa0a91b8b0bec7825e738cdf5db248c16f77d61059f1e72c38d7a8118feea14",
+      "blockNumber": 51,
+      "logIndex": 0,
+      "contractName": "payment",
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "eventName": "Transfer",
+      "actor": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+      "timestamp": 1789297137,
+      "args": {
+        "from": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+        "to": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+        "value": "6"
+      }
+    },
+    {
+      "transactionHash": "0x3f23e7fe1120c844c3765f9d2d9d14e116f6e065ab28f5ef4a68526f85c219b8",
+      "blockNumber": 52,
+      "logIndex": 0,
+      "contractName": "payment",
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "eventName": "Transfer",
+      "actor": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+      "timestamp": 1789297138,
+      "args": {
+        "from": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+        "to": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+        "value": "4"
       }
     },
     {
@@ -1689,7 +1839,7 @@
       "eventName": "DesignSuspended",
       "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
       "designId": "1",
-      "timestamp": 1789292745,
+      "timestamp": 1789297140,
       "args": {
         "designId": "1",
         "reasonHash": "0x6718e542629f26ff14204e4c3f438724d7809ed387496bcd725f843dc2ff253c"
@@ -1704,7 +1854,7 @@
       "eventName": "DesignReinstated",
       "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
       "designId": "1",
-      "timestamp": 1789292746,
+      "timestamp": 1789297141,
       "args": {
         "designId": "1"
       }
@@ -1717,7 +1867,7 @@
       "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
       "eventName": "Paused",
       "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-      "timestamp": 1789292747,
+      "timestamp": 1789297142,
       "args": {
         "account": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
       }
@@ -1730,7 +1880,7 @@
       "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
       "eventName": "Unpaused",
       "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-      "timestamp": 1789292748,
+      "timestamp": 1789297143,
       "args": {
         "account": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
       }
