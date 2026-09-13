@@ -10,6 +10,9 @@
 - The event indexer supports confirmations, cursor persistence, unique events, resumable bounded scans and short reorg replay with PostgreSQL or local JSON.
 - PostgreSQL, IPFS-compatible object storage and deterministic local fallbacks are implemented behind the existing APIs.
 - Public evidence uses indexed Sepolia data when available and never calls local hashes public evidence.
+- The production-facing frontend now provides a unified landing-to-marketplace-to-player journey, a searchable six-asset season catalog, responsive desktop/mobile layouts and explicit executed-demo versus product-preview labels.
+- Player, Creator, Verifier, Publisher, Game Team, Community, Seller and Admin workspaces are connected through a shared navigation and lifecycle model.
+- Creator uploads/hashing, verifier pre-screen and reports, production versioning/review, player game-account linking/delivery status and admin indexer health now call the real backend APIs from their matching workspaces.
 - A dedicated test-only deployer funded from MetaMask deployed all seven contracts to public Sepolia at block `11695984`.
 - Public smoke checks confirmed bytecode at every address and the AssetRegistry-to-CommunityVoting configuration.
 - MockVND was minted on Sepolia and the indexer persisted 19 unique public events through finalized block `11696063`.
@@ -23,6 +26,8 @@
 - TypeScript typecheck: passing.
 - Next.js production build: passing, 30 routes generated.
 - Local route smoke check: 22/22 pages/APIs returned HTTP 200.
+- Frontend-to-backend acceptance: 25/25 HTTP checks passing.
+- Responsive visual QA: landing, catalog filtering and Creator Studio verified at desktop and 390px mobile widths.
 - Public Sepolia contract smoke: 7/7 bytecodes and cross-contract link passing.
 - Public Sepolia event index: 19 unique events, resumable and idempotent.
 

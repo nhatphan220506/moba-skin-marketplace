@@ -1,3 +1,3 @@
 import { RoleWorkspace } from "@/components/product/RoleWorkspace";
-export default function Page() { return <RoleWorkspace eyebrow="ARTIST WORKSPACE" title="Artist Studio" description="Prepare concept evidence, anchor a submission and follow its full commercial lifecycle." actions={["submit-design", "withdraw-primary", "withdraw-resale"]}/>; }
-
+import { UploadWorkspace } from "@/components/product/BackendOperations";
+export default function Page() { return <RoleWorkspace eyebrow="CREATOR / ARTIST" title="Creator Studio" description="Take a concept from protected evidence upload to a wallet-signed submission, then follow reviews, production and revenue." actions={["submit-design", "withdraw-primary", "withdraw-resale"]}><UploadWorkspace /></RoleWorkspace>; }

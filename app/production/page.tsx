@@ -1,3 +1,3 @@
 import { RoleWorkspace } from "@/components/product/RoleWorkspace";
-export default function Page() { return <RoleWorkspace eyebrow="GAME DEVELOPER" title="Production and QA" description="Inspect versioned production evidence, approve technical compatibility or require another production pass." actions={["approve-compatibility", "require-rework"]}/>; }
-
+import { ProductionWorkspace } from "@/components/product/BackendOperations";
+export default function Page() { return <RoleWorkspace eyebrow="GAME TEAM / QA" title="Production Pipeline" description="Version private model packages, review game compatibility and anchor the approved build into the public lifecycle." actions={["approve-compatibility", "require-rework"]}><ProductionWorkspace /></RoleWorkspace>; }
