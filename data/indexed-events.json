@@ -1,6 +1,6 @@
 {
   "chainId": 11155111,
-  "cursor": 11696063,
+  "cursor": 11696279,
   "events": [
     {
       "chainId": 11155111,
@@ -398,6 +398,27 @@
         "value": "1000000000000000000000"
       },
       "timestamp": 1789304196
+    },
+    {
+      "chainId": 11155111,
+      "transactionHash": "0x8ba56e86dd59c96bc5b75b0fee950d538507cb700e6da3586f25ad87a1b55df4",
+      "logIndex": 151,
+      "blockNumber": 11696279,
+      "blockHash": "0xa1c35c9205f0a516c06282796ad8c86f702e7162b9d4d52a3e7961bec5474db5",
+      "contractName": "assetRegistry",
+      "contractAddress": "0x3ec95E112D74112f0401c60f0703414f43ae5cf8",
+      "eventName": "RoleGranted",
+      "actor": "0x45FE6d2B0bAcB794C4A017bE4148e63f1A8A5852",
+      "designId": null,
+      "auctionId": null,
+      "tokenId": null,
+      "amount": null,
+      "arguments": {
+        "role": "0x877a78dc988c0ec5f58453b44888a55eb39755c3d5ed8d8ea990912aa3ef29c6",
+        "account": "0x45FE6d2B0bAcB794C4A017bE4148e63f1A8A5852",
+        "sender": "0x0528f92525E8cBEA406D291961E9175949d5F239"
+      },
+      "timestamp": 1789307244
     }
   ]
 }
