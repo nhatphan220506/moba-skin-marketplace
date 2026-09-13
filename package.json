@@ -1,0 +1,37 @@
+{
+  "name": "moba-skin-marketplace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "M0 foundation for an authorised community-contributed MOBA skin marketplace prototype.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "chain": "hardhat node",
+    "compile:contracts": "hardhat compile",
+    "test:contracts": "hardhat test",
+    "check:m0": "node scripts/check-foundation.mjs",
+    "check": "npm run check:m0 && npm run typecheck && npm run compile:contracts"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.4.0",
+    "@tanstack/react-query": "^5.87.0",
+    "next": "^15.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "viem": "^2.37.0",
+    "wagmi": "^2.16.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "hardhat": "^2.26.0",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
