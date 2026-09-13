@@ -1,4 +1,5 @@
 import { DEMO_CONFIG } from "@/config/demo";
+import { KatIntegrationDashboard } from "@/components/ui/KatIntegrationDashboard";
 import { DesignStatus } from "@/types/design";
 
 const gates = [
@@ -41,9 +42,11 @@ export default function HomePage() {
       </section>
 
       <section className="notice">
-        This screen is intentionally functional-only. Final UI/UX begins after contracts,
-        Kat APIs and Văn evidence output are integrated.
+        This integration screen remains functional-first. Văn&apos;s receipt parser and final
+        evidence run are intentionally outside Kat&apos;s module.
       </section>
+
+      <KatIntegrationDashboard />
     </main>
   );
 }

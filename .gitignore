@@ -10,6 +10,7 @@ deployments/local/
 .env.local
 .env.*.local
 *.log
+!docs/integration/evidence/*.log
 *.tsbuildinfo
 .DS_Store
 uploads/

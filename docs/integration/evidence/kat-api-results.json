@@ -1,0 +1,524 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-13T08:57:04.033Z",
+  "baseUrl": "http://localhost:3000",
+  "collectionPath": "docs/api/postman_collection.json",
+  "primaryFlow": {
+    "total": 18,
+    "passed": 18,
+    "failed": 0
+  },
+  "additionalAssertions": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "assertions": {
+    "deterministicSha256": true,
+    "validationErrorsUseStandardShape": true,
+    "reportPersistence": true,
+    "productionVersionHistory": true,
+    "accountLinkIdempotencyAndConflictDetection": true,
+    "buyerBActiveAfterMint": true,
+    "mintRedeliveryIdempotent": true,
+    "buyerBRevokedBeforeBuyerCActivation": true,
+    "buyerCPendingThenActiveOnSameRecord": true
+  },
+  "evidenceClassification": "Deterministic mock receipt evidence; not real on-chain transaction proof",
+  "results": [
+    {
+      "name": "Hash JSON content",
+      "method": "POST",
+      "route": "/api/files/hash",
+      "status": 200,
+      "startedAt": "2026-09-13T08:57:01.716Z",
+      "finishedAt": "2026-09-13T08:57:02.052Z",
+      "response": {
+        "sha256": "0x0967115f2813a3541eaef77de9d9d5773f1c0c04314b0bbfe4ff3b3b1c55b5d5"
+      }
+    },
+    {
+      "name": "Upload file",
+      "method": "POST",
+      "route": "/api/files/upload",
+      "status": 201,
+      "startedAt": "2026-09-13T08:57:02.052Z",
+      "finishedAt": "2026-09-13T08:57:02.129Z",
+      "response": {
+        "fileId": "concept-design-1-4c4b6a3be131",
+        "fileName": "skin-concept.png",
+        "category": "concept-design",
+        "designId": 1,
+        "storageURI": "/uploads/concept-design-1-4c4b6a3be131.png",
+        "size": 8,
+        "mimeType": "image/png",
+        "sha256": "0x4c4b6a3be1314ab86138bef4314dde022e600960d8689a2c8f8631802d20dab6",
+        "uploadedAt": 1789289822
+      }
+    },
+    {
+      "name": "Get uploaded file metadata",
+      "method": "GET",
+      "route": "/api/files/concept-design-1-4c4b6a3be131",
+      "status": 200,
+      "startedAt": "2026-09-13T08:57:02.129Z",
+      "finishedAt": "2026-09-13T08:57:02.424Z",
+      "response": {
+        "fileId": "concept-design-1-4c4b6a3be131",
+        "fileName": "skin-concept.png",
+        "category": "concept-design",
+        "designId": 1,
+        "storageURI": "/uploads/concept-design-1-4c4b6a3be131.png",
+        "size": 8,
+        "mimeType": "image/png",
+        "sha256": "0x4c4b6a3be1314ab86138bef4314dde022e600960d8689a2c8f8631802d20dab6",
+        "uploadedAt": 1789289822
+      }
+    },
+    {
+      "name": "Pre-screen design",
+      "method": "POST",
+      "route": "/api/verification/pre-screen",
+      "status": 201,
+      "startedAt": "2026-09-13T08:57:02.424Z",
+      "finishedAt": "2026-09-13T08:57:02.489Z",
+      "response": {
+        "reportId": "verification-design-1-prescreen",
+        "designId": 1,
+        "aiUsed": true,
+        "disclosureComplete": true,
+        "similarityRisk": 22,
+        "trademarkRisk": 8,
+        "overallRisk": "LOW",
+        "recommendedAction": "HUMAN_REVIEW",
+        "findings": []
+      }
+    },
+    {
+      "name": "Record human verification",
+      "method": "POST",
+      "route": "/api/verification/reports",
+      "status": 201,
+      "startedAt": "2026-09-13T08:57:02.489Z",
+      "finishedAt": "2026-09-13T08:57:02.574Z",
+      "response": {
+        "reportId": "verification-design-1-v1",
+        "designId": 1,
+        "aiUsed": true,
+        "disclosureComplete": true,
+        "similarityRisk": 22,
+        "trademarkRisk": 8,
+        "overallRisk": "LOW",
+        "recommendedAction": "HUMAN_REVIEW",
+        "findings": [],
+        "decision": "APPROVED",
+        "verifierAddress": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "reviewedAt": 1788948101,
+        "notes": "Integration acceptance human review",
+        "reportHash": "0x6e85ac649138bd80249b6f6c2d7d6e7586e84daf64b8054b393c3c41b806b207"
+      }
+    },
+    {
+      "name": "Get latest verification",
+      "method": "GET",
+      "route": "/api/verification/reports/1",
+      "status": 200,
+      "startedAt": "2026-09-13T08:57:02.574Z",
+      "finishedAt": "2026-09-13T08:57:02.790Z",
+      "response": {
+        "reportId": "verification-design-1-v1",
+        "designId": 1,
+        "aiUsed": true,
+        "disclosureComplete": true,
+        "similarityRisk": 22,
+        "trademarkRisk": 8,
+        "overallRisk": "LOW",
+        "recommendedAction": "HUMAN_REVIEW",
+        "findings": [],
+        "decision": "APPROVED",
+        "verifierAddress": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "reviewedAt": 1788948101,
+        "notes": "Integration acceptance human review",
+        "reportHash": "0x6e85ac649138bd80249b6f6c2d7d6e7586e84daf64b8054b393c3c41b806b207"
+      }
+    },
+    {
+      "name": "Create production v1",
+      "method": "POST",
+      "route": "/api/production/records",
+      "status": 201,
+      "startedAt": "2026-09-13T08:57:02.790Z",
+      "finishedAt": "2026-09-13T08:57:02.857Z",
+      "response": {
+        "designId": 1,
+        "productionStudio": "Authorised Demo Studio",
+        "modelFileURI": "/mock-production/design-1-v1.glb",
+        "approvedGame": "Demo MOBA",
+        "version": "v1",
+        "productionHash": "0x0b7768b07241bf75df7e54b123192c79bd5871cab1004e6af4cd1b45e1790e75",
+        "compatibilityHash": "0x3a7bd4fde3a7d4ffe5248e55e75c4440cd44967f6984e3a8c16a1839b3315d25",
+        "qaStatus": "PENDING",
+        "createdAt": 1788948201
+      }
+    },
+    {
+      "name": "Review production v1",
+      "method": "POST",
+      "route": "/api/production/review",
+      "status": 200,
+      "startedAt": "2026-09-13T08:57:02.857Z",
+      "finishedAt": "2026-09-13T08:57:02.922Z",
+      "response": {
+        "designId": 1,
+        "productionStudio": "Authorised Demo Studio",
+        "modelFileURI": "/mock-production/design-1-v1.glb",
+        "approvedGame": "Demo MOBA",
+        "version": "v1",
+        "productionHash": "0x0b7768b07241bf75df7e54b123192c79bd5871cab1004e6af4cd1b45e1790e75",
+        "compatibilityHash": "0x3a7bd4fde3a7d4ffe5248e55e75c4440cd44967f6984e3a8c16a1839b3315d25",
+        "qaStatus": "REWORK_REQUIRED",
+        "createdAt": 1788948201,
+        "reviewerAddress": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+        "reviewedAt": 1788948301,
+        "reviewNotes": "Compatibility adjustment required"
+      }
+    },
+    {
+      "name": "Create production v2",
+      "method": "POST",
+      "route": "/api/production/records",
+      "status": 201,
+      "startedAt": "2026-09-13T08:57:02.922Z",
+      "finishedAt": "2026-09-13T08:57:02.931Z",
+      "response": {
+        "designId": 1,
+        "productionStudio": "Authorised Demo Studio",
+        "modelFileURI": "/mock-production/design-1-v2.glb",
+        "approvedGame": "Demo MOBA",
+        "version": "v2",
+        "productionHash": "0xa611e2600d1eada99a5d82f89a3b936cf55a0e3cbee0fbe42d6bb2d5eaca64f3",
+        "compatibilityHash": "0x09512cb3abf2e9e05a52a55e7bc1aff6258ff37f46a40b4bbbaf78e52654d530",
+        "qaStatus": "PENDING",
+        "createdAt": 1788948202
+      }
+    },
+    {
+      "name": "Get production history",
+      "method": "GET",
+      "route": "/api/production/1",
+      "status": 200,
+      "startedAt": "2026-09-13T08:57:02.931Z",
+      "finishedAt": "2026-09-13T08:57:03.158Z",
+      "response": {
+        "current": {
+          "designId": 1,
+          "productionStudio": "Authorised Demo Studio",
+          "modelFileURI": "/mock-production/design-1-v2.glb",
+          "approvedGame": "Demo MOBA",
+          "version": "v2",
+          "productionHash": "0xa611e2600d1eada99a5d82f89a3b936cf55a0e3cbee0fbe42d6bb2d5eaca64f3",
+          "compatibilityHash": "0x09512cb3abf2e9e05a52a55e7bc1aff6258ff37f46a40b4bbbaf78e52654d530",
+          "qaStatus": "PENDING",
+          "createdAt": 1788948202
+        },
+        "history": [
+          {
+            "designId": 1,
+            "productionStudio": "Authorised Demo Studio",
+            "modelFileURI": "/mock-production/design-1-v1.glb",
+            "approvedGame": "Demo MOBA",
+            "version": "v1",
+            "productionHash": "0x0b7768b07241bf75df7e54b123192c79bd5871cab1004e6af4cd1b45e1790e75",
+            "compatibilityHash": "0x3a7bd4fde3a7d4ffe5248e55e75c4440cd44967f6984e3a8c16a1839b3315d25",
+            "qaStatus": "REWORK_REQUIRED",
+            "createdAt": 1788948201,
+            "reviewerAddress": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+            "reviewedAt": 1788948301,
+            "reviewNotes": "Compatibility adjustment required"
+          },
+          {
+            "designId": 1,
+            "productionStudio": "Authorised Demo Studio",
+            "modelFileURI": "/mock-production/design-1-v2.glb",
+            "approvedGame": "Demo MOBA",
+            "version": "v2",
+            "productionHash": "0xa611e2600d1eada99a5d82f89a3b936cf55a0e3cbee0fbe42d6bb2d5eaca64f3",
+            "compatibilityHash": "0x09512cb3abf2e9e05a52a55e7bc1aff6258ff37f46a40b4bbbaf78e52654d530",
+            "qaStatus": "PENDING",
+            "createdAt": 1788948202
+          }
+        ]
+      }
+    },
+    {
+      "name": "Link account",
+      "method": "POST",
+      "route": "/api/accounts/link",
+      "status": 201,
+      "startedAt": "2026-09-13T08:57:03.158Z",
+      "finishedAt": "2026-09-13T08:57:03.230Z",
+      "response": {
+        "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "gameAccountId": "moba-player-b",
+        "linkedAt": 1788948000,
+        "status": "LINKED"
+      }
+    },
+    {
+      "name": "Get linked account",
+      "method": "GET",
+      "route": "/api/accounts/0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "status": 200,
+      "startedAt": "2026-09-13T08:57:03.230Z",
+      "finishedAt": "2026-09-13T08:57:03.462Z",
+      "response": {
+        "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "gameAccountId": "moba-player-b",
+        "linkedAt": 1788948000,
+        "status": "LINKED"
+      }
+    },
+    {
+      "name": "Activate Buyer B from mint",
+      "method": "POST",
+      "route": "/api/game/activate",
+      "status": 201,
+      "startedAt": "2026-09-13T08:57:03.462Z",
+      "finishedAt": "2026-09-13T08:57:03.544Z",
+      "response": {
+        "activationId": "activation-e77658c1fb5d",
+        "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "gameAccountId": "moba-player-b",
+        "designId": 1,
+        "tokenId": 1,
+        "transactionHash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+        "status": "ACTIVE",
+        "attemptCount": 1,
+        "createdAt": 1788948401,
+        "updatedAt": 1788948401,
+        "action": "ACTIVATE",
+        "eventName": "EntitlementMinted"
+      }
+    },
+    {
+      "name": "Revoke Buyer B from transfer",
+      "method": "POST",
+      "route": "/api/game/revoke",
+      "status": 201,
+      "startedAt": "2026-09-13T08:57:03.544Z",
+      "finishedAt": "2026-09-13T08:57:03.618Z",
+      "response": {
+        "activationId": "activation-5fefcabd71bb",
+        "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "gameAccountId": "moba-player-b",
+        "designId": 1,
+        "tokenId": 1,
+        "transactionHash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+        "status": "REVOKED",
+        "attemptCount": 1,
+        "createdAt": 1788948402,
+        "updatedAt": 1788948402,
+        "action": "REVOKE",
+        "eventName": "EntitlementTransferred"
+      }
+    },
+    {
+      "name": "Activate Buyer C from transfer pending once",
+      "method": "POST",
+      "route": "/api/game/activate",
+      "status": 201,
+      "startedAt": "2026-09-13T08:57:03.618Z",
+      "finishedAt": "2026-09-13T08:57:03.627Z",
+      "response": {
+        "activationId": "activation-7c741794909e",
+        "walletAddress": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+        "gameAccountId": "moba-player-c-pending-once",
+        "designId": 1,
+        "tokenId": 1,
+        "transactionHash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+        "status": "DELIVERY_PENDING",
+        "attemptCount": 1,
+        "lastError": "Simulated first-delivery failure",
+        "createdAt": 1788948403,
+        "updatedAt": 1788948403,
+        "action": "ACTIVATE",
+        "eventName": "EntitlementTransferred"
+      }
+    },
+    {
+      "name": "Retry Buyer C delivery",
+      "method": "POST",
+      "route": "/api/game/retry",
+      "status": 200,
+      "startedAt": "2026-09-13T08:57:03.627Z",
+      "finishedAt": "2026-09-13T08:57:03.708Z",
+      "response": {
+        "activationId": "activation-7c741794909e",
+        "walletAddress": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+        "gameAccountId": "moba-player-c-pending-once",
+        "designId": 1,
+        "tokenId": 1,
+        "transactionHash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+        "status": "ACTIVE",
+        "attemptCount": 2,
+        "createdAt": 1788948403,
+        "updatedAt": 1788948404,
+        "action": "ACTIVATE",
+        "eventName": "EntitlementTransferred"
+      }
+    },
+    {
+      "name": "Get Buyer B status",
+      "method": "GET",
+      "route": "/api/game/status/0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f/1",
+      "status": 200,
+      "startedAt": "2026-09-13T08:57:03.708Z",
+      "finishedAt": "2026-09-13T08:57:03.952Z",
+      "response": {
+        "activationId": "activation-5fefcabd71bb",
+        "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "gameAccountId": "moba-player-b",
+        "designId": 1,
+        "tokenId": 1,
+        "transactionHash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+        "status": "REVOKED",
+        "attemptCount": 1,
+        "createdAt": 1788948402,
+        "updatedAt": 1788948402,
+        "action": "REVOKE",
+        "eventName": "EntitlementTransferred"
+      }
+    },
+    {
+      "name": "Get Buyer C status",
+      "method": "GET",
+      "route": "/api/game/status/0xa0Ee7A142d267C1f36714E4a8F75612F20a79720/1",
+      "status": 200,
+      "startedAt": "2026-09-13T08:57:03.952Z",
+      "finishedAt": "2026-09-13T08:57:03.960Z",
+      "response": {
+        "activationId": "activation-7c741794909e",
+        "walletAddress": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+        "gameAccountId": "moba-player-c-pending-once",
+        "designId": 1,
+        "tokenId": 1,
+        "transactionHash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+        "status": "ACTIVE",
+        "attemptCount": 2,
+        "createdAt": 1788948403,
+        "updatedAt": 1788948404,
+        "action": "ACTIVATE",
+        "eventName": "EntitlementTransferred"
+      }
+    },
+    {
+      "name": "Extra deterministic hash check",
+      "method": "POST",
+      "route": "/api/files/hash",
+      "status": 200,
+      "startedAt": "2026-09-13T08:57:03.960Z",
+      "finishedAt": "2026-09-13T08:57:03.968Z",
+      "response": {
+        "sha256": "0x0967115f2813a3541eaef77de9d9d5773f1c0c04314b0bbfe4ff3b3b1c55b5d5"
+      }
+    },
+    {
+      "name": "Extra mint redelivery idempotency",
+      "method": "POST",
+      "route": "/api/game/activate",
+      "status": 201,
+      "startedAt": "2026-09-13T08:57:03.968Z",
+      "finishedAt": "2026-09-13T08:57:03.975Z",
+      "response": {
+        "activationId": "activation-e77658c1fb5d",
+        "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "gameAccountId": "moba-player-b",
+        "designId": 1,
+        "tokenId": 1,
+        "transactionHash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+        "status": "ACTIVE",
+        "attemptCount": 1,
+        "createdAt": 1788948401,
+        "updatedAt": 1788948401,
+        "action": "ACTIVATE",
+        "eventName": "EntitlementMinted"
+      }
+    },
+    {
+      "name": "Extra account link idempotency",
+      "method": "POST",
+      "route": "/api/accounts/link",
+      "status": 201,
+      "startedAt": "2026-09-13T08:57:03.975Z",
+      "finishedAt": "2026-09-13T08:57:03.983Z",
+      "response": {
+        "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "gameAccountId": "moba-player-b",
+        "linkedAt": 1788948000,
+        "status": "LINKED"
+      }
+    },
+    {
+      "name": "Extra account conflict",
+      "method": "POST",
+      "route": "/api/accounts/link",
+      "status": 409,
+      "startedAt": "2026-09-13T08:57:03.983Z",
+      "finishedAt": "2026-09-13T08:57:03.990Z",
+      "response": {
+        "code": "CONFLICT",
+        "message": "walletAddress is already linked to another game account",
+        "recoverable": false
+      }
+    },
+    {
+      "name": "Extra invalid file type",
+      "method": "POST",
+      "route": "/api/files/upload",
+      "status": 400,
+      "startedAt": "2026-09-13T08:57:03.990Z",
+      "finishedAt": "2026-09-13T08:57:04.000Z",
+      "response": {
+        "code": "VALIDATION_ERROR",
+        "message": "file type is not allowed",
+        "recoverable": true,
+        "details": {
+          "allowedExtensions": [
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".webp",
+            ".pdf",
+            ".json"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Extra oversize file",
+      "method": "POST",
+      "route": "/api/files/upload",
+      "status": 400,
+      "startedAt": "2026-09-13T08:57:04.001Z",
+      "finishedAt": "2026-09-13T08:57:04.018Z",
+      "response": {
+        "code": "VALIDATION_ERROR",
+        "message": "file size must be between 1 byte and 10 MiB",
+        "recoverable": true
+      }
+    },
+    {
+      "name": "Extra unknown file ID",
+      "method": "GET",
+      "route": "/api/files/unknown-file-id",
+      "status": 404,
+      "startedAt": "2026-09-13T08:57:04.018Z",
+      "finishedAt": "2026-09-13T08:57:04.033Z",
+      "response": {
+        "code": "NOT_FOUND",
+        "message": "File unknown-file-id was not found",
+        "recoverable": false
+      }
+    }
+  ]
+}
