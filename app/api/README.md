@@ -1,15 +1,7 @@
 # Kat-owned API routes
 
-Implement route handlers only after reading `docs/api/offchain-api-contract.md`.
+Implemented route groups: `files`, `verification`, `production`, `accounts`, and `game`. They use the frozen field names and return errors as `{ code, message, recoverable, details? }`.
 
-Expected route groups:
+Run the application with `npm run dev`. See `docs/api/offchain-api.md` and `docs/api/mock-game-api.md` for complete requests, responses, dependencies, and limitations.
 
-```text
-files/
-verification/
-production/
-accounts/
-game/
-```
-
-Do not edit frozen types/config directly. Submit a shared-interface change request to Nhật when required.
+These routes do not redefine blockchain ownership, access-control roles, lifecycle gates, auction logic, BPS, or entitlement/IP meaning.
