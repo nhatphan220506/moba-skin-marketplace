@@ -1,0 +1,170 @@
+{
+  "info": {
+    "name": "MOBA Skin Marketplace - Kat Off-chain APIs",
+    "description": "Local deterministic demo flow for Kat's off-chain and mock-game workstream. Run requests in order after resetting seeded data.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "designId", "value": "1" },
+    { "key": "buyerB", "value": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f" },
+    { "key": "buyerC", "value": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720" },
+    { "key": "activationId", "value": "" },
+    { "key": "fileId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Files",
+      "item": [
+        {
+          "name": "Hash JSON content",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"content\": \"same\"\n}" },
+            "url": "{{baseUrl}}/api/files/hash"
+          }
+        },
+        {
+          "name": "Upload file",
+          "event": [{
+            "listen": "test",
+            "script": { "exec": ["if (pm.response.code === 201) pm.collectionVariables.set('fileId', pm.response.json().fileId);"] }
+          }],
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "file", "type": "file", "src": [] },
+                { "key": "category", "type": "text", "value": "concept" },
+                { "key": "designId", "type": "text", "value": "{{designId}}" }
+              ]
+            },
+            "url": "{{baseUrl}}/api/files/upload"
+          }
+        },
+        { "name": "Get uploaded file metadata", "request": { "method": "GET", "url": "{{baseUrl}}/api/files/{{fileId}}" } }
+      ]
+    },
+    {
+      "name": "Verification",
+      "item": [
+        {
+          "name": "Pre-screen design",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"designId\": 1,\n  \"aiUsed\": true,\n  \"disclosureComplete\": true,\n  \"evidenceFileIds\": [\"concept-design-0001\", \"creation-evidence-0001\"]\n}" },
+            "url": "{{baseUrl}}/api/verification/pre-screen"
+          }
+        },
+        {
+          "name": "Record human verification",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"designId\": 1,\n  \"automatedSummary\": {\n    \"designId\": 1,\n    \"aiUsed\": true,\n    \"disclosureComplete\": true,\n    \"similarityRisk\": 22,\n    \"trademarkRisk\": 8,\n    \"overallRisk\": \"LOW\",\n    \"recommendedAction\": \"HUMAN_REVIEW\",\n    \"findings\": []\n  },\n  \"decision\": \"APPROVED\",\n  \"verifierAddress\": \"0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC\",\n  \"notes\": \"Mock human review completed\"\n}" },
+            "url": "{{baseUrl}}/api/verification/reports"
+          }
+        },
+        { "name": "Get latest verification", "request": { "method": "GET", "url": "{{baseUrl}}/api/verification/reports/{{designId}}" } }
+      ]
+    },
+    {
+      "name": "Production",
+      "item": [
+        {
+          "name": "Create production v1",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"designId\": 1,\n  \"productionStudio\": \"Authorised Demo Studio\",\n  \"modelFileURI\": \"/mock-production/design-1-v1.glb\",\n  \"approvedGame\": \"Demo MOBA\"\n}" },
+            "url": "{{baseUrl}}/api/production/records"
+          }
+        },
+        {
+          "name": "Review production v1",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"designId\": 1,\n  \"version\": \"v1\",\n  \"qaStatus\": \"REWORK_REQUIRED\",\n  \"reviewerAddress\": \"0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65\",\n  \"notes\": \"Compatibility adjustment required\"\n}" },
+            "url": "{{baseUrl}}/api/production/review"
+          }
+        },
+        {
+          "name": "Create production v2",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"designId\": 1,\n  \"productionStudio\": \"Authorised Demo Studio\",\n  \"modelFileURI\": \"/mock-production/design-1-v2.glb\",\n  \"approvedGame\": \"Demo MOBA\"\n}" },
+            "url": "{{baseUrl}}/api/production/records"
+          }
+        },
+        { "name": "Get production history", "request": { "method": "GET", "url": "{{baseUrl}}/api/production/{{designId}}" } }
+      ]
+    },
+    {
+      "name": "Accounts",
+      "item": [
+        {
+          "name": "Link account",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"walletAddress\": \"{{buyerB}}\",\n  \"gameAccountId\": \"moba-player-b\"\n}" },
+            "url": "{{baseUrl}}/api/accounts/link"
+          }
+        },
+        { "name": "Get linked account", "request": { "method": "GET", "url": "{{baseUrl}}/api/accounts/{{buyerB}}" } }
+      ]
+    },
+    {
+      "name": "Mock Game",
+      "item": [
+        {
+          "name": "Activate Buyer B from mint",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"evidence\": {\n    \"transactionHash\": \"0x1111111111111111111111111111111111111111111111111111111111111111\",\n    \"eventName\": \"EntitlementMinted\",\n    \"designId\": 1,\n    \"tokenId\": 1,\n    \"amount\": 1,\n    \"owner\": \"{{buyerB}}\"\n  }\n}" },
+            "url": "{{baseUrl}}/api/game/activate"
+          }
+        },
+        {
+          "name": "Revoke Buyer B from transfer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"evidence\": {\n    \"transactionHash\": \"0x2222222222222222222222222222222222222222222222222222222222222222\",\n    \"eventName\": \"EntitlementTransferred\",\n    \"designId\": 1,\n    \"tokenId\": 1,\n    \"amount\": 1,\n    \"previousOwner\": \"{{buyerB}}\",\n    \"newOwner\": \"{{buyerC}}\"\n  }\n}" },
+            "url": "{{baseUrl}}/api/game/revoke"
+          }
+        },
+        {
+          "name": "Activate Buyer C from transfer (pending once)",
+          "event": [{
+            "listen": "test",
+            "script": { "exec": ["if (pm.response.code >= 200 && pm.response.code < 300) pm.collectionVariables.set('activationId', pm.response.json().activationId);"] }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"evidence\": {\n    \"transactionHash\": \"0x2222222222222222222222222222222222222222222222222222222222222222\",\n    \"eventName\": \"EntitlementTransferred\",\n    \"designId\": 1,\n    \"tokenId\": 1,\n    \"amount\": 1,\n    \"previousOwner\": \"{{buyerB}}\",\n    \"newOwner\": \"{{buyerC}}\"\n  }\n}" },
+            "url": "{{baseUrl}}/api/game/activate"
+          }
+        },
+        {
+          "name": "Retry Buyer C delivery",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"activationId\": \"{{activationId}}\"\n}" },
+            "url": "{{baseUrl}}/api/game/retry"
+          }
+        },
+        { "name": "Get Buyer B status", "request": { "method": "GET", "url": "{{baseUrl}}/api/game/status/{{buyerB}}/{{designId}}" } },
+        { "name": "Get Buyer C status", "request": { "method": "GET", "url": "{{baseUrl}}/api/game/status/{{buyerC}}/{{designId}}" } }
+      ]
+    }
+  ]
+}

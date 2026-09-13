@@ -1,0 +1,14 @@
+[
+  {
+    "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+    "gameAccountId": "moba-player-b",
+    "linkedAt": 1788948000,
+    "status": "LINKED"
+  },
+  {
+    "walletAddress": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+    "gameAccountId": "moba-player-c-pending-once",
+    "linkedAt": 1788948001,
+    "status": "LINKED"
+  }
+]
