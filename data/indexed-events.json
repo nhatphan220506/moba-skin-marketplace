@@ -1,6 +1,6 @@
 {
   "chainId": 11155111,
-  "cursor": 11696279,
+  "cursor": 11696312,
   "events": [
     {
       "chainId": 11155111,
@@ -419,6 +419,30 @@
         "sender": "0x0528f92525E8cBEA406D291961E9175949d5F239"
       },
       "timestamp": 1789307244
+    },
+    {
+      "chainId": 11155111,
+      "transactionHash": "0x3c17c0448368334315010913494cf14106b61f24f0abdee20a5da7ef10f9763f",
+      "logIndex": 2,
+      "blockNumber": 11696307,
+      "blockHash": "0xc386edd5f602f67fe12f0bd7fa775a7e7d94653ff3c46224f47249475d9bbedd",
+      "contractName": "assetRegistry",
+      "contractAddress": "0x3ec95E112D74112f0401c60f0703414f43ae5cf8",
+      "eventName": "DesignSubmitted",
+      "actor": "0x45FE6d2B0bAcB794C4A017bE4148e63f1A8A5852",
+      "designId": "1",
+      "auctionId": null,
+      "tokenId": null,
+      "amount": null,
+      "arguments": {
+        "designId": "1",
+        "artist": "0x45FE6d2B0bAcB794C4A017bE4148e63f1A8A5852",
+        "metadataURI": "ipfs://verdant-sentinel",
+        "artworkHash": "0x19df2f707b40ecebced1b8da37f70f6e8e35630ac2f7e15696023b0e6a4799d5",
+        "aiDisclosureHash": "0xe447b4bdde405a6bf8e0ad1f760d03bf16381dd655c0ecb6b6dfa12cc6707360",
+        "provenanceHash": "0xe94a3bcaaa4195ca34fd27b5d8e40d039c19f993820329a510cfd473827204fe"
+      },
+      "timestamp": 1789307592
     }
   ]
 }

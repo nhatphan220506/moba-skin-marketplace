@@ -1,7 +1,10 @@
 import journey from "@/docs/integration/evidence/full-journey.json";
-import { BlockchainEvidenceTable } from "@/components/technical/BlockchainEvidenceTable";
+import { LiveEvidenceView, type SerializableEvidenceRow } from "@/components/product/LiveEvidenceView";
 import type { EvidenceRow } from "@/types/evidence";
 import { getIndexedEvidence } from "@/lib/server/indexedEvidence";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function EvidencePage() {
   const indexedRows = await getIndexedEvidence();
@@ -19,5 +22,6 @@ export default async function EvidencePage() {
   }));
   const rows = indexedRows.length ? indexedRows : snapshotRows;
   const source = indexedRows.length ? "Sepolia indexed events" : "Local verified snapshot";
-  return <main className="product-main"><header className="product-heading"><div><p className="eyebrow">BLOCKCHAIN EVIDENCE</p><h1>Receipts, state and ownership</h1><p>Confirmed contract logs are decoded into an auditable product history. Until Sepolia is deployed, the executed local snapshot remains visible.</p></div><div className="workspace-meta"><span>{rows.length} events</span><span>{source}</span><span>No duplicate logs</span></div></header><div className="evidence-toolbar"><label>Search evidence<input placeholder="Transaction, actor or event" disabled/></label><label>Evidence source<select defaultValue={indexedRows.length ? "sepolia" : "local"} disabled><option value="local">Local verified snapshot</option><option value="sepolia">Sepolia indexed events</option></select></label><a className="button-link" href="/api/evidence" target="_blank">Evidence JSON</a></div><BlockchainEvidenceTable rows={rows}/><section className="notice"><strong>Evidence boundary</strong><span>Ownership and commercial transactions are on-chain. Game delivery is a private Kat record linked to confirmed entitlement events.</span></section></main>;
+  const serializableRows: SerializableEvidenceRow[] = rows.map((row) => ({ ...row, blockNumber: row.blockNumber.toString() }));
+  return <LiveEvidenceView initialRows={serializableRows} initialSource={source} />;
 }
