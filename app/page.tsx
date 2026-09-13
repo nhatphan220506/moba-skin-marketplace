@@ -1,6 +1,7 @@
 import { DEMO_CONFIG } from "@/config/demo";
-import { KatIntegrationDashboard } from "@/components/ui/KatIntegrationDashboard";
-import { FullJourneyDashboard } from "@/components/ui/FullJourneyDashboard";
+import Link from "next/link";
+import { ProductCard } from "@/components/product/ProductCard";
+import { roleDestinations } from "@/lib/product/catalog";
 import { DesignStatus } from "@/types/design";
 
 const gates = [
@@ -16,18 +17,12 @@ const gates = [
 export default function HomePage() {
   return (
     <main>
-      <nav className="topbar">
-        <a className="brand" href="#top" aria-label="MOBA Forge home"><span>MF</span><strong>MOBA FORGE</strong></a>
-        <div><a href="#journey">Marketplace</a><a href="#evidence">Evidence</a><a href="#services">Operations</a></div>
-        <span className="network-pill"><i /> Local chain · 31337</span>
-      </nav>
-
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow">PUBLISHER-AUTHORISED · COMMUNITY-CREATED</p>
           <h1>Own the right.<br /><em>Prove the journey.</em></h1>
           <p className="subtitle">A working marketplace prototype where design approvals, community selection, settlement, royalties and limited usage entitlements become verifiable blockchain state.</p>
-          <div className="hero-actions"><a className="button-link" href="#journey">Enter live prototype</a><a className="text-link" href="#evidence">Inspect evidence <span>↘</span></a></div>
+          <div className="hero-actions"><Link className="button-link" href="/explore">Explore marketplace</Link><Link className="text-link" href="/evidence">Inspect evidence <span>↘</span></Link></div>
           <div className="hero-metrics"><div><strong>22</strong><span>verified steps</span></div><div><strong>7</strong><span>smart contracts</span></div><div><strong>58</strong><span>passing tests</span></div></div>
         </div>
         <div className="hero-art" aria-label="Featured entitlement card">
@@ -60,8 +55,9 @@ export default function HomePage() {
 
       <section className="notice"><strong>Important boundary</strong><span>Blockchain ownership and off-chain game access are displayed separately. This local deterministic prototype represents a limited usage entitlement—not copyright or ownership of game IP.</span></section>
 
-      <FullJourneyDashboard />
-      <div id="services"><KatIntegrationDashboard /></div>
+      <section className="home-market"><div className="section-heading"><p className="eyebrow">FEATURED MARKET</p><h2>One asset. A complete verifiable lifecycle.</h2><p>Follow the publisher-authorised path from community concept to primary settlement and controlled resale.</p></div><ProductCard /></section>
+      <section className="home-roles"><div className="section-heading"><p className="eyebrow">MULTI-SIDED PRODUCT</p><h2>A workspace for every participant</h2><p>Public discovery connects directly to wallet-aware operational areas. Contracts—not hidden frontend rules—remain the authority.</p></div><div className="role-directory">{roleDestinations.map((item) => <Link href={item.href} key={item.href}><span>{item.role}</span><h3>{item.title}</h3><p>{item.copy}</p><b>Open workspace ↗</b></Link>)}</div></section>
+      <section className="demo-cta"><div><p className="eyebrow">ASSESSMENT MODE</p><h2>Need the deterministic full journey?</h2><p>The local 22-step runner, exact accounting and Kat console remain available as a separate verification environment.</p></div><Link className="button-link" href="/demo">Open verified demo</Link></section>
     </main>
   );
 }

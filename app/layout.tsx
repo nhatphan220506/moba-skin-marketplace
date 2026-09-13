@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ProductProviders } from "@/components/product/ProductProviders";
+import { SiteShell } from "@/components/product/SiteShell";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,7 +11,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><ProductProviders><SiteShell>{children}</SiteShell></ProductProviders></body>
     </html>
   );
 }

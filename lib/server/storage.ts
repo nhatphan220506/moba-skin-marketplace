@@ -1,6 +1,8 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+import { ensureCollectionTable, postgresEnabled, postgresPool } from "@/lib/server/postgres";
+
 export const DATA_FILES = {
   creators: "creators.json",
   designs: "designs.json",
@@ -43,6 +45,14 @@ export async function readCollection<T>(
   collection: DataCollection,
   fallback: T,
 ): Promise<T> {
+  if (postgresEnabled()) {
+    await ensureCollectionTable();
+    const result = await postgresPool().query<{ payload: T }>(
+      "SELECT payload FROM collection_store WHERE collection = $1",
+      [collection],
+    );
+    return result.rows[0]?.payload ?? fallback;
+  }
   try {
     const contents = await readFile(collectionPath(collection), "utf8");
     return JSON.parse(contents) as T;
@@ -58,6 +68,16 @@ export async function writeCollection<T>(
   collection: DataCollection,
   value: T,
 ): Promise<void> {
+  if (postgresEnabled()) {
+    await ensureCollectionTable();
+    await postgresPool().query(
+      `INSERT INTO collection_store (collection, payload, updated_at)
+       VALUES ($1, $2::jsonb, now())
+       ON CONFLICT (collection) DO UPDATE SET payload = EXCLUDED.payload, updated_at = now()`,
+      [collection, JSON.stringify(value)],
+    );
+    return;
+  }
   const directory = dataDirectory();
   const target = collectionPath(collection);
   const temporary = `${target}.${process.pid}.tmp`;

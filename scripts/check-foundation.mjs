@@ -57,7 +57,7 @@ if (undocumented.length > 0) {
   process.exit(1);
 }
 
-const forbiddenEnv = /(?:PRIVATE_KEY|MNEMONIC|SECRET)\s*=\s*\S+/;
+const forbiddenEnv = /(?:PRIVATE_KEY|MNEMONIC|SECRET)[ \t]*=[ \t]*[^\s#]+/;
 const envExample = readFileSync(resolve(root, ".env.example"), "utf8");
 if (forbiddenEnv.test(envExample)) {
   console.error(".env.example appears to contain a secret value.");

@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "designId": 1,
+    "productionStudio": "Authorised Demo Studio",
+    "modelFileURI": "/mock-production/design-1-v1.glb",
+    "approvedGame": "Demo MOBA",
+    "version": "v1",
+    "productionHash": "0x0b7768b07241bf75df7e54b123192c79bd5871cab1004e6af4cd1b45e1790e75",
+    "compatibilityHash": "0x3a7bd4fde3a7d4ffe5248e55e75c4440cd44967f6984e3a8c16a1839b3315d25",
+    "qaStatus": "APPROVED",
+    "createdAt": 1788948201,
+    "reviewerAddress": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+    "reviewedAt": 1788948301,
+    "reviewNotes": "Compatibility approved"
+  }
+]

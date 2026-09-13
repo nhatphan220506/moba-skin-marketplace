@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-13T09:32:28.892Z",
-  "baseUrl": "http://localhost:3000",
+  "generatedAt": "2026-09-13T12:31:20.406Z",
+  "baseUrl": "http://127.0.0.1:3000",
   "collectionPath": "docs/api/postman_collection.json",
   "primaryFlow": {
     "total": 18,
@@ -31,8 +31,8 @@
       "method": "POST",
       "route": "/api/files/hash",
       "status": 200,
-      "startedAt": "2026-09-13T09:32:28.573Z",
-      "finishedAt": "2026-09-13T09:32:28.637Z",
+      "startedAt": "2026-09-13T12:31:17.749Z",
+      "finishedAt": "2026-09-13T12:31:18.148Z",
       "response": {
         "sha256": "0x0967115f2813a3541eaef77de9d9d5773f1c0c04314b0bbfe4ff3b3b1c55b5d5"
       }
@@ -42,8 +42,8 @@
       "method": "POST",
       "route": "/api/files/upload",
       "status": 201,
-      "startedAt": "2026-09-13T09:32:28.637Z",
-      "finishedAt": "2026-09-13T09:32:28.648Z",
+      "startedAt": "2026-09-13T12:31:18.149Z",
+      "finishedAt": "2026-09-13T12:31:18.371Z",
       "response": {
         "fileId": "concept-design-1-4c4b6a3be131",
         "fileName": "skin-concept.png",
@@ -53,7 +53,7 @@
         "size": 8,
         "mimeType": "image/png",
         "sha256": "0x4c4b6a3be1314ab86138bef4314dde022e600960d8689a2c8f8631802d20dab6",
-        "uploadedAt": 1789291948
+        "uploadedAt": 1789302678
       }
     },
     {
@@ -61,8 +61,8 @@
       "method": "GET",
       "route": "/api/files/concept-design-1-4c4b6a3be131",
       "status": 200,
-      "startedAt": "2026-09-13T09:32:28.648Z",
-      "finishedAt": "2026-09-13T09:32:28.661Z",
+      "startedAt": "2026-09-13T12:31:18.371Z",
+      "finishedAt": "2026-09-13T12:31:18.655Z",
       "response": {
         "fileId": "concept-design-1-4c4b6a3be131",
         "fileName": "skin-concept.png",
@@ -72,7 +72,7 @@
         "size": 8,
         "mimeType": "image/png",
         "sha256": "0x4c4b6a3be1314ab86138bef4314dde022e600960d8689a2c8f8631802d20dab6",
-        "uploadedAt": 1789291948
+        "uploadedAt": 1789302678
       }
     },
     {
@@ -80,8 +80,8 @@
       "method": "POST",
       "route": "/api/verification/pre-screen",
       "status": 201,
-      "startedAt": "2026-09-13T09:32:28.661Z",
-      "finishedAt": "2026-09-13T09:32:28.671Z",
+      "startedAt": "2026-09-13T12:31:18.655Z",
+      "finishedAt": "2026-09-13T12:31:18.722Z",
       "response": {
         "reportId": "verification-design-1-prescreen",
         "designId": 1,
@@ -99,8 +99,8 @@
       "method": "POST",
       "route": "/api/verification/reports",
       "status": 201,
-      "startedAt": "2026-09-13T09:32:28.671Z",
-      "finishedAt": "2026-09-13T09:32:28.681Z",
+      "startedAt": "2026-09-13T12:31:18.722Z",
+      "finishedAt": "2026-09-13T12:31:18.813Z",
       "response": {
         "reportId": "verification-design-1-v1",
         "designId": 1,
@@ -123,8 +123,8 @@
       "method": "GET",
       "route": "/api/verification/reports/1",
       "status": 200,
-      "startedAt": "2026-09-13T09:32:28.681Z",
-      "finishedAt": "2026-09-13T09:32:28.693Z",
+      "startedAt": "2026-09-13T12:31:18.813Z",
+      "finishedAt": "2026-09-13T12:31:19.049Z",
       "response": {
         "reportId": "verification-design-1-v1",
         "designId": 1,
@@ -147,8 +147,8 @@
       "method": "POST",
       "route": "/api/production/records",
       "status": 201,
-      "startedAt": "2026-09-13T09:32:28.693Z",
-      "finishedAt": "2026-09-13T09:32:28.703Z",
+      "startedAt": "2026-09-13T12:31:19.049Z",
+      "finishedAt": "2026-09-13T12:31:19.122Z",
       "response": {
         "designId": 1,
         "productionStudio": "Authorised Demo Studio",
@@ -166,8 +166,8 @@
       "method": "POST",
       "route": "/api/production/review",
       "status": 200,
-      "startedAt": "2026-09-13T09:32:28.703Z",
-      "finishedAt": "2026-09-13T09:32:28.713Z",
+      "startedAt": "2026-09-13T12:31:19.122Z",
+      "finishedAt": "2026-09-13T12:31:19.194Z",
       "response": {
         "designId": 1,
         "productionStudio": "Authorised Demo Studio",
@@ -188,8 +188,8 @@
       "method": "POST",
       "route": "/api/production/records",
       "status": 201,
-      "startedAt": "2026-09-13T09:32:28.713Z",
-      "finishedAt": "2026-09-13T09:32:28.720Z",
+      "startedAt": "2026-09-13T12:31:19.194Z",
+      "finishedAt": "2026-09-13T12:31:19.204Z",
       "response": {
         "designId": 1,
         "productionStudio": "Authorised Demo Studio",
@@ -207,8 +207,8 @@
       "method": "GET",
       "route": "/api/production/1",
       "status": 200,
-      "startedAt": "2026-09-13T09:32:28.720Z",
-      "finishedAt": "2026-09-13T09:32:28.735Z",
+      "startedAt": "2026-09-13T12:31:19.204Z",
+      "finishedAt": "2026-09-13T12:31:19.439Z",
       "response": {
         "current": {
           "designId": 1,
@@ -255,8 +255,8 @@
       "method": "POST",
       "route": "/api/accounts/link",
       "status": 201,
-      "startedAt": "2026-09-13T09:32:28.735Z",
-      "finishedAt": "2026-09-13T09:32:28.745Z",
+      "startedAt": "2026-09-13T12:31:19.439Z",
+      "finishedAt": "2026-09-13T12:31:19.517Z",
       "response": {
         "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
         "gameAccountId": "moba-player-b",
@@ -269,8 +269,8 @@
       "method": "GET",
       "route": "/api/accounts/0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
       "status": 200,
-      "startedAt": "2026-09-13T09:32:28.745Z",
-      "finishedAt": "2026-09-13T09:32:28.764Z",
+      "startedAt": "2026-09-13T12:31:19.517Z",
+      "finishedAt": "2026-09-13T12:31:19.756Z",
       "response": {
         "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
         "gameAccountId": "moba-player-b",
@@ -283,8 +283,8 @@
       "method": "POST",
       "route": "/api/game/activate",
       "status": 201,
-      "startedAt": "2026-09-13T09:32:28.764Z",
-      "finishedAt": "2026-09-13T09:32:28.772Z",
+      "startedAt": "2026-09-13T12:31:19.757Z",
+      "finishedAt": "2026-09-13T12:31:19.843Z",
       "response": {
         "activationId": "activation-e77658c1fb5d",
         "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
@@ -305,8 +305,8 @@
       "method": "POST",
       "route": "/api/game/revoke",
       "status": 201,
-      "startedAt": "2026-09-13T09:32:28.772Z",
-      "finishedAt": "2026-09-13T09:32:28.786Z",
+      "startedAt": "2026-09-13T12:31:19.843Z",
+      "finishedAt": "2026-09-13T12:31:19.925Z",
       "response": {
         "activationId": "activation-5fefcabd71bb",
         "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
@@ -327,8 +327,8 @@
       "method": "POST",
       "route": "/api/game/activate",
       "status": 201,
-      "startedAt": "2026-09-13T09:32:28.786Z",
-      "finishedAt": "2026-09-13T09:32:28.795Z",
+      "startedAt": "2026-09-13T12:31:19.925Z",
+      "finishedAt": "2026-09-13T12:31:19.935Z",
       "response": {
         "activationId": "activation-7c741794909e",
         "walletAddress": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
@@ -350,8 +350,8 @@
       "method": "POST",
       "route": "/api/game/retry",
       "status": 200,
-      "startedAt": "2026-09-13T09:32:28.795Z",
-      "finishedAt": "2026-09-13T09:32:28.807Z",
+      "startedAt": "2026-09-13T12:31:19.935Z",
+      "finishedAt": "2026-09-13T12:31:20.063Z",
       "response": {
         "activationId": "activation-7c741794909e",
         "walletAddress": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
@@ -372,8 +372,8 @@
       "method": "GET",
       "route": "/api/game/status/0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f/1",
       "status": 200,
-      "startedAt": "2026-09-13T09:32:28.807Z",
-      "finishedAt": "2026-09-13T09:32:28.816Z",
+      "startedAt": "2026-09-13T12:31:20.063Z",
+      "finishedAt": "2026-09-13T12:31:20.332Z",
       "response": {
         "activationId": "activation-5fefcabd71bb",
         "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
@@ -394,8 +394,8 @@
       "method": "GET",
       "route": "/api/game/status/0xa0Ee7A142d267C1f36714E4a8F75612F20a79720/1",
       "status": 200,
-      "startedAt": "2026-09-13T09:32:28.816Z",
-      "finishedAt": "2026-09-13T09:32:28.825Z",
+      "startedAt": "2026-09-13T12:31:20.332Z",
+      "finishedAt": "2026-09-13T12:31:20.341Z",
       "response": {
         "activationId": "activation-7c741794909e",
         "walletAddress": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
@@ -416,8 +416,8 @@
       "method": "POST",
       "route": "/api/files/hash",
       "status": 200,
-      "startedAt": "2026-09-13T09:32:28.825Z",
-      "finishedAt": "2026-09-13T09:32:28.833Z",
+      "startedAt": "2026-09-13T12:31:20.341Z",
+      "finishedAt": "2026-09-13T12:31:20.348Z",
       "response": {
         "sha256": "0x0967115f2813a3541eaef77de9d9d5773f1c0c04314b0bbfe4ff3b3b1c55b5d5"
       }
@@ -427,8 +427,8 @@
       "method": "POST",
       "route": "/api/game/activate",
       "status": 201,
-      "startedAt": "2026-09-13T09:32:28.833Z",
-      "finishedAt": "2026-09-13T09:32:28.841Z",
+      "startedAt": "2026-09-13T12:31:20.348Z",
+      "finishedAt": "2026-09-13T12:31:20.356Z",
       "response": {
         "activationId": "activation-e77658c1fb5d",
         "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
@@ -449,8 +449,8 @@
       "method": "POST",
       "route": "/api/accounts/link",
       "status": 201,
-      "startedAt": "2026-09-13T09:32:28.841Z",
-      "finishedAt": "2026-09-13T09:32:28.849Z",
+      "startedAt": "2026-09-13T12:31:20.356Z",
+      "finishedAt": "2026-09-13T12:31:20.363Z",
       "response": {
         "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
         "gameAccountId": "moba-player-b",
@@ -463,8 +463,8 @@
       "method": "POST",
       "route": "/api/accounts/link",
       "status": 409,
-      "startedAt": "2026-09-13T09:32:28.849Z",
-      "finishedAt": "2026-09-13T09:32:28.858Z",
+      "startedAt": "2026-09-13T12:31:20.364Z",
+      "finishedAt": "2026-09-13T12:31:20.371Z",
       "response": {
         "code": "CONFLICT",
         "message": "walletAddress is already linked to another game account",
@@ -476,8 +476,8 @@
       "method": "POST",
       "route": "/api/files/upload",
       "status": 400,
-      "startedAt": "2026-09-13T09:32:28.858Z",
-      "finishedAt": "2026-09-13T09:32:28.866Z",
+      "startedAt": "2026-09-13T12:31:20.371Z",
+      "finishedAt": "2026-09-13T12:31:20.378Z",
       "response": {
         "code": "VALIDATION_ERROR",
         "message": "file type is not allowed",
@@ -499,8 +499,8 @@
       "method": "POST",
       "route": "/api/files/upload",
       "status": 400,
-      "startedAt": "2026-09-13T09:32:28.868Z",
-      "finishedAt": "2026-09-13T09:32:28.883Z",
+      "startedAt": "2026-09-13T12:31:20.380Z",
+      "finishedAt": "2026-09-13T12:31:20.395Z",
       "response": {
         "code": "VALIDATION_ERROR",
         "message": "file size must be between 1 byte and 10 MiB",
@@ -512,8 +512,8 @@
       "method": "GET",
       "route": "/api/files/unknown-file-id",
       "status": 404,
-      "startedAt": "2026-09-13T09:32:28.883Z",
-      "finishedAt": "2026-09-13T09:32:28.892Z",
+      "startedAt": "2026-09-13T12:31:20.395Z",
+      "finishedAt": "2026-09-13T12:31:20.406Z",
       "response": {
         "code": "NOT_FOUND",
         "message": "File unknown-file-id was not found",

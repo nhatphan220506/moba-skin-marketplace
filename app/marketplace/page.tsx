@@ -1,0 +1,3 @@
+import Link from "next/link";
+export default function MarketplacePage() { return <main className="product-main"><header className="product-heading"><div><p className="eyebrow">AUTHORISED RESALE</p><h1>Secondary marketplace</h1><p>Every purchase atomically transfers entitlement ownership and allocates seller proceeds and royalties.</p></div><Link className="button-link" href="/account/selling">Seller Centre</Link></header><Link className="listing-row" href="/marketplace/1"><span>LISTING 01</span><div><h2>Verdant Sentinel · Token #1</h2><p>90% seller · 5% artist · 3% publisher · 2% platform</p></div><strong>200 MockVND</strong><b>View listing ↗</b></Link></main>; }
+

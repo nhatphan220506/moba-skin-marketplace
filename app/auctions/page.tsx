@@ -1,0 +1,3 @@
+import Link from "next/link";
+export default function AuctionsPage() { return <main className="product-main"><header className="product-heading"><div><p className="eyebrow">PRIMARY MARKET</p><h1>Publisher auctions</h1><p>Wallet-signed bids enter contract escrow. Outbid funds remain withdrawable and settlement cannot execute twice.</p></div><Link className="button-link" href="/publisher">Publisher console</Link></header><Link className="listing-row" href="/auctions/1"><span>AUCTION 01</span><div><h2>Verdant Sentinel</h2><p>Settled · entitlement minted</p></div><strong>150 MockVND</strong><b>View auction ↗</b></Link></main>; }
+

@@ -1,9 +1,9 @@
-import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import { notFoundError, validationError } from "@/lib/server/api";
 import { sha256 } from "@/lib/server/hashing";
 import { readCollection, updateCollection } from "@/lib/server/storage";
+import { storeObject } from "@/lib/server/objectStorage";
 
 export const MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
 
@@ -63,15 +63,6 @@ function validateFile(file: File): string {
   return extension;
 }
 
-function uploadPath(fileName: string): string {
-  const directory = path.resolve(process.cwd(), "uploads");
-  const target = path.resolve(directory, fileName);
-  if (path.dirname(target) !== directory) {
-    throw validationError("file path resolved outside the upload directory");
-  }
-  return target;
-}
-
 export async function storeFile(form: FormData): Promise<FileRecord> {
   const file = form.get("file");
   if (!(file instanceof File)) {
@@ -85,21 +76,19 @@ export async function storeFile(form: FormData): Promise<FileRecord> {
   const digest = sha256(bytes);
   const fileId = `${category}-${designId}-${digest.slice(2, 14)}`;
   const storedName = `${fileId}${extension}`;
-  const target = uploadPath(storedName);
+  const storedObject = await storeObject(storedName, bytes, file.type);
   const record: FileRecord = {
     fileId,
     fileName: file.name,
     category,
     designId,
-    storageURI: `/uploads/${storedName}`,
+    storageURI: storedObject.uri,
     size: file.size,
     mimeType: file.type,
     sha256: digest,
     uploadedAt: Math.floor(Date.now() / 1000),
   };
 
-  await mkdir(path.dirname(target), { recursive: true });
-  await writeFile(target, bytes);
   await updateCollection<FileRecord[]>("files", [], (records) => [
     ...records.filter((candidate) => candidate.fileId !== fileId),
     record,

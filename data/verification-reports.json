@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "reportId": "verification-design-1-prescreen",
+    "designId": 1,
+    "aiUsed": true,
+    "disclosureComplete": true,
+    "similarityRisk": 22,
+    "trademarkRisk": 8,
+    "overallRisk": "LOW",
+    "recommendedAction": "HUMAN_REVIEW",
+    "findings": []
+  },
+  {
+    "reportId": "verification-design-1-v1",
+    "designId": 1,
+    "aiUsed": true,
+    "disclosureComplete": true,
+    "similarityRisk": 22,
+    "trademarkRisk": 8,
+    "overallRisk": "LOW",
+    "recommendedAction": "HUMAN_REVIEW",
+    "findings": [],
+    "decision": "APPROVED",
+    "verifierAddress": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+    "reviewedAt": 1788948101,
+    "notes": "Human verification for deterministic demo",
+    "reportHash": "0x29a1818a9e81a16223b69dae918d90407636b505a491b77d443c99d5109d9415"
+  }
+]

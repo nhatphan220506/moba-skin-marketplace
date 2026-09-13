@@ -1,6 +1,6 @@
 {
   "chainId": 31337,
-  "generatedAt": "2026-09-13T09:44:07.830Z",
+  "generatedAt": "2026-09-13T12:33:05.413Z",
   "contracts": {
     "payment": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
     "assetRegistry": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
