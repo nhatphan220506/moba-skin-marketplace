@@ -11,6 +11,13 @@
     "chain": "hardhat node",
     "compile:contracts": "hardhat compile",
     "test:contracts": "hardhat test",
+    "demo:deploy": "hardhat run scripts/demo/deployDemo.js --network localhost",
+    "demo:roles": "hardhat run scripts/demo/assignRoles.js --network localhost",
+    "demo:mint": "hardhat run scripts/demo/mintMockVND.js --network localhost",
+    "demo:reset": "hardhat run scripts/demo/resetDemo.js --network localhost",
+    "demo:seed": "hardhat run scripts/demo/seedDesign.js --network localhost",
+    "demo:journey": "hardhat run scripts/demo/runFullJourney.js",
+    "demo:addresses": "node scripts/demo/printAddresses.js",
     "check:m0": "node scripts/check-foundation.mjs",
     "check": "npm run check:m0 && npm run typecheck && npm run compile:contracts"
   },
