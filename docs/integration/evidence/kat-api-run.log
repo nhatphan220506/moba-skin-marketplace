@@ -1,25 +1,25 @@
-2026-09-13T08:57:02.052Z POST /api/files/hash 200 Hash JSON content
-2026-09-13T08:57:02.129Z POST /api/files/upload 201 Upload file
-2026-09-13T08:57:02.424Z GET /api/files/concept-design-1-4c4b6a3be131 200 Get uploaded file metadata
-2026-09-13T08:57:02.489Z POST /api/verification/pre-screen 201 Pre-screen design
-2026-09-13T08:57:02.574Z POST /api/verification/reports 201 Record human verification
-2026-09-13T08:57:02.790Z GET /api/verification/reports/1 200 Get latest verification
-2026-09-13T08:57:02.857Z POST /api/production/records 201 Create production v1
-2026-09-13T08:57:02.922Z POST /api/production/review 200 Review production v1
-2026-09-13T08:57:02.931Z POST /api/production/records 201 Create production v2
-2026-09-13T08:57:03.158Z GET /api/production/1 200 Get production history
-2026-09-13T08:57:03.230Z POST /api/accounts/link 201 Link account
-2026-09-13T08:57:03.462Z GET /api/accounts/0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f 200 Get linked account
-2026-09-13T08:57:03.544Z POST /api/game/activate 201 Activate Buyer B from mint
-2026-09-13T08:57:03.618Z POST /api/game/revoke 201 Revoke Buyer B from transfer
-2026-09-13T08:57:03.627Z POST /api/game/activate 201 Activate Buyer C from transfer pending once
-2026-09-13T08:57:03.708Z POST /api/game/retry 200 Retry Buyer C delivery
-2026-09-13T08:57:03.952Z GET /api/game/status/0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f/1 200 Get Buyer B status
-2026-09-13T08:57:03.960Z GET /api/game/status/0xa0Ee7A142d267C1f36714E4a8F75612F20a79720/1 200 Get Buyer C status
-2026-09-13T08:57:03.968Z POST /api/files/hash 200 Extra deterministic hash check
-2026-09-13T08:57:03.975Z POST /api/game/activate 201 Extra mint redelivery idempotency
-2026-09-13T08:57:03.983Z POST /api/accounts/link 201 Extra account link idempotency
-2026-09-13T08:57:03.990Z POST /api/accounts/link 409 Extra account conflict
-2026-09-13T08:57:04.000Z POST /api/files/upload 400 Extra invalid file type
-2026-09-13T08:57:04.018Z POST /api/files/upload 400 Extra oversize file
-2026-09-13T08:57:04.033Z GET /api/files/unknown-file-id 404 Extra unknown file ID
+2026-09-13T09:32:28.637Z POST /api/files/hash 200 Hash JSON content
+2026-09-13T09:32:28.648Z POST /api/files/upload 201 Upload file
+2026-09-13T09:32:28.661Z GET /api/files/concept-design-1-4c4b6a3be131 200 Get uploaded file metadata
+2026-09-13T09:32:28.671Z POST /api/verification/pre-screen 201 Pre-screen design
+2026-09-13T09:32:28.681Z POST /api/verification/reports 201 Record human verification
+2026-09-13T09:32:28.693Z GET /api/verification/reports/1 200 Get latest verification
+2026-09-13T09:32:28.703Z POST /api/production/records 201 Create production v1
+2026-09-13T09:32:28.713Z POST /api/production/review 200 Review production v1
+2026-09-13T09:32:28.720Z POST /api/production/records 201 Create production v2
+2026-09-13T09:32:28.735Z GET /api/production/1 200 Get production history
+2026-09-13T09:32:28.745Z POST /api/accounts/link 201 Link account
+2026-09-13T09:32:28.764Z GET /api/accounts/0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f 200 Get linked account
+2026-09-13T09:32:28.772Z POST /api/game/activate 201 Activate Buyer B from mint
+2026-09-13T09:32:28.786Z POST /api/game/revoke 201 Revoke Buyer B from transfer
+2026-09-13T09:32:28.795Z POST /api/game/activate 201 Activate Buyer C from transfer pending once
+2026-09-13T09:32:28.807Z POST /api/game/retry 200 Retry Buyer C delivery
+2026-09-13T09:32:28.816Z GET /api/game/status/0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f/1 200 Get Buyer B status
+2026-09-13T09:32:28.825Z GET /api/game/status/0xa0Ee7A142d267C1f36714E4a8F75612F20a79720/1 200 Get Buyer C status
+2026-09-13T09:32:28.833Z POST /api/files/hash 200 Extra deterministic hash check
+2026-09-13T09:32:28.841Z POST /api/game/activate 201 Extra mint redelivery idempotency
+2026-09-13T09:32:28.849Z POST /api/accounts/link 201 Extra account link idempotency
+2026-09-13T09:32:28.858Z POST /api/accounts/link 409 Extra account conflict
+2026-09-13T09:32:28.866Z POST /api/files/upload 400 Extra invalid file type
+2026-09-13T09:32:28.883Z POST /api/files/upload 400 Extra oversize file
+2026-09-13T09:32:28.892Z GET /api/files/unknown-file-id 404 Extra unknown file ID

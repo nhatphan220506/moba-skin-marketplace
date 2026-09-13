@@ -1,0 +1,1709 @@
+{
+  "generatedAt": "2026-09-13T09:34:12.716Z",
+  "network": {
+    "name": "hardhat",
+    "chainId": 31337
+  },
+  "deployment": {
+    "chainId": 31337,
+    "generatedAt": "2026-09-13T09:34:12.503Z",
+    "contracts": {
+      "payment": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "assetRegistry": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "voting": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      "compatibility": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      "entitlement": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      "primary": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "secondary": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853"
+    }
+  },
+  "result": "PASS",
+  "completedSteps": 22,
+  "totalSteps": 22,
+  "steps": [
+    {
+      "number": 1,
+      "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "role": "ARTIST",
+      "action": "submitDesign",
+      "service": "AssetRegistry",
+      "transactionHash": "0xa0b07968d0971309901fb3f315bff3a635e14ee9ef6b8881ef3ced3b24dcfddd",
+      "blockNumber": 19,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xa0b07968d0971309901fb3f315bff3a635e14ee9ef6b8881ef3ced3b24dcfddd",
+          "blockNumber": 19,
+          "logIndex": 0,
+          "contractName": "assetRegistry",
+          "contractAddress": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+          "eventName": "DesignSubmitted",
+          "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "designId": "1",
+          "timestamp": 1789292071,
+          "args": {
+            "designId": "1",
+            "artist": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+            "metadataURI": "/uploads/concept-design-1-02a3e298f153.png",
+            "artworkHash": "0x02a3e298f1533f62558c58e4c70edcab9af5a50d62d925fd5390942020fb0fb8",
+            "aiDisclosureHash": "0x10d8b13f535bbd3c020b9e22daeed1f9c2f9bb0a2a84558fe50910c65b3137be",
+            "provenanceHash": "0x775e9e42f5b05cf0298ae6da0bbfa5d626f86aea56605de6b7391a61e4a3fa11"
+          }
+        }
+      ],
+      "stateBefore": "DRAFT",
+      "stateAfter": "SUBMITTED",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 2,
+      "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "role": "VERIFIER",
+      "action": "verifyDesign",
+      "service": "AssetRegistry + Kat verification",
+      "transactionHash": "0x13acfe1709dc9b1b8fd6856060e0e740823d587bc04f8afaa00f419df0d23788",
+      "blockNumber": 20,
+      "decodedEvents": [
+        {
+          "transactionHash": "0x13acfe1709dc9b1b8fd6856060e0e740823d587bc04f8afaa00f419df0d23788",
+          "blockNumber": 20,
+          "logIndex": 0,
+          "contractName": "assetRegistry",
+          "contractAddress": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+          "eventName": "DesignVerified",
+          "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "designId": "1",
+          "timestamp": 1789292072,
+          "args": {
+            "designId": "1",
+            "verifier": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+            "reportHash": "0x29a1818a9e81a16223b69dae918d90407636b505a491b77d443c99d5109d9415"
+          }
+        }
+      ],
+      "stateBefore": "SUBMITTED",
+      "stateAfter": "VERIFIED",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 3,
+      "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "role": "PUBLISHER",
+      "action": "approveConceptEligibility",
+      "service": "AssetRegistry",
+      "transactionHash": "0xe9b929453c357d264a1eaac7e22adf29554f0ff755eb37675d760339bf37acb9",
+      "blockNumber": 21,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xe9b929453c357d264a1eaac7e22adf29554f0ff755eb37675d760339bf37acb9",
+          "blockNumber": 21,
+          "logIndex": 0,
+          "contractName": "assetRegistry",
+          "contractAddress": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+          "eventName": "ConceptEligibilityUpdated",
+          "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "designId": "1",
+          "timestamp": 1789292073,
+          "args": {
+            "designId": "1",
+            "publisher": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+            "eligible": true,
+            "reviewHash": "0x01796bd4fa175b9483ee3e856c01c3bf12bbbcc34ca8dd3e53979b640eaf9018"
+          }
+        }
+      ],
+      "stateBefore": "VERIFIED",
+      "stateAfter": "VOTING_ELIGIBLE",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 4,
+      "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "role": "ADMIN",
+      "action": "openVoting",
+      "service": "CommunityVoting",
+      "transactionHash": "0x469cf79720d387dee31215f87efdcc697d9b13376b6adef4cf6b5ef91e1af226",
+      "blockNumber": 22,
+      "decodedEvents": [
+        {
+          "transactionHash": "0x469cf79720d387dee31215f87efdcc697d9b13376b6adef4cf6b5ef91e1af226",
+          "blockNumber": 22,
+          "logIndex": 0,
+          "contractName": "voting",
+          "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+          "eventName": "VotingOpened",
+          "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "timestamp": 1789292074,
+          "args": {
+            "roundId": "1",
+            "startTime": "1789292075",
+            "endTime": "1789292103",
+            "candidateDesignIds": [
+              "1"
+            ]
+          }
+        }
+      ],
+      "stateBefore": "VOTING_ELIGIBLE",
+      "stateAfter": "VOTING",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 5,
+      "actor": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc",
+      "role": "FAN",
+      "action": "vote",
+      "service": "CommunityVoting",
+      "transactionHash": "0xdfc1cb6a2c09002d07aca7c7843601b56fd7151e6c4c175370694d58f5e1cb8d",
+      "blockNumber": 24,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xdfc1cb6a2c09002d07aca7c7843601b56fd7151e6c4c175370694d58f5e1cb8d",
+          "blockNumber": 24,
+          "logIndex": 0,
+          "contractName": "voting",
+          "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+          "eventName": "VoteRecorded",
+          "actor": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc",
+          "designId": "1",
+          "timestamp": 1789292076,
+          "args": {
+            "roundId": "1",
+            "designId": "1",
+            "voter": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc"
+          }
+        }
+      ],
+      "stateBefore": "NOT_VOTED",
+      "stateAfter": "VOTED",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 6,
+      "actor": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+      "role": "FAN",
+      "action": "vote",
+      "service": "CommunityVoting",
+      "transactionHash": "0x82e7f3e4089f76cbbbcb408c4a0e5bbb5b9acca82ce1754bfeb0011a34bf7a83",
+      "blockNumber": 25,
+      "decodedEvents": [
+        {
+          "transactionHash": "0x82e7f3e4089f76cbbbcb408c4a0e5bbb5b9acca82ce1754bfeb0011a34bf7a83",
+          "blockNumber": 25,
+          "logIndex": 0,
+          "contractName": "voting",
+          "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+          "eventName": "VoteRecorded",
+          "actor": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "designId": "1",
+          "timestamp": 1789292077,
+          "args": {
+            "roundId": "1",
+            "designId": "1",
+            "voter": "0x976EA74026E726554dB657fA54763abd0C3a0aa9"
+          }
+        }
+      ],
+      "stateBefore": "NOT_VOTED",
+      "stateAfter": "VOTED",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 7,
+      "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "role": "ADMIN",
+      "action": "finalizeVoting",
+      "service": "CommunityVoting",
+      "transactionHash": "0x957af3dc28d062fcd5bcdbaa2419ef1da3da686f8dae0a628d5e394081e8622e",
+      "blockNumber": 27,
+      "decodedEvents": [
+        {
+          "transactionHash": "0x957af3dc28d062fcd5bcdbaa2419ef1da3da686f8dae0a628d5e394081e8622e",
+          "blockNumber": 27,
+          "logIndex": 0,
+          "contractName": "voting",
+          "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+          "eventName": "VotingFinalized",
+          "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "timestamp": 1789292104,
+          "args": {
+            "roundId": "1",
+            "winnerDesignId": "1",
+            "winningVotes": "2"
+          }
+        }
+      ],
+      "stateBefore": "VOTING",
+      "stateAfter": "SELECTED",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 8,
+      "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "role": "PUBLISHER",
+      "action": "recordAgreement",
+      "service": "AssetRegistry",
+      "transactionHash": "0xd5ed5b71200c2785367c90e24b986f9118b39f0e3eec8e915a31ba5aab0f1a43",
+      "blockNumber": 28,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xd5ed5b71200c2785367c90e24b986f9118b39f0e3eec8e915a31ba5aab0f1a43",
+          "blockNumber": 28,
+          "logIndex": 0,
+          "contractName": "assetRegistry",
+          "contractAddress": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+          "eventName": "AgreementRecorded",
+          "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "designId": "1",
+          "timestamp": 1789292105,
+          "args": {
+            "designId": "1",
+            "agreementHash": "0xe1d5e7977e7776858f77e42aa5505a28cdb0b6c35bad05a57ec1ac95c5d42547",
+            "artistPrimaryShareBps": "8000",
+            "artistResaleRoyaltyBps": "500"
+          }
+        }
+      ],
+      "stateBefore": "SELECTED",
+      "stateAfter": "AGREEMENT_RECORDED",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 9,
+      "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "role": "PUBLISHER",
+      "action": "POST /api/production/records",
+      "service": "Kat production API",
+      "stateBefore": "NO_PRODUCTION",
+      "stateAfter": "VERSION_v1",
+      "classification": "OFF_CHAIN",
+      "result": "PASS",
+      "offchainEvidence": {
+        "designId": 1,
+        "productionStudio": "Authorised Demo Studio",
+        "modelFileURI": "/mock-production/design-1-v1.glb",
+        "approvedGame": "Demo MOBA",
+        "version": "v1",
+        "productionHash": "0x0b7768b07241bf75df7e54b123192c79bd5871cab1004e6af4cd1b45e1790e75",
+        "compatibilityHash": "0x3a7bd4fde3a7d4ffe5248e55e75c4440cd44967f6984e3a8c16a1839b3315d25",
+        "qaStatus": "PENDING",
+        "createdAt": 1788948201
+      }
+    },
+    {
+      "number": 10,
+      "actor": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "role": "GAME_DEVELOPER",
+      "action": "submitProduction + approveCompatibility(maxSupply=1)",
+      "service": "CompatibilityRegistry + Kat QA",
+      "transactionHash": "0x1d05a99e0260d10eba12df54afa1b62c09df43aea22505b40eb95f97cafcc88a",
+      "blockNumber": 30,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xcc8bf66cbc4d39c1afdf4d8f379e55f6e64d2a7695457e043e3b7a7d200f8984",
+          "blockNumber": 29,
+          "logIndex": 0,
+          "contractName": "compatibility",
+          "contractAddress": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+          "eventName": "ProductionSubmitted",
+          "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "designId": "1",
+          "timestamp": 1789292106,
+          "args": {
+            "designId": "1",
+            "productionHash": "0x0b7768b07241bf75df7e54b123192c79bd5871cab1004e6af4cd1b45e1790e75",
+            "compatibilityHash": "0x3a7bd4fde3a7d4ffe5248e55e75c4440cd44967f6984e3a8c16a1839b3315d25",
+            "version": "v1"
+          }
+        },
+        {
+          "transactionHash": "0x1d05a99e0260d10eba12df54afa1b62c09df43aea22505b40eb95f97cafcc88a",
+          "blockNumber": 30,
+          "logIndex": 0,
+          "contractName": "compatibility",
+          "contractAddress": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+          "eventName": "CompatibilityApproved",
+          "actor": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "designId": "1",
+          "timestamp": 1789292107,
+          "args": {
+            "designId": "1",
+            "gameDeveloper": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+            "approvedGameHash": "0x6c7ec5c9f08ae164dcf0e4dce7708d8386da3a5d2dff94733acb443f09d9c79c",
+            "maxSupply": "1"
+          }
+        }
+      ],
+      "stateBefore": "TECHNICAL_REVIEW",
+      "stateAfter": "MARKET_READY",
+      "amount": "1",
+      "classification": "ON_CHAIN",
+      "result": "PASS",
+      "offchainEvidence": {
+        "designId": 1,
+        "productionStudio": "Authorised Demo Studio",
+        "modelFileURI": "/mock-production/design-1-v1.glb",
+        "approvedGame": "Demo MOBA",
+        "version": "v1",
+        "productionHash": "0x0b7768b07241bf75df7e54b123192c79bd5871cab1004e6af4cd1b45e1790e75",
+        "compatibilityHash": "0x3a7bd4fde3a7d4ffe5248e55e75c4440cd44967f6984e3a8c16a1839b3315d25",
+        "qaStatus": "APPROVED",
+        "createdAt": 1788948201,
+        "reviewerAddress": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+        "reviewedAt": 1788948301,
+        "reviewNotes": "Compatibility approved"
+      }
+    },
+    {
+      "number": 11,
+      "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "role": "PUBLISHER",
+      "action": "createAuction",
+      "service": "PrimaryAuction",
+      "transactionHash": "0xeb8c663fff2130d6c62bb6e428ccedc938fa998fb30506469a225cb79d986a91",
+      "blockNumber": 31,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xeb8c663fff2130d6c62bb6e428ccedc938fa998fb30506469a225cb79d986a91",
+          "blockNumber": 31,
+          "logIndex": 0,
+          "contractName": "primary",
+          "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+          "eventName": "AuctionCreated",
+          "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "designId": "1",
+          "auctionId": "1",
+          "timestamp": 1789292108,
+          "args": {
+            "auctionId": "1",
+            "designId": "1",
+            "reservePrice": "100",
+            "minimumIncrement": "10",
+            "startTime": "1789292109",
+            "endTime": "1789292137"
+          }
+        }
+      ],
+      "stateBefore": "MARKET_READY",
+      "stateAfter": "AUCTION_OPEN",
+      "amount": "100",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 12,
+      "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+      "role": "BUYER_SELLER",
+      "action": "approve MockVND + placeBid",
+      "service": "MockVND + PrimaryAuction",
+      "transactionHash": "0x541b8d77e59ebb9d8c2d64416beec473a43b9813351a5a2acef0b9c141230808",
+      "blockNumber": 37,
+      "decodedEvents": [
+        {
+          "transactionHash": "0x541b8d77e59ebb9d8c2d64416beec473a43b9813351a5a2acef0b9c141230808",
+          "blockNumber": 37,
+          "logIndex": 0,
+          "contractName": "payment",
+          "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+          "eventName": "Transfer",
+          "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "timestamp": 1789292114,
+          "args": {
+            "from": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+            "to": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+            "value": "120"
+          }
+        },
+        {
+          "transactionHash": "0x541b8d77e59ebb9d8c2d64416beec473a43b9813351a5a2acef0b9c141230808",
+          "blockNumber": 37,
+          "logIndex": 1,
+          "contractName": "primary",
+          "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+          "eventName": "BidPlaced",
+          "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "auctionId": "1",
+          "amount": "120",
+          "timestamp": 1789292114,
+          "args": {
+            "auctionId": "1",
+            "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+            "amount": "120"
+          }
+        }
+      ],
+      "stateBefore": "BALANCE_1000",
+      "stateAfter": "ESCROW_120",
+      "amount": "120",
+      "classification": "ON_CHAIN",
+      "result": "PASS",
+      "transactionHashes": [
+        "0xf73e4b194034c191c5a4e9dea3901355f438921335661691a12008da9b620306",
+        "0x541b8d77e59ebb9d8c2d64416beec473a43b9813351a5a2acef0b9c141230808"
+      ]
+    },
+    {
+      "number": 13,
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "role": "BUYER_SELLER",
+      "action": "approve MockVND + placeBid",
+      "service": "MockVND + PrimaryAuction",
+      "transactionHash": "0xbbd54092c0f044eb794164001a1a4158dbe81c9fcfdf8e2e90f16ece605e0784",
+      "blockNumber": 39,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xbbd54092c0f044eb794164001a1a4158dbe81c9fcfdf8e2e90f16ece605e0784",
+          "blockNumber": 39,
+          "logIndex": 0,
+          "contractName": "payment",
+          "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+          "eventName": "Transfer",
+          "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "timestamp": 1789292116,
+          "args": {
+            "from": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "to": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+            "value": "150"
+          }
+        },
+        {
+          "transactionHash": "0xbbd54092c0f044eb794164001a1a4158dbe81c9fcfdf8e2e90f16ece605e0784",
+          "blockNumber": 39,
+          "logIndex": 1,
+          "contractName": "primary",
+          "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+          "eventName": "RefundAvailable",
+          "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "auctionId": "1",
+          "amount": "120",
+          "timestamp": 1789292116,
+          "args": {
+            "auctionId": "1",
+            "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+            "amount": "120"
+          }
+        },
+        {
+          "transactionHash": "0xbbd54092c0f044eb794164001a1a4158dbe81c9fcfdf8e2e90f16ece605e0784",
+          "blockNumber": 39,
+          "logIndex": 2,
+          "contractName": "primary",
+          "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+          "eventName": "BidPlaced",
+          "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "auctionId": "1",
+          "amount": "150",
+          "timestamp": 1789292116,
+          "args": {
+            "auctionId": "1",
+            "bidder": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "amount": "150"
+          }
+        }
+      ],
+      "stateBefore": "HIGHEST_120",
+      "stateAfter": "HIGHEST_150",
+      "amount": "150",
+      "classification": "ON_CHAIN",
+      "result": "PASS",
+      "transactionHashes": [
+        "0x70121f7aec855a8e632e885e260eb0e732a717c4a45160086dfa58a5d3291408",
+        "0xbbd54092c0f044eb794164001a1a4158dbe81c9fcfdf8e2e90f16ece605e0784"
+      ]
+    },
+    {
+      "number": 14,
+      "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+      "role": "BUYER_SELLER",
+      "action": "withdrawRefund",
+      "service": "PrimaryAuction",
+      "transactionHash": "0xb8172ca807a1e554c3263e39586d8876e201589a91e962ab67482d3065abd4aa",
+      "blockNumber": 40,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xb8172ca807a1e554c3263e39586d8876e201589a91e962ab67482d3065abd4aa",
+          "blockNumber": 40,
+          "logIndex": 0,
+          "contractName": "payment",
+          "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+          "eventName": "Transfer",
+          "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "timestamp": 1789292117,
+          "args": {
+            "from": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+            "to": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+            "value": "120"
+          }
+        },
+        {
+          "transactionHash": "0xb8172ca807a1e554c3263e39586d8876e201589a91e962ab67482d3065abd4aa",
+          "blockNumber": 40,
+          "logIndex": 1,
+          "contractName": "primary",
+          "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+          "eventName": "RefundWithdrawn",
+          "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "auctionId": "1",
+          "amount": "120",
+          "timestamp": 1789292117,
+          "args": {
+            "auctionId": "1",
+            "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+            "amount": "120"
+          }
+        }
+      ],
+      "stateBefore": "PENDING_REFUND_120",
+      "stateAfter": "REFUNDED_120",
+      "amount": "120",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 15,
+      "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "role": "ADMIN",
+      "action": "settle",
+      "service": "PrimaryAuction",
+      "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+      "blockNumber": 42,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+          "blockNumber": 42,
+          "logIndex": 0,
+          "contractName": "entitlement",
+          "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+          "eventName": "TransferSingle",
+          "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "timestamp": 1789292138,
+          "args": {
+            "operator": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+            "from": "0x0000000000000000000000000000000000000000",
+            "to": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "id": "1",
+            "value": "1"
+          }
+        },
+        {
+          "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+          "blockNumber": 42,
+          "logIndex": 1,
+          "contractName": "entitlement",
+          "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+          "eventName": "TransferabilityUpdated",
+          "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "tokenId": "1",
+          "timestamp": 1789292138,
+          "args": {
+            "tokenId": "1",
+            "transferable": true
+          }
+        },
+        {
+          "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+          "blockNumber": 42,
+          "logIndex": 2,
+          "contractName": "entitlement",
+          "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+          "eventName": "EntitlementMinted",
+          "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "designId": "1",
+          "tokenId": "1",
+          "amount": "1",
+          "timestamp": 1789292138,
+          "args": {
+            "designId": "1",
+            "tokenId": "1",
+            "owner": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "amount": "1"
+          }
+        },
+        {
+          "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+          "blockNumber": 42,
+          "logIndex": 3,
+          "contractName": "primary",
+          "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+          "eventName": "ProceedsAvailable",
+          "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "amount": "120",
+          "timestamp": 1789292138,
+          "args": {
+            "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+            "amount": "120",
+            "revenueType": "0xc4165da2a0c09896989d91d0ae9863d9e5cbd4819ca54bfcc16bd5f40258b4d3"
+          }
+        },
+        {
+          "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+          "blockNumber": 42,
+          "logIndex": 4,
+          "contractName": "primary",
+          "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+          "eventName": "ProceedsAvailable",
+          "actor": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+          "amount": "15",
+          "timestamp": 1789292138,
+          "args": {
+            "recipient": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+            "amount": "15",
+            "revenueType": "0x88508a8259b76132090d76694c10831dc89d65ad1ad2db3e826d89892a7be4c8"
+          }
+        },
+        {
+          "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+          "blockNumber": 42,
+          "logIndex": 5,
+          "contractName": "primary",
+          "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+          "eventName": "ProceedsAvailable",
+          "actor": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+          "amount": "15",
+          "timestamp": 1789292138,
+          "args": {
+            "recipient": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+            "amount": "15",
+            "revenueType": "0x42434c448e9c74f10fa3700bc0eb43d43ce1b4b10b90b9010629a630b3965691"
+          }
+        },
+        {
+          "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+          "blockNumber": 42,
+          "logIndex": 6,
+          "contractName": "primary",
+          "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+          "eventName": "AuctionSettled",
+          "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "designId": "1",
+          "auctionId": "1",
+          "amount": "150",
+          "timestamp": 1789292138,
+          "args": {
+            "auctionId": "1",
+            "designId": "1",
+            "winner": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "finalPrice": "150"
+          }
+        }
+      ],
+      "stateBefore": "ESCROW_150",
+      "stateAfter": "SETTLED_ENTITLEMENT_ISSUED",
+      "amount": "150",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 16,
+      "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "role": "ACCOUNTING_ASSERTION",
+      "action": "verify and withdraw primary proceeds",
+      "service": "PrimaryAuction + MockVND",
+      "transactionHashes": [
+        "0x03ea2bcbcb4f80cdc4d1135f6ce2946dd6dd0afc96f153d2bf68e7f396df1a9a",
+        "0x28c633ad48fbc353a4367c3317987b3cf4d733bd983469f38467710d366e88f6",
+        "0xbe268115255a63ee701540c717fc8675d1052f3d10f02c35501ac59177a3cbe9"
+      ],
+      "stateBefore": "PENDING_120_15_15",
+      "stateAfter": "PAID_120_15_15",
+      "amount": "150",
+      "classification": "ON_CHAIN",
+      "result": "PASS",
+      "accounting": {
+        "artist": "120",
+        "publisher": "15",
+        "marketplace": "15"
+      }
+    },
+    {
+      "number": 17,
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "role": "BUYER_SELLER",
+      "action": "sync EntitlementMinted -> activate",
+      "service": "Kat game API",
+      "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+      "blockNumber": 42,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+          "blockNumber": 42,
+          "logIndex": 2,
+          "contractName": "entitlement",
+          "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+          "eventName": "EntitlementMinted",
+          "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "designId": "1",
+          "tokenId": "1",
+          "amount": "1",
+          "timestamp": 1789292138,
+          "args": {
+            "designId": "1",
+            "tokenId": "1",
+            "owner": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "amount": "1"
+          }
+        }
+      ],
+      "stateBefore": "NOT_ACTIVATED",
+      "stateAfter": "ACTIVE",
+      "classification": "OFF_CHAIN_LINKED_TO_CHAIN",
+      "result": "PASS",
+      "offchainEvidence": {
+        "activationId": "activation-d8180909234b",
+        "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "gameAccountId": "moba-player-b",
+        "designId": 1,
+        "tokenId": 1,
+        "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+        "status": "ACTIVE",
+        "attemptCount": 1,
+        "createdAt": 1788948401,
+        "updatedAt": 1788948401,
+        "action": "ACTIVATE",
+        "eventName": "EntitlementMinted"
+      }
+    },
+    {
+      "number": 18,
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "role": "BUYER_SELLER",
+      "action": "listForResale",
+      "service": "SecondaryMarketplace",
+      "transactionHash": "0x54d86f28e81add25d372abc7c5e50ea2c1fcb41c3328b5abf309bbab964c786d",
+      "blockNumber": 46,
+      "decodedEvents": [
+        {
+          "transactionHash": "0x54d86f28e81add25d372abc7c5e50ea2c1fcb41c3328b5abf309bbab964c786d",
+          "blockNumber": 46,
+          "logIndex": 0,
+          "contractName": "secondary",
+          "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+          "eventName": "ResaleListed",
+          "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "designId": "1",
+          "tokenId": "1",
+          "amount": "200",
+          "timestamp": 1789292142,
+          "args": {
+            "listingId": "1",
+            "designId": "1",
+            "tokenId": "1",
+            "seller": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "price": "200"
+          }
+        }
+      ],
+      "stateBefore": "OWNED_ACTIVE",
+      "stateAfter": "LISTED_200",
+      "amount": "200",
+      "classification": "ON_CHAIN",
+      "result": "PASS"
+    },
+    {
+      "number": 19,
+      "actor": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+      "role": "BUYER_SELLER",
+      "action": "approve MockVND + buyResale",
+      "service": "MockVND + SecondaryMarketplace",
+      "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+      "blockNumber": 48,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "blockNumber": 48,
+          "logIndex": 0,
+          "contractName": "payment",
+          "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+          "eventName": "Transfer",
+          "actor": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+          "timestamp": 1789292144,
+          "args": {
+            "from": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+            "to": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+            "value": "200"
+          }
+        },
+        {
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "blockNumber": 48,
+          "logIndex": 1,
+          "contractName": "entitlement",
+          "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+          "eventName": "TransferSingle",
+          "actor": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+          "timestamp": 1789292144,
+          "args": {
+            "operator": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+            "from": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "to": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+            "id": "1",
+            "value": "1"
+          }
+        },
+        {
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "blockNumber": 48,
+          "logIndex": 2,
+          "contractName": "entitlement",
+          "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+          "eventName": "EntitlementTransferred",
+          "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "designId": "1",
+          "tokenId": "1",
+          "amount": "1",
+          "timestamp": 1789292144,
+          "args": {
+            "designId": "1",
+            "tokenId": "1",
+            "previousOwner": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "newOwner": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+            "amount": "1"
+          }
+        },
+        {
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "blockNumber": 48,
+          "logIndex": 3,
+          "contractName": "secondary",
+          "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+          "eventName": "ResaleProceedsAvailable",
+          "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "amount": "180",
+          "timestamp": 1789292144,
+          "args": {
+            "recipient": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "amount": "180",
+            "revenueType": "0xa6fe256cbfd965ca4f59beff7a0aac732ae8a07d21275b7dcdcb45f86d14d7eb"
+          }
+        },
+        {
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "blockNumber": 48,
+          "logIndex": 4,
+          "contractName": "secondary",
+          "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+          "eventName": "ResaleProceedsAvailable",
+          "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "amount": "10",
+          "timestamp": 1789292144,
+          "args": {
+            "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+            "amount": "10",
+            "revenueType": "0x923f856799ec2e182f9c39f86a085e24f3a3a2b7de4e5fb944c62bbda92c1a74"
+          }
+        },
+        {
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "blockNumber": 48,
+          "logIndex": 5,
+          "contractName": "secondary",
+          "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+          "eventName": "ResaleProceedsAvailable",
+          "actor": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+          "amount": "6",
+          "timestamp": 1789292144,
+          "args": {
+            "recipient": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+            "amount": "6",
+            "revenueType": "0x9e992be8507671d75f15d9a196b2623f9f4fe994c988b865c9cb94d398a5e12f"
+          }
+        },
+        {
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "blockNumber": 48,
+          "logIndex": 6,
+          "contractName": "secondary",
+          "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+          "eventName": "ResaleProceedsAvailable",
+          "actor": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+          "amount": "4",
+          "timestamp": 1789292144,
+          "args": {
+            "recipient": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+            "amount": "4",
+            "revenueType": "0xa069fc61f5ab580c8d71deea6700d40e0b38312dcd459285cb220fa21df9d2be"
+          }
+        },
+        {
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "blockNumber": 48,
+          "logIndex": 7,
+          "contractName": "secondary",
+          "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+          "eventName": "ResaleCompleted",
+          "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "tokenId": "1",
+          "amount": "200",
+          "timestamp": 1789292144,
+          "args": {
+            "listingId": "1",
+            "tokenId": "1",
+            "seller": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "buyer": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+            "price": "200",
+            "artistRoyalty": "10"
+          }
+        }
+      ],
+      "stateBefore": "LISTED_200",
+      "stateAfter": "PURCHASED_INACTIVE",
+      "amount": "200",
+      "classification": "ON_CHAIN",
+      "result": "PASS",
+      "transactionHashes": [
+        "0xa4eab0cd9b18de0a4c778995d217c075cf717124116163fa65643fbdda0cd76a",
+        "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6"
+      ]
+    },
+    {
+      "number": 20,
+      "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "role": "ACCOUNTING_ASSERTION",
+      "action": "verify and withdraw resale proceeds",
+      "service": "SecondaryMarketplace + MockVND",
+      "transactionHashes": [
+        "0x5997b2022da5ff38d49167837e4edc2252d882dee6edb3f574e2ac42a3fd7bda",
+        "0x9181e65e0e5cc473139c0570ba639b303cf03d95eda164e90745906fa02ba659",
+        "0x5fa0a91b8b0bec7825e738cdf5db248c16f77d61059f1e72c38d7a8118feea14",
+        "0x3f23e7fe1120c844c3765f9d2d9d14e116f6e065ab28f5ef4a68526f85c219b8"
+      ],
+      "stateBefore": "PENDING_180_10_6_4",
+      "stateAfter": "PAID_180_10_6_4",
+      "amount": "200",
+      "classification": "ON_CHAIN",
+      "result": "PASS",
+      "accounting": {
+        "seller": "180",
+        "artist": "10",
+        "publisher": "6",
+        "marketplace": "4"
+      }
+    },
+    {
+      "number": 21,
+      "actor": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+      "role": "BUYER_SELLER",
+      "action": "verify entitlement ownership and inactive listing",
+      "service": "SkinEntitlement1155 + SecondaryMarketplace",
+      "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+      "blockNumber": 48,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "blockNumber": 48,
+          "logIndex": 2,
+          "contractName": "entitlement",
+          "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+          "eventName": "EntitlementTransferred",
+          "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "designId": "1",
+          "tokenId": "1",
+          "amount": "1",
+          "timestamp": 1789292144,
+          "args": {
+            "designId": "1",
+            "tokenId": "1",
+            "previousOwner": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "newOwner": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+            "amount": "1"
+          }
+        }
+      ],
+      "stateBefore": "BUYER_B_1_BUYER_C_0",
+      "stateAfter": "BUYER_B_0_BUYER_C_1_LISTING_INACTIVE",
+      "amount": "1",
+      "classification": "ON_CHAIN",
+      "result": "PASS",
+      "repurchaseBlocked": true
+    },
+    {
+      "number": 22,
+      "actor": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+      "role": "BUYER_SELLER",
+      "action": "revoke Buyer B, activate Buyer C, retry pending delivery",
+      "service": "Kat game API",
+      "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+      "blockNumber": 48,
+      "decodedEvents": [
+        {
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "blockNumber": 48,
+          "logIndex": 2,
+          "contractName": "entitlement",
+          "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+          "eventName": "EntitlementTransferred",
+          "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "designId": "1",
+          "tokenId": "1",
+          "amount": "1",
+          "timestamp": 1789292144,
+          "args": {
+            "designId": "1",
+            "tokenId": "1",
+            "previousOwner": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+            "newOwner": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+            "amount": "1"
+          }
+        }
+      ],
+      "stateBefore": "BUYER_B_ACTIVE_BUYER_C_NONE",
+      "stateAfter": "BUYER_B_REVOKED_BUYER_C_ACTIVE",
+      "classification": "OFF_CHAIN_LINKED_TO_CHAIN",
+      "result": "PASS",
+      "offchainEvidence": {
+        "revokedB": {
+          "activationId": "activation-714c92913dc9",
+          "walletAddress": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "gameAccountId": "moba-player-b",
+          "designId": 1,
+          "tokenId": 1,
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "status": "REVOKED",
+          "attemptCount": 1,
+          "createdAt": 1788948402,
+          "updatedAt": 1788948402,
+          "action": "REVOKE",
+          "eventName": "EntitlementTransferred"
+        },
+        "pendingC": {
+          "activationId": "activation-df4914f1bad5",
+          "walletAddress": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+          "gameAccountId": "moba-player-c-pending-once",
+          "designId": 1,
+          "tokenId": 1,
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "status": "DELIVERY_PENDING",
+          "attemptCount": 1,
+          "lastError": "Simulated first-delivery failure",
+          "createdAt": 1788948403,
+          "updatedAt": 1788948403,
+          "action": "ACTIVATE",
+          "eventName": "EntitlementTransferred"
+        },
+        "activeC": {
+          "activationId": "activation-df4914f1bad5",
+          "walletAddress": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+          "gameAccountId": "moba-player-c-pending-once",
+          "designId": 1,
+          "tokenId": 1,
+          "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+          "status": "ACTIVE",
+          "attemptCount": 2,
+          "createdAt": 1788948403,
+          "updatedAt": 1788948404,
+          "action": "ACTIVATE",
+          "eventName": "EntitlementTransferred"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "transactionHash": "0xa0b07968d0971309901fb3f315bff3a635e14ee9ef6b8881ef3ced3b24dcfddd",
+      "blockNumber": 19,
+      "logIndex": 0,
+      "contractName": "assetRegistry",
+      "contractAddress": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "eventName": "DesignSubmitted",
+      "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "designId": "1",
+      "timestamp": 1789292071,
+      "args": {
+        "designId": "1",
+        "artist": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "metadataURI": "/uploads/concept-design-1-02a3e298f153.png",
+        "artworkHash": "0x02a3e298f1533f62558c58e4c70edcab9af5a50d62d925fd5390942020fb0fb8",
+        "aiDisclosureHash": "0x10d8b13f535bbd3c020b9e22daeed1f9c2f9bb0a2a84558fe50910c65b3137be",
+        "provenanceHash": "0x775e9e42f5b05cf0298ae6da0bbfa5d626f86aea56605de6b7391a61e4a3fa11"
+      }
+    },
+    {
+      "transactionHash": "0x13acfe1709dc9b1b8fd6856060e0e740823d587bc04f8afaa00f419df0d23788",
+      "blockNumber": 20,
+      "logIndex": 0,
+      "contractName": "assetRegistry",
+      "contractAddress": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "eventName": "DesignVerified",
+      "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "designId": "1",
+      "timestamp": 1789292072,
+      "args": {
+        "designId": "1",
+        "verifier": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "reportHash": "0x29a1818a9e81a16223b69dae918d90407636b505a491b77d443c99d5109d9415"
+      }
+    },
+    {
+      "transactionHash": "0xe9b929453c357d264a1eaac7e22adf29554f0ff755eb37675d760339bf37acb9",
+      "blockNumber": 21,
+      "logIndex": 0,
+      "contractName": "assetRegistry",
+      "contractAddress": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "eventName": "ConceptEligibilityUpdated",
+      "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "designId": "1",
+      "timestamp": 1789292073,
+      "args": {
+        "designId": "1",
+        "publisher": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+        "eligible": true,
+        "reviewHash": "0x01796bd4fa175b9483ee3e856c01c3bf12bbbcc34ca8dd3e53979b640eaf9018"
+      }
+    },
+    {
+      "transactionHash": "0x469cf79720d387dee31215f87efdcc697d9b13376b6adef4cf6b5ef91e1af226",
+      "blockNumber": 22,
+      "logIndex": 0,
+      "contractName": "voting",
+      "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      "eventName": "VotingOpened",
+      "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "timestamp": 1789292074,
+      "args": {
+        "roundId": "1",
+        "startTime": "1789292075",
+        "endTime": "1789292103",
+        "candidateDesignIds": [
+          "1"
+        ]
+      }
+    },
+    {
+      "transactionHash": "0xdfc1cb6a2c09002d07aca7c7843601b56fd7151e6c4c175370694d58f5e1cb8d",
+      "blockNumber": 24,
+      "logIndex": 0,
+      "contractName": "voting",
+      "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      "eventName": "VoteRecorded",
+      "actor": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc",
+      "designId": "1",
+      "timestamp": 1789292076,
+      "args": {
+        "roundId": "1",
+        "designId": "1",
+        "voter": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc"
+      }
+    },
+    {
+      "transactionHash": "0x82e7f3e4089f76cbbbcb408c4a0e5bbb5b9acca82ce1754bfeb0011a34bf7a83",
+      "blockNumber": 25,
+      "logIndex": 0,
+      "contractName": "voting",
+      "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      "eventName": "VoteRecorded",
+      "actor": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+      "designId": "1",
+      "timestamp": 1789292077,
+      "args": {
+        "roundId": "1",
+        "designId": "1",
+        "voter": "0x976EA74026E726554dB657fA54763abd0C3a0aa9"
+      }
+    },
+    {
+      "transactionHash": "0x957af3dc28d062fcd5bcdbaa2419ef1da3da686f8dae0a628d5e394081e8622e",
+      "blockNumber": 27,
+      "logIndex": 0,
+      "contractName": "voting",
+      "contractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      "eventName": "VotingFinalized",
+      "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "timestamp": 1789292104,
+      "args": {
+        "roundId": "1",
+        "winnerDesignId": "1",
+        "winningVotes": "2"
+      }
+    },
+    {
+      "transactionHash": "0xd5ed5b71200c2785367c90e24b986f9118b39f0e3eec8e915a31ba5aab0f1a43",
+      "blockNumber": 28,
+      "logIndex": 0,
+      "contractName": "assetRegistry",
+      "contractAddress": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "eventName": "AgreementRecorded",
+      "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "designId": "1",
+      "timestamp": 1789292105,
+      "args": {
+        "designId": "1",
+        "agreementHash": "0xe1d5e7977e7776858f77e42aa5505a28cdb0b6c35bad05a57ec1ac95c5d42547",
+        "artistPrimaryShareBps": "8000",
+        "artistResaleRoyaltyBps": "500"
+      }
+    },
+    {
+      "transactionHash": "0xcc8bf66cbc4d39c1afdf4d8f379e55f6e64d2a7695457e043e3b7a7d200f8984",
+      "blockNumber": 29,
+      "logIndex": 0,
+      "contractName": "compatibility",
+      "contractAddress": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      "eventName": "ProductionSubmitted",
+      "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "designId": "1",
+      "timestamp": 1789292106,
+      "args": {
+        "designId": "1",
+        "productionHash": "0x0b7768b07241bf75df7e54b123192c79bd5871cab1004e6af4cd1b45e1790e75",
+        "compatibilityHash": "0x3a7bd4fde3a7d4ffe5248e55e75c4440cd44967f6984e3a8c16a1839b3315d25",
+        "version": "v1"
+      }
+    },
+    {
+      "transactionHash": "0x1d05a99e0260d10eba12df54afa1b62c09df43aea22505b40eb95f97cafcc88a",
+      "blockNumber": 30,
+      "logIndex": 0,
+      "contractName": "compatibility",
+      "contractAddress": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      "eventName": "CompatibilityApproved",
+      "actor": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "designId": "1",
+      "timestamp": 1789292107,
+      "args": {
+        "designId": "1",
+        "gameDeveloper": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+        "approvedGameHash": "0x6c7ec5c9f08ae164dcf0e4dce7708d8386da3a5d2dff94733acb443f09d9c79c",
+        "maxSupply": "1"
+      }
+    },
+    {
+      "transactionHash": "0xeb8c663fff2130d6c62bb6e428ccedc938fa998fb30506469a225cb79d986a91",
+      "blockNumber": 31,
+      "logIndex": 0,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "AuctionCreated",
+      "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "designId": "1",
+      "auctionId": "1",
+      "timestamp": 1789292108,
+      "args": {
+        "auctionId": "1",
+        "designId": "1",
+        "reservePrice": "100",
+        "minimumIncrement": "10",
+        "startTime": "1789292109",
+        "endTime": "1789292137"
+      }
+    },
+    {
+      "transactionHash": "0x541b8d77e59ebb9d8c2d64416beec473a43b9813351a5a2acef0b9c141230808",
+      "blockNumber": 37,
+      "logIndex": 0,
+      "contractName": "payment",
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "eventName": "Transfer",
+      "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+      "timestamp": 1789292114,
+      "args": {
+        "from": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+        "to": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+        "value": "120"
+      }
+    },
+    {
+      "transactionHash": "0x541b8d77e59ebb9d8c2d64416beec473a43b9813351a5a2acef0b9c141230808",
+      "blockNumber": 37,
+      "logIndex": 1,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "BidPlaced",
+      "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+      "auctionId": "1",
+      "amount": "120",
+      "timestamp": 1789292114,
+      "args": {
+        "auctionId": "1",
+        "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+        "amount": "120"
+      }
+    },
+    {
+      "transactionHash": "0xbbd54092c0f044eb794164001a1a4158dbe81c9fcfdf8e2e90f16ece605e0784",
+      "blockNumber": 39,
+      "logIndex": 0,
+      "contractName": "payment",
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "eventName": "Transfer",
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "timestamp": 1789292116,
+      "args": {
+        "from": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "to": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+        "value": "150"
+      }
+    },
+    {
+      "transactionHash": "0xbbd54092c0f044eb794164001a1a4158dbe81c9fcfdf8e2e90f16ece605e0784",
+      "blockNumber": 39,
+      "logIndex": 1,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "RefundAvailable",
+      "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+      "auctionId": "1",
+      "amount": "120",
+      "timestamp": 1789292116,
+      "args": {
+        "auctionId": "1",
+        "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+        "amount": "120"
+      }
+    },
+    {
+      "transactionHash": "0xbbd54092c0f044eb794164001a1a4158dbe81c9fcfdf8e2e90f16ece605e0784",
+      "blockNumber": 39,
+      "logIndex": 2,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "BidPlaced",
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "auctionId": "1",
+      "amount": "150",
+      "timestamp": 1789292116,
+      "args": {
+        "auctionId": "1",
+        "bidder": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "amount": "150"
+      }
+    },
+    {
+      "transactionHash": "0xb8172ca807a1e554c3263e39586d8876e201589a91e962ab67482d3065abd4aa",
+      "blockNumber": 40,
+      "logIndex": 0,
+      "contractName": "payment",
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "eventName": "Transfer",
+      "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+      "timestamp": 1789292117,
+      "args": {
+        "from": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+        "to": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+        "value": "120"
+      }
+    },
+    {
+      "transactionHash": "0xb8172ca807a1e554c3263e39586d8876e201589a91e962ab67482d3065abd4aa",
+      "blockNumber": 40,
+      "logIndex": 1,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "RefundWithdrawn",
+      "actor": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+      "auctionId": "1",
+      "amount": "120",
+      "timestamp": 1789292117,
+      "args": {
+        "auctionId": "1",
+        "bidder": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+        "amount": "120"
+      }
+    },
+    {
+      "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+      "blockNumber": 42,
+      "logIndex": 0,
+      "contractName": "entitlement",
+      "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      "eventName": "TransferSingle",
+      "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "timestamp": 1789292138,
+      "args": {
+        "operator": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "id": "1",
+        "value": "1"
+      }
+    },
+    {
+      "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+      "blockNumber": 42,
+      "logIndex": 1,
+      "contractName": "entitlement",
+      "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      "eventName": "TransferabilityUpdated",
+      "actor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "tokenId": "1",
+      "timestamp": 1789292138,
+      "args": {
+        "tokenId": "1",
+        "transferable": true
+      }
+    },
+    {
+      "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+      "blockNumber": 42,
+      "logIndex": 2,
+      "contractName": "entitlement",
+      "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      "eventName": "EntitlementMinted",
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "designId": "1",
+      "tokenId": "1",
+      "amount": "1",
+      "timestamp": 1789292138,
+      "args": {
+        "designId": "1",
+        "tokenId": "1",
+        "owner": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "amount": "1"
+      }
+    },
+    {
+      "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+      "blockNumber": 42,
+      "logIndex": 3,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "ProceedsAvailable",
+      "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "amount": "120",
+      "timestamp": 1789292138,
+      "args": {
+        "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "amount": "120",
+        "revenueType": "0xc4165da2a0c09896989d91d0ae9863d9e5cbd4819ca54bfcc16bd5f40258b4d3"
+      }
+    },
+    {
+      "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+      "blockNumber": 42,
+      "logIndex": 4,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "ProceedsAvailable",
+      "actor": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+      "amount": "15",
+      "timestamp": 1789292138,
+      "args": {
+        "recipient": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+        "amount": "15",
+        "revenueType": "0x88508a8259b76132090d76694c10831dc89d65ad1ad2db3e826d89892a7be4c8"
+      }
+    },
+    {
+      "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+      "blockNumber": 42,
+      "logIndex": 5,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "ProceedsAvailable",
+      "actor": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+      "amount": "15",
+      "timestamp": 1789292138,
+      "args": {
+        "recipient": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+        "amount": "15",
+        "revenueType": "0x42434c448e9c74f10fa3700bc0eb43d43ce1b4b10b90b9010629a630b3965691"
+      }
+    },
+    {
+      "transactionHash": "0xa6d21118403aa40785288298c61c28a56e081e576ad7139db778dea4977cb557",
+      "blockNumber": 42,
+      "logIndex": 6,
+      "contractName": "primary",
+      "contractAddress": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "eventName": "AuctionSettled",
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "designId": "1",
+      "auctionId": "1",
+      "amount": "150",
+      "timestamp": 1789292138,
+      "args": {
+        "auctionId": "1",
+        "designId": "1",
+        "winner": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "finalPrice": "150"
+      }
+    },
+    {
+      "transactionHash": "0x54d86f28e81add25d372abc7c5e50ea2c1fcb41c3328b5abf309bbab964c786d",
+      "blockNumber": 46,
+      "logIndex": 0,
+      "contractName": "secondary",
+      "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+      "eventName": "ResaleListed",
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "designId": "1",
+      "tokenId": "1",
+      "amount": "200",
+      "timestamp": 1789292142,
+      "args": {
+        "listingId": "1",
+        "designId": "1",
+        "tokenId": "1",
+        "seller": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "price": "200"
+      }
+    },
+    {
+      "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+      "blockNumber": 48,
+      "logIndex": 0,
+      "contractName": "payment",
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "eventName": "Transfer",
+      "actor": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+      "timestamp": 1789292144,
+      "args": {
+        "from": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+        "to": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+        "value": "200"
+      }
+    },
+    {
+      "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+      "blockNumber": 48,
+      "logIndex": 1,
+      "contractName": "entitlement",
+      "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      "eventName": "TransferSingle",
+      "actor": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+      "timestamp": 1789292144,
+      "args": {
+        "operator": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+        "from": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "to": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+        "id": "1",
+        "value": "1"
+      }
+    },
+    {
+      "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+      "blockNumber": 48,
+      "logIndex": 2,
+      "contractName": "entitlement",
+      "contractAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      "eventName": "EntitlementTransferred",
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "designId": "1",
+      "tokenId": "1",
+      "amount": "1",
+      "timestamp": 1789292144,
+      "args": {
+        "designId": "1",
+        "tokenId": "1",
+        "previousOwner": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "newOwner": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+        "amount": "1"
+      }
+    },
+    {
+      "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+      "blockNumber": 48,
+      "logIndex": 3,
+      "contractName": "secondary",
+      "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+      "eventName": "ResaleProceedsAvailable",
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "amount": "180",
+      "timestamp": 1789292144,
+      "args": {
+        "recipient": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "amount": "180",
+        "revenueType": "0xa6fe256cbfd965ca4f59beff7a0aac732ae8a07d21275b7dcdcb45f86d14d7eb"
+      }
+    },
+    {
+      "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+      "blockNumber": 48,
+      "logIndex": 4,
+      "contractName": "secondary",
+      "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+      "eventName": "ResaleProceedsAvailable",
+      "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "amount": "10",
+      "timestamp": 1789292144,
+      "args": {
+        "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "amount": "10",
+        "revenueType": "0x923f856799ec2e182f9c39f86a085e24f3a3a2b7de4e5fb944c62bbda92c1a74"
+      }
+    },
+    {
+      "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+      "blockNumber": 48,
+      "logIndex": 5,
+      "contractName": "secondary",
+      "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+      "eventName": "ResaleProceedsAvailable",
+      "actor": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+      "amount": "6",
+      "timestamp": 1789292144,
+      "args": {
+        "recipient": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+        "amount": "6",
+        "revenueType": "0x9e992be8507671d75f15d9a196b2623f9f4fe994c988b865c9cb94d398a5e12f"
+      }
+    },
+    {
+      "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+      "blockNumber": 48,
+      "logIndex": 6,
+      "contractName": "secondary",
+      "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+      "eventName": "ResaleProceedsAvailable",
+      "actor": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+      "amount": "4",
+      "timestamp": 1789292144,
+      "args": {
+        "recipient": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788",
+        "amount": "4",
+        "revenueType": "0xa069fc61f5ab580c8d71deea6700d40e0b38312dcd459285cb220fa21df9d2be"
+      }
+    },
+    {
+      "transactionHash": "0xcdffe68ecd0e7f99bcd2e4b4666f86c7f425eb941a0af2ea8a1abd5f907ac7b6",
+      "blockNumber": 48,
+      "logIndex": 7,
+      "contractName": "secondary",
+      "contractAddress": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+      "eventName": "ResaleCompleted",
+      "actor": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+      "tokenId": "1",
+      "amount": "200",
+      "timestamp": 1789292144,
+      "args": {
+        "listingId": "1",
+        "tokenId": "1",
+        "seller": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "buyer": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+        "price": "200",
+        "artistRoyalty": "10"
+      }
+    }
+  ],
+  "finalState": {
+    "owner": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+    "buyerBEntitlement": "0",
+    "buyerCEntitlement": "1",
+    "buyerBGameAccess": "REVOKED",
+    "buyerCGameAccess": "ACTIVE",
+    "listingActive": false,
+    "manualDataCorrection": false
+  },
+  "accounting": {
+    "buyerABidDeduction": "120",
+    "buyerARefund": "120",
+    "auctionEscrowBeforeSettlement": "150",
+    "primary": {
+      "artist": "120",
+      "publisher": "15",
+      "marketplace": "15"
+    },
+    "resale": {
+      "seller": "180",
+      "artist": "10",
+      "publisher": "6",
+      "marketplace": "4"
+    }
+  }
+}
