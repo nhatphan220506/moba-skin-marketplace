@@ -1,7 +1,7 @@
 import { Interface, type Log, type TransactionReceipt } from "ethers";
 
-import { normalizeEvent, type ParsedEvidenceEvent } from "@/lib/evidence/normalizeEvent";
-import type { EvidenceRow } from "@/types/evidence";
+import { normalizeEvent, type ParsedEvidenceEvent } from "./normalizeEvent.ts";
+import type { EvidenceRow } from "../../types/evidence";
 
 export type ContractEvidenceSource = {
   name: string;

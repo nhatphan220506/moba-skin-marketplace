@@ -1,4 +1,4 @@
-import type { EvidenceRow } from "@/types/evidence";
+import type { EvidenceRow } from "../../types/evidence";
 
 export type ParsedEvidenceEvent = {
   transactionHash: `0x${string}`;

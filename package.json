@@ -18,6 +18,8 @@
     "demo:seed": "hardhat run scripts/demo/seedDesign.js --network localhost",
     "demo:journey": "hardhat run scripts/demo/runFullJourney.js",
     "demo:addresses": "node scripts/demo/printAddresses.js",
+    "test:evidence": "hardhat run scripts/integration/run-evidence-acceptance.ts",
+    "test:kat-api": "node scripts/integration/run-kat-api-acceptance.mjs",
     "check:m0": "node scripts/check-foundation.mjs",
     "check": "npm run check:m0 && npm run typecheck && npm run compile:contracts"
   },

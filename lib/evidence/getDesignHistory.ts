@@ -1,8 +1,8 @@
 import type { Provider } from "ethers";
 
-import { normalizeEvent } from "@/lib/evidence/normalizeEvent";
-import { parseLog, type ContractEvidenceSource } from "@/lib/evidence/parseReceipt";
-import type { EvidenceRow } from "@/types/evidence";
+import { normalizeEvent } from "./normalizeEvent.ts";
+import { parseLog, type ContractEvidenceSource } from "./parseReceipt.ts";
+import type { EvidenceRow } from "../../types/evidence";
 
 export async function getDesignHistory(
   provider: Provider,
