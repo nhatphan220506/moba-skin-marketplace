@@ -13,6 +13,7 @@ npm run sepolia:fund-actors
 npm run sepolia:seed-token
 npm run sepolia:smoke
 npm run sepolia:verify
+npm run sepolia:grant-demo-roles
 npm run indexer:sepolia
 ```
 
@@ -39,6 +40,8 @@ No hosted service is mandatory for local verification. PostgreSQL and IPFS activ
 7. `npm run indexer:sepolia`
 8. If an explorer key is configured, `npm run sepolia:verify`.
 
+`sepolia:grant-demo-roles` is intentionally separate from deployment. It grants broad operational roles and mints test tokens to `SEPOLIA_DEMO_WALLET_ADDRESS`; run it only after the exact recipient and privileges are explicitly approved.
+
 ## Evidence and recovery
 
 - Deployment addresses, constructor arguments and transaction hashes are public in `deployments/sepolia.json`.
@@ -52,4 +55,3 @@ No hosted service is mandatory for local verification. PostgreSQL and IPFS activ
 - `DATABASE_URL`: all existing Kat collections move to PostgreSQL without changing route handlers. Apply `db/schema.sql` for the complete relational/indexer schema.
 - `IPFS_PINNING_URL` + `IPFS_PINNING_TOKEN`: uploads use an IPFS-compatible multipart pinning endpoint and record `ipfs://CID`; without both variables, files stay in ignored local storage.
 - `ETHERSCAN_API_KEY`: verifies source and constructor arguments for all seven contracts. This proves bytecode/source correspondence, not security.
-

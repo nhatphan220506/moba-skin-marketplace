@@ -10,8 +10,9 @@ async function main() {
     checks.push({ name, address, bytecode: code !== "0x" ? "PASS" : "MISSING" });
   }
   const registry = await hre.ethers.getContractAt("AssetRegistry", deployment.contracts.assetRegistry);
-  const linkedVoting = await registry.communityVoting();
-  checks.push({ name: "AssetRegistry→Voting", address: linkedVoting, bytecode: linkedVoting.toLowerCase() === deployment.contracts.voting.toLowerCase() ? "PASS" : "MISMATCH" });
+  const linkEvents = await registry.queryFilter(registry.filters.CommunityVotingUpdated(), deployment.deploymentBlock);
+  const linkedVoting = linkEvents.at(-1)?.args?.newVoting;
+  checks.push({ name: "AssetRegistry→Voting", address: linkedVoting || "missing", bytecode: linkedVoting?.toLowerCase() === deployment.contracts.voting.toLowerCase() ? "PASS" : "MISMATCH" });
   console.table(checks);
   if (checks.some((check) => check.bytecode !== "PASS")) throw new Error("Sepolia smoke test failed.");
 }

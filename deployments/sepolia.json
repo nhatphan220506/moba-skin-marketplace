@@ -1,6 +1,148 @@
 {
   "chainId": 11155111,
   "network": "sepolia",
-  "deployed": false,
-  "contracts": {}
+  "deployed": true,
+  "generatedAt": "2026-09-13T12:55:01.409Z",
+  "deploymentBlock": 11695984,
+  "deployer": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+  "actors": {
+    "admin": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+    "artist": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+    "verifier": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+    "publisher": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+    "gameDeveloper": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+    "fan": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+    "fanB": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+    "buyerA": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+    "buyerB": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+    "buyerC": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+    "publisherTreasury": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+    "marketplaceTreasury": "0x0528f92525E8cBEA406D291961E9175949d5F239"
+  },
+  "contracts": {
+    "payment": "0x35Db3aAA284321Db09a4c189CA53468b0a726295",
+    "assetRegistry": "0x3ec95E112D74112f0401c60f0703414f43ae5cf8",
+    "voting": "0xbdBf6211Ae3f09F44604492581f5a5f5aAceA9B3",
+    "compatibility": "0x9d3207CD317Ce790347dCbe2d02f086afC16e41f",
+    "entitlement": "0x4e1CDE11fAeB5f73dc8e9690e11cD9118855B9A9",
+    "primary": "0x368a33013A12b729994B03b82E8168D6877Cf870",
+    "secondary": "0x8426FB58e4389811C57f3Fe6c23114dbb2b7bd7A"
+  },
+  "constructorArguments": {
+    "payment": [],
+    "assetRegistry": [],
+    "voting": [
+      "0x3ec95E112D74112f0401c60f0703414f43ae5cf8"
+    ],
+    "compatibility": [
+      "0x3ec95E112D74112f0401c60f0703414f43ae5cf8"
+    ],
+    "entitlement": [
+      "0x3ec95E112D74112f0401c60f0703414f43ae5cf8",
+      "0x9d3207CD317Ce790347dCbe2d02f086afC16e41f"
+    ],
+    "primary": [
+      "0x3ec95E112D74112f0401c60f0703414f43ae5cf8",
+      "0xbdBf6211Ae3f09F44604492581f5a5f5aAceA9B3",
+      "0x9d3207CD317Ce790347dCbe2d02f086afC16e41f",
+      "0x35Db3aAA284321Db09a4c189CA53468b0a726295",
+      "0x4e1CDE11fAeB5f73dc8e9690e11cD9118855B9A9",
+      "0x0528f92525E8cBEA406D291961E9175949d5F239",
+      "0x0528f92525E8cBEA406D291961E9175949d5F239"
+    ],
+    "secondary": [
+      "0x3ec95E112D74112f0401c60f0703414f43ae5cf8",
+      "0x35Db3aAA284321Db09a4c189CA53468b0a726295",
+      "0x4e1CDE11fAeB5f73dc8e9690e11cD9118855B9A9",
+      "0x0528f92525E8cBEA406D291961E9175949d5F239",
+      "0x0528f92525E8cBEA406D291961E9175949d5F239"
+    ]
+  },
+  "transactions": [
+    {
+      "label": "deploy:secondary",
+      "hash": "0x9a9b87390a23c77753497536d891694633eef69e189557bce80fc60116491e18",
+      "blockNumber": 11696003
+    },
+    {
+      "label": "deploy:primary",
+      "hash": "0x140981c26dc7b5fed38609246535f0eb6f302feadb8ee845147a08de938aa7c6",
+      "blockNumber": 11696000
+    },
+    {
+      "label": "deploy:entitlement",
+      "hash": "0xec9adaf17f4c7d7ac7b6687ed22c62a573605f52db84b21cabcb2bc38b0776bc",
+      "blockNumber": 11695997
+    },
+    {
+      "label": "deploy:compatibility",
+      "hash": "0x50e84c3d3cd96e0615ecc302f4a4222efcebec533802a9519027791008494bc2",
+      "blockNumber": 11695994
+    },
+    {
+      "label": "deploy:voting",
+      "hash": "0xa3557869dc8a638a7680b7dd39c6127e80efdc5c546bdf8dbb456b57da829f65",
+      "blockNumber": 11695988
+    },
+    {
+      "label": "deploy:assetRegistry",
+      "hash": "0xfbf7bc095d2bc67c58c9c5c244fec09b598df3b45473d4e48a23e5214da5e7d4",
+      "blockNumber": 11695986
+    },
+    {
+      "label": "deploy:payment",
+      "hash": "0x214c00792177f179cc5a864768c80940ad92483281a71c7351d1f2b636981be1",
+      "blockNumber": 11695984
+    },
+    {
+      "label": "AssetRegistry.setCommunityVoting",
+      "hash": "0xd3eabffcdf6c2c86fbf6c6224e6e3257f05dddbdadadb2f36b2b8873d14dd18f",
+      "blockNumber": 11695991
+    },
+    {
+      "label": "AssetRegistry.ARTIST_ROLE",
+      "hash": "0xb5ec7f4da76d8545ccff916a97cd3b4333c6ac1446e4669d9d12756573bbf741",
+      "blockNumber": 11696005
+    },
+    {
+      "label": "AssetRegistry.VERIFIER_ROLE",
+      "hash": "0x47d30f2495940d11d0a99701240f3c896b877d145012a1848c9112a725c2f715",
+      "blockNumber": 11696007
+    },
+    {
+      "label": "AssetRegistry.PUBLISHER_ROLE",
+      "hash": "0x56cbe52872509080fdb8b6dc9e76453eabfb7fa8f243f2c60ba1d65c96580cda",
+      "blockNumber": 11696010
+    },
+    {
+      "label": "CompatibilityRegistry.PUBLISHER_ROLE",
+      "hash": "0x9056d9eb36d4e9186d1c6834b3ffdd83b61a56bb03159d4d6057f1b515f81f96",
+      "blockNumber": 11696012
+    },
+    {
+      "label": "CompatibilityRegistry.GAME_DEVELOPER_ROLE",
+      "hash": "0xe73c55d39a3225db1923e187b0994c9def16d94fac67d8891a864e5926aff385",
+      "blockNumber": 11696014
+    },
+    {
+      "label": "PrimaryAuction.PUBLISHER_ROLE",
+      "hash": "0x52d0740017f4ef7bb09160bd989fe16848578264a3b85a3ea1c3646e278bf3d5",
+      "blockNumber": 11696016
+    },
+    {
+      "label": "CommunityVoting.FAN_ROLE",
+      "hash": "0x0e154a0081134b6842589079e4adf3b4e4c2b130a4229a1cae90f984ddc389c5",
+      "blockNumber": 11696018
+    },
+    {
+      "label": "SkinEntitlement1155.MINTER_ROLE",
+      "hash": "0x5768d831d9fe83198211c26a3ac842815cbac998371ee3c1cdc472749461ccb4",
+      "blockNumber": 11696020
+    },
+    {
+      "label": "SkinEntitlement1155.marketplace",
+      "hash": "0x9196e4c8849c5b4faf843e6015ef38f1def41f4883e738b778e41ad9eb75cfb3",
+      "blockNumber": 11696022
+    }
+  ]
 }
