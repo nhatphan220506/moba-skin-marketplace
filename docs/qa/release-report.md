@@ -19,6 +19,7 @@ Status: **FULL INTEGRATION FUNCTIONAL — NONBLOCKING ISSUES LISTED**
 | Guided role mode | PASS — Artist and Verifier checkpoints produced real receipts and advanced authorised roles |
 | Runtime evidence page | PASS — 48 chronological decoded receipt rows, filters and JSON export |
 | Browser smoke | PASS — Computer Use verified the redesigned UI, guided checkpoint and 22/22 automatic completion |
+| Presentation package | PASS — recording script, Q&A sheet and three UI screenshots included |
 
 ## Accounting
 
@@ -30,3 +31,15 @@ Status: **FULL INTEGRATION FUNCTIONAL — NONBLOCKING ISSUES LISTED**
 - Final listing: inactive; repeat purchase rejected.
 
 The local prototype is presentation-ready and ready for recording. Public-testnet deployment remains optional and requires a dedicated RPC endpoint, test wallet and faucet funds. Before public repository release, replay the commits onto authenticated real history and separately triage dependency audit findings.
+
+## Presentation assets
+
+- `docs/qa/screenshots/product-hero.png` — product value, visual identity and scope boundary.
+- `docs/qa/screenshots/guided-role-mode.png` — stakeholder-specific workflow and receipt status.
+- `docs/qa/screenshots/full-journey-evidence.png` — completed ownership, access, settlement and evidence view.
+- `docs/qa/recording-script.md` — 4–6 minute demonstration sequence.
+- `docs/qa/presentation-qa.md` — concise answers for architecture, blockchain scope, legal boundary and production-readiness questions.
+
+## Reproducibility note
+
+The exact clean commit passed typecheck, production build and all 58 contract tests using the repository's existing locked dependency installation. A fresh `npm ci` attempt in the isolated worktree did not complete in the available environment, so dependency installation itself is not claimed as revalidated in that clean-worktree pass.
