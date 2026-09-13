@@ -27,6 +27,7 @@
     "sepolia:grant-artist": "hardhat run scripts/testnet/grant-artist-role.js --network sepolia",
     "sepolia:seed-token": "hardhat run scripts/testnet/seed-mock-vnd.js --network sepolia",
     "indexer:sepolia": "node scripts/indexer/sync-sepolia.js",
+    "indexer:watch": "node scripts/indexer/watch-sepolia.js",
     "test:evidence": "hardhat run scripts/integration/run-evidence-acceptance.ts",
     "test:kat-api": "node scripts/integration/run-kat-api-acceptance.mjs",
     "check:m0": "node scripts/check-foundation.mjs",
