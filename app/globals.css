@@ -445,3 +445,12 @@ body { background: #080b0e; }
 
 @media(max-width:1060px){.home-hero{grid-template-columns:1fr;padding-top:70px}.hero-showcase{margin:40px auto 0;width:min(560px,100%)}.home-catalog,.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.journey-section{grid-template-columns:1fr;gap:45px}.role-section .role-directory{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace-hero{display:block}.workspace-pulse{margin-top:28px}.catalog-toolbar{grid-template-columns:1fr 220px 80px}}
 @media(max-width:720px){.site-header{padding:0 12px}.brand small,.header-account>a{display:none}.home-hero{min-height:0;display:block;padding:54px 18px 70px}.home-hero h1{font-size:clamp(54px,17vw,76px)}.home-hero-copy>p{font-size:15px}.hero-showcase{margin-top:70px}.hero-showcase .collectible-art{min-height:460px}.floating-price{right:0}.floating-proof{left:0}.trust-row{flex-wrap:wrap;margin-top:35px}.brand-strip{justify-content:flex-start;overflow:hidden;white-space:nowrap}.home-section,.role-section{width:min(100% - 28px,1240px);padding:80px 0}.section-lead{display:block}.section-lead>.text-link{display:inline-block;margin-top:24px}.home-catalog,.catalog-grid,.role-section .role-directory{grid-template-columns:1fr}.journey-section{padding:80px 18px}.final-cta{width:min(100% - 28px,1240px);display:block;padding:30px}.final-cta>div:last-child{margin-top:25px;flex-wrap:wrap}.marketplace-hero{display:block;min-height:0}.marketplace-summary{margin-top:30px}.catalog-toolbar{grid-template-columns:1fr}.catalog-count{text-align:left}.workspace-hero{min-height:0;padding:28px}.workspace-stats{grid-template-columns:repeat(2,1fr)}.backend-form{grid-template-columns:1fr}.backend-form .wide{grid-column:auto}.inventory-showcase{grid-template-columns:1fr}.hero-showcase .collectible-card{transform:none}.health-grid{grid-template-columns:1fr}.linked-account{grid-template-columns:1fr}.linked-account button{grid-column:1;grid-row:auto}}
+.static-hosting-banner {
+  padding: 0.7rem 1.25rem;
+  border-bottom: 1px solid rgba(202, 255, 90, 0.25);
+  background: #172111;
+  color: #dfffa5;
+  font-size: 0.78rem;
+  letter-spacing: 0.035em;
+  text-align: center;
+}

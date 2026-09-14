@@ -3,9 +3,6 @@ import { LiveEvidenceView, type SerializableEvidenceRow } from "@/components/pro
 import type { EvidenceRow } from "@/types/evidence";
 import { getIndexedEvidence } from "@/lib/server/indexedEvidence";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 export default async function EvidencePage() {
   const indexedRows = await getIndexedEvidence();
   const snapshotRows: EvidenceRow[] = journey.evidence.map((row) => ({

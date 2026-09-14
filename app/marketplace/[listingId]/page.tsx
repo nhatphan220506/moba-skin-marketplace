@@ -1,3 +1,3 @@
 import { OnchainActionCard } from "@/components/product/OnchainActionCard";
+export function generateStaticParams() { return [{ listingId: "1" }]; }
 export default async function ListingPage({ params }: { params: Promise<{ listingId: string }> }) { const { listingId } = await params; return <main className="product-main"><header className="product-heading"><div><p className="eyebrow">LISTING {listingId}</p><h1>Purchase Verdant Sentinel</h1><p>The authorised contract verifies listing state, seller ownership, transferability and suspension before collecting payment.</p></div><div className="workspace-meta"><span>Seller receives 180</span><span>Artist receives 10</span><span>Protocol receives 10</span></div></header><section className="action-grid"><OnchainActionCard actionId="approve-resale"/><OnchainActionCard actionId="buy-resale"/></section></main>; }
-

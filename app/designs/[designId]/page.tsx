@@ -2,6 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { catalog, lifecycle } from "@/lib/product/catalog";
 
+export function generateStaticParams() {
+  return catalog.map((item) => ({ designId: String(item.id) }));
+}
+
 export default async function DesignPage({ params }: { params: Promise<{ designId: string }> }) {
   const { designId } = await params; const item = catalog.find(candidate => candidate.id === Number(designId)); if (!item) notFound();
   const action = item.status === "Live auction" ? { href: "/auctions/1", label: "Enter live auction" } : item.status === "Community vote" ? { href: "/community", label: "Support this concept" } : item.id === 1 ? { href: "/marketplace/1", label: "View authorised resale" } : { href: "/explore", label: "Follow this asset" };

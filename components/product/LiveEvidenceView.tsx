@@ -14,6 +14,10 @@ type EvidencePayload = {
   evidence?: SerializableEvidenceRow[];
 };
 
+const staticHosting = process.env.NEXT_PUBLIC_STATIC_HOSTING === "true";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const evidenceUrl = staticHosting ? `${basePath}/evidence.json` : "/api/evidence";
+
 function deserialize(rows: SerializableEvidenceRow[]): EvidenceRow[] {
   return rows.map((row) => ({ ...row, blockNumber: BigInt(row.blockNumber) }));
 }
@@ -34,7 +38,7 @@ export function LiveEvidenceView({
   const refresh = useCallback(async () => {
     setRefreshing(true);
     try {
-      const response = await fetch("/api/evidence", { cache: "no-store" });
+      const response = await fetch(evidenceUrl, { cache: "no-store" });
       if (!response.ok) throw new Error("Evidence refresh failed");
       const payload = (await response.json()) as EvidencePayload;
       if (Array.isArray(payload.evidence)) {
@@ -81,7 +85,7 @@ export function LiveEvidenceView({
         <label>Search evidence<input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Transaction, actor or event" /></label>
         <label>Evidence source<select value={source === "Sepolia indexed events" ? "sepolia" : "local"} disabled><option value="local">Local verified snapshot</option><option value="sepolia">Sepolia indexed events</option></select></label>
         <button className="ghost" onClick={() => refresh()} disabled={refreshing}>{refreshing ? "Refreshing…" : "Refresh now"}</button>
-        <a className="button-link" href="/api/evidence" target="_blank">Evidence JSON</a>
+        <a className="button-link" href={evidenceUrl} target="_blank">Evidence JSON</a>
       </div>
       <BlockchainEvidenceTable rows={filteredRows} />
       <section className="notice"><strong>Evidence boundary</strong><span>Ownership and commercial transactions are on-chain. Game delivery is a private Kat record linked to confirmed entitlement events.</span></section>
