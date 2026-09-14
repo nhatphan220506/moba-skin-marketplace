@@ -88,7 +88,6 @@ export function LiveEvidenceView({
         <a className="button-link" href={evidenceUrl} target="_blank">Evidence JSON</a>
       </div>
       <BlockchainEvidenceTable rows={filteredRows} />
-      <section className="notice"><strong>Evidence boundary</strong><span>Ownership and commercial transactions are on-chain. Game delivery is a private Kat record linked to confirmed entitlement events.</span></section>
     </main>
   );
 }

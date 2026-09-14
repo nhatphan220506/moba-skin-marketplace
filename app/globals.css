@@ -78,7 +78,7 @@ h2, h3 { letter-spacing: -.03em; }
 
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
 .overview-grid { margin-top: 22px; }
-.panel, .notice, .task-card { border: 1px solid var(--line); border-radius: 5px; background: linear-gradient(145deg, rgba(17,23,27,.96), rgba(11,15,18,.96)); padding: 25px; }
+.panel, .task-card { border: 1px solid var(--line); border-radius: 5px; background: linear-gradient(145deg, rgba(17,23,27,.96), rgba(11,15,18,.96)); padding: 25px; }
 .panel h2 { margin: 7px 0 18px; }
 .panel h3 { margin-top: 0; }
 dl { margin: 0; }
@@ -86,8 +86,6 @@ dl div { display: flex; justify-content: space-between; gap: 18px; padding: 10px
 dt { color: var(--muted); }
 dd { margin: 0; font-weight: 750; text-align: right; }
 li { margin: 9px 0; color: #d4dbd8; }
-.notice { display: grid; grid-template-columns: 160px 1fr; gap: 24px; align-items: center; margin-top: 18px; border-color: #4e5e32; background: linear-gradient(90deg, rgba(198,255,61,.08), rgba(16,21,25,.96)); color: #aab4b0; }
-.notice strong { color: var(--acid); text-transform: uppercase; font-size: 11px; letter-spacing: .12em; }
 
 .journey, .integration { margin-top: 96px; scroll-margin-top: 20px; }
 .section-heading { max-width: 760px; }
@@ -203,7 +201,6 @@ form button { margin-top: 12px; }
   .hero-metrics div { padding-right: 16px; }
   .hero-art { min-height: 420px; }
   .grid, .workflow-grid, .role-task-grid, .final-state, .boundary-panel { grid-template-columns: 1fr; }
-  .notice { grid-template-columns: 1fr; gap: 8px; }
   .lifecycle-strip { grid-template-columns: repeat(4,1fr); }
   .evidence-toolbar { grid-template-columns: 1fr; }
   .mode-switch { display: grid; grid-template-columns: 1fr; }
