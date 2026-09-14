@@ -246,7 +246,7 @@ async function run() {
   assert(invalidType.status === 400 && hasStandardErrorShape(invalidType.response), "Invalid type error shape invalid");
 
   const oversizeForm = new FormData();
-  oversizeForm.set("file", new File([new Uint8Array(10 * 1024 * 1024 + 1)], "oversize.png", { type: "image/png" }));
+  oversizeForm.set("file", new File([new Uint8Array(50 * 1024 * 1024 + 1)], "oversize.png", { type: "image/png" }));
   oversizeForm.set("category", "concept-design");
   oversizeForm.set("designId", "1");
   const oversize = await request("Extra oversize file", "POST", "/api/files/upload", { form: oversizeForm });

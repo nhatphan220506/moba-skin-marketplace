@@ -1,6 +1,6 @@
 {
   "chainId": 11155111,
-  "cursor": 11696312,
+  "cursor": 11702655,
   "events": [
     {
       "chainId": 11155111,
@@ -443,6 +443,30 @@
         "provenanceHash": "0xe94a3bcaaa4195ca34fd27b5d8e40d039c19f993820329a510cfd473827204fe"
       },
       "timestamp": 1789307592
+    },
+    {
+      "chainId": 11155111,
+      "transactionHash": "0x6f1535f3609faf95e7cda571e0a4f847ab50e291ef2e56c6854ac70fbfe27d2b",
+      "logIndex": 6,
+      "blockNumber": 11696377,
+      "blockHash": "0xbf84be1b270281afde2f9642810ea883c787c839a48488d7a15f29525eb8a841",
+      "contractName": "assetRegistry",
+      "contractAddress": "0x3ec95E112D74112f0401c60f0703414f43ae5cf8",
+      "eventName": "DesignSubmitted",
+      "actor": "0x45FE6d2B0bAcB794C4A017bE4148e63f1A8A5852",
+      "designId": "2",
+      "auctionId": null,
+      "tokenId": null,
+      "amount": null,
+      "arguments": {
+        "designId": "2",
+        "artist": "0x45FE6d2B0bAcB794C4A017bE4148e63f1A8A5852",
+        "metadataURI": "/uploads/concept-art-1-fa7fefb9d03d.json",
+        "artworkHash": "0xfa7fefb9d03d26122e3266f6c02afaa617ca0b6997341d464f058264d13afc5b",
+        "aiDisclosureHash": "0xe447b4bdde405a6bf8e0ad1f760d03bf16381dd655c0ecb6b6dfa12cc6707360",
+        "provenanceHash": "0xe94a3bcaaa4195ca34fd27b5d8e40d039c19f993820329a510cfd473827204fe"
+      },
+      "timestamp": 1789308468
     }
   ]
 }

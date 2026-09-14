@@ -160,7 +160,7 @@ export function KatIntegrationDashboard() {
           <form onSubmit={upload}>
             <input type="hidden" name="category" value="concept-design" />
             <input type="hidden" name="designId" value="1" />
-            <label>Concept file<input required name="file" type="file" accept=".png,.jpg,.jpeg,.webp,.pdf,.json" /></label>
+            <label>Concept file<input required name="file" type="file" accept=".png,.jpg,.jpeg,.webp,.pdf,.json,.glb,.gltf,.fbx,.blend,.obj" /></label>
             <button disabled={Boolean(busy)} type="submit">Upload and hash</button>
           </form>
           {uploaded && <p className="compact"><strong>URI</strong> {String(uploaded.storageURI)}<br /><strong>SHA-256</strong> {String(uploaded.sha256)}</p>}

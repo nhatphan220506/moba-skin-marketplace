@@ -5,15 +5,20 @@ import { sha256 } from "@/lib/server/hashing";
 import { readCollection, updateCollection } from "@/lib/server/storage";
 import { storeObject } from "@/lib/server/objectStorage";
 
-export const MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
+export const MAX_UPLOAD_BYTES = 50 * 1024 * 1024;
 
-const FILE_TYPES = new Map([
-  [".png", "image/png"],
-  [".jpg", "image/jpeg"],
-  [".jpeg", "image/jpeg"],
-  [".webp", "image/webp"],
-  [".pdf", "application/pdf"],
-  [".json", "application/json"],
+const FILE_TYPES = new Map<string, { canonical: string; accepted: string[] }>([
+  [".png", { canonical: "image/png", accepted: ["image/png"] }],
+  [".jpg", { canonical: "image/jpeg", accepted: ["image/jpeg", "image/pjpeg"] }],
+  [".jpeg", { canonical: "image/jpeg", accepted: ["image/jpeg", "image/pjpeg"] }],
+  [".webp", { canonical: "image/webp", accepted: ["image/webp"] }],
+  [".pdf", { canonical: "application/pdf", accepted: ["application/pdf"] }],
+  [".json", { canonical: "application/json", accepted: ["application/json", "text/json", "text/plain"] }],
+  [".glb", { canonical: "model/gltf-binary", accepted: ["model/gltf-binary", "application/octet-stream"] }],
+  [".gltf", { canonical: "model/gltf+json", accepted: ["model/gltf+json", "application/json", "text/plain"] }],
+  [".fbx", { canonical: "application/octet-stream", accepted: ["application/octet-stream", "model/vnd.autodesk.fbx"] }],
+  [".blend", { canonical: "application/x-blender", accepted: ["application/x-blender", "application/octet-stream"] }],
+  [".obj", { canonical: "model/obj", accepted: ["model/obj", "text/plain", "application/octet-stream"] }],
 ]);
 
 export type FileRecord = {
@@ -45,22 +50,22 @@ function requireCategory(value: FormDataEntryValue | null): string {
   return value;
 }
 
-function validateFile(file: File): string {
+function validateFile(file: File): { extension: string; mimeType: string } {
   if (!file.name || file.name.includes("..") || /[\\/]/.test(file.name)) {
     throw validationError("file name contains an unsafe path");
   }
   if (file.size === 0 || file.size > MAX_UPLOAD_BYTES) {
-    throw validationError("file size must be between 1 byte and 10 MiB");
+    throw validationError("file size must be between 1 byte and 50 MiB");
   }
 
   const extension = path.extname(file.name).toLowerCase();
-  const expectedMime = FILE_TYPES.get(extension);
-  if (!expectedMime || file.type !== expectedMime) {
+  const definition = FILE_TYPES.get(extension);
+  if (!definition || (file.type && !definition.accepted.includes(file.type))) {
     throw validationError("file type is not allowed", {
       allowedExtensions: [...FILE_TYPES.keys()],
     });
   }
-  return extension;
+  return { extension, mimeType: file.type || definition.canonical };
 }
 
 export async function storeFile(form: FormData): Promise<FileRecord> {
@@ -71,12 +76,12 @@ export async function storeFile(form: FormData): Promise<FileRecord> {
 
   const designId = requireDesignId(form.get("designId"));
   const category = requireCategory(form.get("category"));
-  const extension = validateFile(file);
+  const { extension, mimeType } = validateFile(file);
   const bytes = new Uint8Array(await file.arrayBuffer());
   const digest = sha256(bytes);
   const fileId = `${category}-${designId}-${digest.slice(2, 14)}`;
   const storedName = `${fileId}${extension}`;
-  const storedObject = await storeObject(storedName, bytes, file.type);
+  const storedObject = await storeObject(storedName, bytes, mimeType);
   const record: FileRecord = {
     fileId,
     fileName: file.name,
@@ -84,7 +89,7 @@ export async function storeFile(form: FormData): Promise<FileRecord> {
     designId,
     storageURI: storedObject.uri,
     size: file.size,
-    mimeType: file.type,
+    mimeType,
     sha256: digest,
     uploadedAt: Math.floor(Date.now() / 1000),
   };

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node scripts/start-product.js",
+    "start:web": "next start",
     "typecheck": "tsc --noEmit",
     "chain": "hardhat node",
     "compile:contracts": "hardhat compile",
