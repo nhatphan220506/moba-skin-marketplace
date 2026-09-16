@@ -1,0 +1,76 @@
+{
+  "generatedAt": "2026-09-16T05:50:29.509Z",
+  "network": {
+    "name": "sepolia",
+    "chainId": 11155111
+  },
+  "account": "0x45FE6d2B0bAcB794C4A017bE4148e63f1A8A5852",
+  "grantor": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+  "result": "PASS",
+  "roles": [
+    {
+      "label": "MockVND.DEFAULT_ADMIN_ROLE",
+      "contract": "0x35Db3aAA284321Db09a4c189CA53468b0a726295",
+      "role": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "verified": true,
+      "transactionHash": "0x062f1c301b4de7df98555040732e8057413d3896ed6eac5f9c78c157e633aaa4",
+      "etherscan": "https://sepolia.etherscan.io/tx/0x062f1c301b4de7df98555040732e8057413d3896ed6eac5f9c78c157e633aaa4"
+    },
+    {
+      "label": "MockVND.MINTER_ROLE",
+      "contract": "0x35Db3aAA284321Db09a4c189CA53468b0a726295",
+      "role": "0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6",
+      "verified": true,
+      "transactionHash": "0xbf06b67435d6b500ddd555ce875c59ac369cf1859cb182b220951c2ca8649c8f",
+      "etherscan": "https://sepolia.etherscan.io/tx/0xbf06b67435d6b500ddd555ce875c59ac369cf1859cb182b220951c2ca8649c8f"
+    },
+    {
+      "label": "AssetRegistry.DEFAULT_ADMIN_ROLE",
+      "contract": "0x3ec95E112D74112f0401c60f0703414f43ae5cf8",
+      "role": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "verified": true,
+      "transactionHash": "0xc32aacc166fc4e3ffe5dcfe97f319cb04a06c8b4b6a2f02d89f93e807eb18612",
+      "etherscan": "https://sepolia.etherscan.io/tx/0xc32aacc166fc4e3ffe5dcfe97f319cb04a06c8b4b6a2f02d89f93e807eb18612"
+    },
+    {
+      "label": "CommunityVoting.DEFAULT_ADMIN_ROLE",
+      "contract": "0xbdBf6211Ae3f09F44604492581f5a5f5aAceA9B3",
+      "role": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "verified": true,
+      "transactionHash": "0xa1869848b3ef9d9c8a95f8e2e5e44c5abb2ab741195f7ab07979eb835f52c47e",
+      "etherscan": "https://sepolia.etherscan.io/tx/0xa1869848b3ef9d9c8a95f8e2e5e44c5abb2ab741195f7ab07979eb835f52c47e"
+    },
+    {
+      "label": "CompatibilityRegistry.DEFAULT_ADMIN_ROLE",
+      "contract": "0x9d3207CD317Ce790347dCbe2d02f086afC16e41f",
+      "role": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "verified": true,
+      "transactionHash": "0x4772423d8f372d2e3c6d804e6005275a9baa80705531a51925efcdbf2ab7a56a",
+      "etherscan": "https://sepolia.etherscan.io/tx/0x4772423d8f372d2e3c6d804e6005275a9baa80705531a51925efcdbf2ab7a56a"
+    },
+    {
+      "label": "SkinEntitlement1155.DEFAULT_ADMIN_ROLE",
+      "contract": "0x4e1CDE11fAeB5f73dc8e9690e11cD9118855B9A9",
+      "role": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "verified": true,
+      "transactionHash": "0xd660046cd2d8739622e2f28ae5bb5e09a5415b922e1ce70dcb3738ccc07f1db2",
+      "etherscan": "https://sepolia.etherscan.io/tx/0xd660046cd2d8739622e2f28ae5bb5e09a5415b922e1ce70dcb3738ccc07f1db2"
+    },
+    {
+      "label": "SkinEntitlement1155.PAUSER_ROLE",
+      "contract": "0x4e1CDE11fAeB5f73dc8e9690e11cD9118855B9A9",
+      "role": "0x65d7a28e3265b37a6474929f336521b332c1681b933f6cb9f3376673440d862a",
+      "verified": true,
+      "transactionHash": "0x4da932ad6f8ddabe4fe2ed3ddc938b7ee8ece29540645b94abddacaa8c6a4dba",
+      "etherscan": "https://sepolia.etherscan.io/tx/0x4da932ad6f8ddabe4fe2ed3ddc938b7ee8ece29540645b94abddacaa8c6a4dba"
+    },
+    {
+      "label": "PrimaryAuction.DEFAULT_ADMIN_ROLE",
+      "contract": "0x368a33013A12b729994B03b82E8168D6877Cf870",
+      "role": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "verified": true,
+      "transactionHash": "0xcb59ef1e88feda2329b1c5d77eef90ee711907ec725a55ffadcd758168cd88d5",
+      "etherscan": "https://sepolia.etherscan.io/tx/0xcb59ef1e88feda2329b1c5d77eef90ee711907ec725a55ffadcd758168cd88d5"
+    }
+  ]
+}
