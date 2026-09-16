@@ -21,7 +21,7 @@
 - Use a monitored Sepolia RPC and alert on indexer lag or repeated RPC failures.
 - Deploy one backend instance unless collection storage is migrated from JSON payloads to normalized row-level tables.
 - Do not place deployer private keys, Supabase service keys or database URLs in `NEXT_PUBLIC_*` variables.
-- Separate production role wallets before a mainnet deployment; the assessment testnet may use a consolidated demo wallet.
+- Keep the distinct Artist, Verifier, Publisher, Game Team, Fan and Admin wallets separated; for mainnet, move Admin and treasury authority to hardware-backed multisig custody.
 
 ## Residual limitations
 

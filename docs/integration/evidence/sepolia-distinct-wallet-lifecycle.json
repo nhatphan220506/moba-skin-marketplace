@@ -1,0 +1,124 @@
+{
+  "generatedAt": "2026-09-16T05:33:40.418Z",
+  "network": {
+    "name": "sepolia",
+    "chainId": 11155111
+  },
+  "backend": "https://moba-forge-api.onrender.com",
+  "deployer": "0x0528f92525E8cBEA406D291961E9175949d5F239",
+  "actors": {
+    "admin": "0x3019e171f275563B070359003Ae95f147bB99FAD",
+    "artist": "0xa26FFe3e850F6160f6B963963dBCFA6A47d6cF00",
+    "verifier": "0xecF5126334CCFC5aa0d911EC5Ef4e0d9fe8B1650",
+    "publisher": "0x2a8171D1ED17926A67Dd6F6CBa0400C347158bCC",
+    "gameTeam": "0x832f7ba03e90566D7885404245946A4C5f5D1eAA",
+    "fan": "0xe3d14121D1d8d09194316DcAc34AD36dC5599FAE"
+  },
+  "transactions": [
+    {
+      "label": "lifecycle:submitDesign",
+      "hash": "0x5f32e50dd51b3f2f1c87c4a281719a53bc3f8c690e53dd47c094ea6ab22a3ce0",
+      "blockNumber": 11714657,
+      "etherscan": "https://sepolia.etherscan.io/tx/0x5f32e50dd51b3f2f1c87c4a281719a53bc3f8c690e53dd47c094ea6ab22a3ce0"
+    },
+    {
+      "label": "lifecycle:verifyDesign",
+      "hash": "0xf422c6c99936bf6da2b0947817aba7fff3034b8c09ba6eed55d5bd3f165b1409",
+      "blockNumber": 11714658,
+      "etherscan": "https://sepolia.etherscan.io/tx/0xf422c6c99936bf6da2b0947817aba7fff3034b8c09ba6eed55d5bd3f165b1409"
+    },
+    {
+      "label": "lifecycle:approveConceptEligibility",
+      "hash": "0x4afc667cba8060e0aa3f627171fa4585c5a65000d8f12bb8c88157b09b903972",
+      "blockNumber": 11714659,
+      "etherscan": "https://sepolia.etherscan.io/tx/0x4afc667cba8060e0aa3f627171fa4585c5a65000d8f12bb8c88157b09b903972"
+    },
+    {
+      "label": "lifecycle:openVoting",
+      "hash": "0xc52d4432f3e0f0def48b28521526fafe32e0708a10e722ff3bfb6987b868a8ad",
+      "blockNumber": 11714660,
+      "etherscan": "https://sepolia.etherscan.io/tx/0xc52d4432f3e0f0def48b28521526fafe32e0708a10e722ff3bfb6987b868a8ad"
+    },
+    {
+      "label": "lifecycle:vote",
+      "hash": "0x5bca1981f6f3e882140ab10974e73cbfcd5339717aaec1605cc30664dc921320",
+      "blockNumber": 11714662,
+      "etherscan": "https://sepolia.etherscan.io/tx/0x5bca1981f6f3e882140ab10974e73cbfcd5339717aaec1605cc30664dc921320"
+    },
+    {
+      "label": "lifecycle:finalizeVoting",
+      "hash": "0x75c038b25e2997c6aa87e94bc19430cb611a25ec7a01447ae63fb5d551a7e730",
+      "blockNumber": 11714736,
+      "etherscan": "https://sepolia.etherscan.io/tx/0x75c038b25e2997c6aa87e94bc19430cb611a25ec7a01447ae63fb5d551a7e730"
+    },
+    {
+      "label": "lifecycle:recordAgreement",
+      "hash": "0x7aa9d2b8f9b2b438aff8298c38cd13287dd4716c1d24d301132dfd82375b282d",
+      "blockNumber": 11714737,
+      "etherscan": "https://sepolia.etherscan.io/tx/0x7aa9d2b8f9b2b438aff8298c38cd13287dd4716c1d24d301132dfd82375b282d"
+    },
+    {
+      "label": "lifecycle:submitProduction",
+      "hash": "0x4ce4200ade0dbc3f6a653a7b5ba2a8edf934ce3310d7701c6c6432fb452748d4",
+      "blockNumber": 11714738,
+      "etherscan": "https://sepolia.etherscan.io/tx/0x4ce4200ade0dbc3f6a653a7b5ba2a8edf934ce3310d7701c6c6432fb452748d4"
+    },
+    {
+      "label": "lifecycle:approveCompatibility",
+      "hash": "0x7a70e5f90a4ef9f0061c189db5a45a5bf7c4925957d28cbefdfeda4be24a438e",
+      "blockNumber": 11714760,
+      "etherscan": "https://sepolia.etherscan.io/tx/0x7a70e5f90a4ef9f0061c189db5a45a5bf7c4925957d28cbefdfeda4be24a438e"
+    },
+    {
+      "label": "seed:fan-mock-vnd",
+      "hash": "0xa91763f8447ae8afdbe5a10712fbec3ec72e355208504ce1aedb6eaf856a15a6",
+      "blockNumber": 11714761,
+      "etherscan": "https://sepolia.etherscan.io/tx/0xa91763f8447ae8afdbe5a10712fbec3ec72e355208504ce1aedb6eaf856a15a6"
+    },
+    {
+      "label": "lifecycle:createAuction",
+      "hash": "0x41695fab81b0e011ff8ea00cfcde3d8219edb4a551ebac5e9645723e38ab3dc8",
+      "blockNumber": 11714762,
+      "etherscan": "https://sepolia.etherscan.io/tx/0x41695fab81b0e011ff8ea00cfcde3d8219edb4a551ebac5e9645723e38ab3dc8"
+    },
+    {
+      "label": "lifecycle:approveBidToken",
+      "hash": "0xdf565d4f65dd583afdd057916857c26310df2cc1ba73f2263e35555fcd6b0e16",
+      "blockNumber": 11714764,
+      "etherscan": "https://sepolia.etherscan.io/tx/0xdf565d4f65dd583afdd057916857c26310df2cc1ba73f2263e35555fcd6b0e16"
+    },
+    {
+      "label": "lifecycle:placeBid",
+      "hash": "0x7ec9a74493a51f3c31330510c1f046d0caa8326e1d17f67d19c571b2e7e5c121",
+      "blockNumber": 11714765,
+      "etherscan": "https://sepolia.etherscan.io/tx/0x7ec9a74493a51f3c31330510c1f046d0caa8326e1d17f67d19c571b2e7e5c121"
+    },
+    {
+      "label": "lifecycle:settleAuction",
+      "hash": "0x07b3d7751da693023a72e6cdff7d288e70c30b415b110d826dca67cac3afa0b9",
+      "blockNumber": 11714769,
+      "etherscan": "https://sepolia.etherscan.io/tx/0x07b3d7751da693023a72e6cdff7d288e70c30b415b110d826dca67cac3afa0b9"
+    }
+  ],
+  "storage": {
+    "provider": "supabase-private",
+    "fileId": "concept-art-1789535374490-02a3e298f153",
+    "storageURI": "supabase://private-design-evidence/concept-art-1789535374490-02a3e298f153.png",
+    "sha256": "0x02a3e298f1533f62558c58e4c70edcab9af5a50d62d925fd5390942020fb0fb8"
+  },
+  "designId": "3",
+  "auctionId": "1",
+  "finalState": {
+    "designStatus": 7,
+    "verified": true,
+    "publisherEligible": true,
+    "agreementRecorded": true,
+    "qaStatus": 2,
+    "maxSupply": "1",
+    "auctionStatus": 3,
+    "winner": "0xe3d14121D1d8d09194316DcAc34AD36dC5599FAE",
+    "winningBid": "10000000000000000000",
+    "entitlementBalance": "1"
+  },
+  "result": "PASS"
+}

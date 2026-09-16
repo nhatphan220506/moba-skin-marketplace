@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-09-16T05:30:00.000Z",
+  "network": { "name": "sepolia", "chainId": 11155111 },
+  "actors": {
+    "admin": "0x3019e171f275563B070359003Ae95f147bB99FAD",
+    "artist": "0xa26FFe3e850F6160f6B963963dBCFA6A47d6cF00",
+    "verifier": "0xecF5126334CCFC5aa0d911EC5Ef4e0d9fe8B1650",
+    "publisher": "0x2a8171D1ED17926A67Dd6F6CBa0400C347158bCC",
+    "gameTeam": "0x832f7ba03e90566D7885404245946A4C5f5D1eAA",
+    "fan": "0xe3d14121D1d8d09194316DcAc34AD36dC5599FAE"
+  },
+  "transactions": [
+    { "label": "MockVND.DEFAULT_ADMIN_ROLE", "hash": "0xc7f2b0af7a8310dcfea038570839e5ea7304ac480ce3723fcda95f712b8b1b0f", "etherscan": "https://sepolia.etherscan.io/tx/0xc7f2b0af7a8310dcfea038570839e5ea7304ac480ce3723fcda95f712b8b1b0f" },
+    { "label": "MockVND.MINTER_ROLE", "hash": "0xa5ac6d9067a3151981977308c66bfb46a2675a5ed598c16039db541729b8f592", "etherscan": "https://sepolia.etherscan.io/tx/0xa5ac6d9067a3151981977308c66bfb46a2675a5ed598c16039db541729b8f592" },
+    { "label": "AssetRegistry.DEFAULT_ADMIN_ROLE", "hash": "0xe9d70b0bf6fe1f56bf4cc8450533e4aed63bf8fdedce914fea7c9fda582fd84f", "etherscan": "https://sepolia.etherscan.io/tx/0xe9d70b0bf6fe1f56bf4cc8450533e4aed63bf8fdedce914fea7c9fda582fd84f" },
+    { "label": "CommunityVoting.DEFAULT_ADMIN_ROLE", "hash": "0x7efa9b97106d55fb22461c15ae8974b6c22f83eb3d40f5660e8499d8507834a2", "etherscan": "https://sepolia.etherscan.io/tx/0x7efa9b97106d55fb22461c15ae8974b6c22f83eb3d40f5660e8499d8507834a2" },
+    { "label": "CompatibilityRegistry.DEFAULT_ADMIN_ROLE", "hash": "0x161e5efa7e195d3f879299fcc058216855bb4da87a5fdf7d788f4881e4c47e7e", "etherscan": "https://sepolia.etherscan.io/tx/0x161e5efa7e195d3f879299fcc058216855bb4da87a5fdf7d788f4881e4c47e7e" },
+    { "label": "SkinEntitlement1155.DEFAULT_ADMIN_ROLE", "hash": "0xc6c68f3ea9246c998ba481ca3dda00497000d6de00f7eb411dc95b2f279ec9cc", "etherscan": "https://sepolia.etherscan.io/tx/0xc6c68f3ea9246c998ba481ca3dda00497000d6de00f7eb411dc95b2f279ec9cc" },
+    { "label": "SkinEntitlement1155.PAUSER_ROLE", "hash": "0xad56ba41204a9ec307c9cb440f3b310e6b64602378ab23647ceb620bd5565f12", "etherscan": "https://sepolia.etherscan.io/tx/0xad56ba41204a9ec307c9cb440f3b310e6b64602378ab23647ceb620bd5565f12" },
+    { "label": "PrimaryAuction.DEFAULT_ADMIN_ROLE", "hash": "0xe1c3f146d59aa2104a578eb21495d774facc01710f1a075036b806df3adfd842", "etherscan": "https://sepolia.etherscan.io/tx/0xe1c3f146d59aa2104a578eb21495d774facc01710f1a075036b806df3adfd842" },
+    { "label": "AssetRegistry.ARTIST_ROLE", "hash": "0xfb23400ac3f507e8f5c3e0d3f05d88f1ae6e8283f9cdbd71f2ec1363599aef53", "etherscan": "https://sepolia.etherscan.io/tx/0xfb23400ac3f507e8f5c3e0d3f05d88f1ae6e8283f9cdbd71f2ec1363599aef53" },
+    { "label": "AssetRegistry.VERIFIER_ROLE", "hash": "0x1e351053d511d916d95c18c0c7235b4bd7c774dafe873bc7d2747ce9706cd89f", "etherscan": "https://sepolia.etherscan.io/tx/0x1e351053d511d916d95c18c0c7235b4bd7c774dafe873bc7d2747ce9706cd89f" },
+    { "label": "AssetRegistry.PUBLISHER_ROLE", "hash": "0xdd3d39bb8a9c1eba1f4a093d3a2ac3c8bc78451b19723160220813f55e3c6c79", "etherscan": "https://sepolia.etherscan.io/tx/0xdd3d39bb8a9c1eba1f4a093d3a2ac3c8bc78451b19723160220813f55e3c6c79" },
+    { "label": "CompatibilityRegistry.PUBLISHER_ROLE", "hash": "0xf6a99cf68aba5b911f7846070345207265cc1b71e44352a70572dacefe5b455f", "etherscan": "https://sepolia.etherscan.io/tx/0xf6a99cf68aba5b911f7846070345207265cc1b71e44352a70572dacefe5b455f" },
+    { "label": "PrimaryAuction.PUBLISHER_ROLE", "hash": "0xd19f8855eb4abdfb69a23caf28efb6d10bd6d0f1579df32f483cea1576cca619", "etherscan": "https://sepolia.etherscan.io/tx/0xd19f8855eb4abdfb69a23caf28efb6d10bd6d0f1579df32f483cea1576cca619" },
+    { "label": "CompatibilityRegistry.GAME_DEVELOPER_ROLE", "hash": "0xa21dca5a723580153e1e6c476c12c7b27585831c1beb482857c225477acf760d", "etherscan": "https://sepolia.etherscan.io/tx/0xa21dca5a723580153e1e6c476c12c7b27585831c1beb482857c225477acf760d" },
+    { "label": "CommunityVoting.FAN_ROLE", "hash": "0x7cba993b2e73f9c7c303352fc11152fd6dde5924703f66d9bbba3f555da1afc3", "etherscan": "https://sepolia.etherscan.io/tx/0x7cba993b2e73f9c7c303352fc11152fd6dde5924703f66d9bbba3f555da1afc3" }
+  ],
+  "result": "PASS"
+}
