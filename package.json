@@ -31,6 +31,7 @@
     "indexer:watch": "node scripts/indexer/watch-sepolia.js",
     "test:evidence": "hardhat run scripts/integration/run-evidence-acceptance.ts",
     "test:kat-api": "node scripts/integration/run-kat-api-acceptance.mjs",
+    "test:product-flow": "node scripts/integration/run-product-lifecycle-smoke.mjs",
     "check:m0": "node scripts/check-foundation.mjs",
     "check": "npm run check:m0 && npm run typecheck && npm run compile:contracts"
   },

@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { Wallet } from "ethers";
 
 const baseUrl = process.env.KAT_API_BASE_URL ?? "http://localhost:3000";
 const outputDirectory = path.resolve("docs/integration/evidence");
@@ -88,6 +89,18 @@ async function run() {
     201,
   );
   assert(uploaded.sha256 === hash1.sha256 || /^0x[0-9a-f]{64}$/.test(uploaded.sha256), "Upload file: invalid SHA-256");
+
+  const creatorWallet = Wallet.createRandom();
+  const authorizationTimestamp = Math.floor(Date.now() / 1000);
+  const authorizationMessage = `MOBA Forge submission\nCreator: ${creatorWallet.address.toLowerCase()}\nArtwork SHA-256: ${uploaded.sha256.toLowerCase()}\nTimestamp: ${authorizationTimestamp}`;
+  const authorizationSignature = await creatorWallet.signMessage(authorizationMessage);
+  const draft = await expectStatus(
+    await request("Create wallet-owned product draft", "POST", "/api/designs", { json: { creatorWallet: creatorWallet.address, authorizationTimestamp, authorizationSignature, name: "Acceptance Sentinel", description: "A complete API acceptance submission.", game: "Demo MOBA", category: "Tank", edition: "Concept", aiDisclosure: "AI usage disclosed", provenance: "Creator source evidence", fileId: uploaded.fileId, fileName: uploaded.fileName, storageURI: uploaded.storageURI, artworkHash: uploaded.sha256 } }),
+    201,
+  );
+  assert(draft.stage === undefined && /^draft-/.test(draft.localId), "Product draft was not persisted");
+  const draftList = await expectStatus(await request("List creator product drafts", "GET", `/api/designs?owner=${creatorWallet.address}`), 200);
+  assert(draftList.designs.length === 1 && draftList.designs[0].stage === "DRAFT", "Product draft lifecycle projection invalid");
 
   const metadata = await expectStatus(
     await request("Get uploaded file metadata", "GET", `/api/files/${uploaded.fileId}`),

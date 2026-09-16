@@ -10,10 +10,11 @@ export type CatalogItem = {
   votes: number;
   description: string;
   palette: "verdant" | "ember" | "violet" | "ocean" | "solar" | "frost";
-  source: "onchain-demo" | "product-preview";
+  source: "onchain-demo" | "onchain-live" | "product-preview";
   category: "Tank" | "Assassin" | "Mage" | "Marksman" | "Support";
   cardImage?: string;
   detailImage?: string;
+  auctionId?: number;
 };
 
 export const catalog: CatalogItem[] = [
@@ -38,3 +39,7 @@ export const roleDestinations = [
   { href: "/account/selling", title: "Seller Centre", role: "SELLER", copy: "List owned entitlements and collect resale proceeds." },
   { href: "/admin", title: "Protocol Console", role: "ADMIN", copy: "Monitor indexing, govern rounds and operate emergency controls." },
 ];
+
+export function catalogSourceLabel(source: CatalogItem["source"]): string {
+  return source === "onchain-live" ? "Live on-chain asset" : source === "onchain-demo" ? "Executed demo asset" : "Product preview";
+}

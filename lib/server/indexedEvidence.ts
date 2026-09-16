@@ -9,7 +9,24 @@ type RawEvidence = Omit<EvidenceRow, "blockNumber" | "designId" | "auctionId" | 
   designId?: string | number;
   auctionId?: string | number;
   tokenId?: string | number;
+  arguments?: Record<string, unknown>;
 };
+
+export type IndexedEventRecord = RawEvidence & { eventName: string; transactionHash: string };
+
+export async function getIndexedEventRecords(): Promise<IndexedEventRecord[]> {
+  if (postgresEnabled()) {
+    const result = await postgresPool().query(`SELECT transaction_hash AS "transactionHash", block_number AS "blockNumber", contract_name AS "contractName", event_name AS "eventName", actor, design_id AS "designId", auction_id AS "auctionId", token_id AS "tokenId", amount::text, arguments, EXTRACT(EPOCH FROM block_timestamp)::int AS timestamp FROM indexed_events WHERE chain_id = 11155111 ORDER BY block_number ASC, log_index ASC`);
+    return result.rows;
+  }
+  try {
+    const stored = JSON.parse(await readFile(path.join(process.cwd(), "data", "indexed-events.json"), "utf8")) as { events: IndexedEventRecord[] };
+    return stored.events ?? [];
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
+    throw error;
+  }
+}
 
 function normalized(row: RawEvidence): EvidenceRow {
   return {

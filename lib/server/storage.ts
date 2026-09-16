@@ -11,6 +11,7 @@ export const DATA_FILES = {
   accountLinks: "account-links.json",
   activations: "activations.json",
   files: "files.json",
+  productDesigns: "product-designs.json",
 } as const;
 
 export type DataCollection = keyof typeof DATA_FILES;
