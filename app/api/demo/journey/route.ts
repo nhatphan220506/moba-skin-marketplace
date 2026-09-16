@@ -18,10 +18,12 @@ async function loadJourney() {
 }
 
 export async function GET() {
+  if (process.env.NODE_ENV === "production" && process.env.ENABLE_DEMO_API !== "true") return NextResponse.json({ code: "NOT_FOUND", message: "Demo runner is disabled in production", recoverable: false }, { status: 404 });
   return NextResponse.json({ journey: await loadJourney(), running: activeRun !== null });
 }
 
 export async function POST(request: Request) {
+  if (process.env.NODE_ENV === "production" && process.env.ENABLE_DEMO_API !== "true") return NextResponse.json({ code: "NOT_FOUND", message: "Demo runner is disabled in production", recoverable: false }, { status: 404 });
   if (activeRun) return NextResponse.json({ code: "JOURNEY_ALREADY_RUNNING", message: "The deterministic journey is already running.", recoverable: true }, { status: 409 });
   let targetStep = 0;
   try {

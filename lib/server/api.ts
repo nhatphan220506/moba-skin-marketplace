@@ -34,6 +34,14 @@ export function conflictError(message: string): ServiceError {
   return new ServiceError("CONFLICT", message, 409, false);
 }
 
+export function authenticationError(message = "Wallet authentication is required"): ServiceError {
+  return new ServiceError("AUTHENTICATION_REQUIRED", message, 401, true);
+}
+
+export function authorizationError(message = "This wallet is not authorised for the requested action"): ServiceError {
+  return new ServiceError("FORBIDDEN", message, 403, false);
+}
+
 export function routeError(error: unknown) {
   const serviceError =
     error instanceof ServiceError

@@ -6,6 +6,7 @@ import { useAccount, useChainId, useWaitForTransactionReceipt, useWriteContract 
 import { explorerTransactionUrl } from "@/config/chains";
 import { getContractAddress } from "@/config/contracts";
 import { productActions, type ProductActionId } from "@/lib/product/actions";
+import { apiFetch, dynamicApiAvailable } from "@/lib/product/apiClient";
 
 export function OnchainActionCard({ actionId, initialValues = {} }: { actionId: ProductActionId; initialValues?: Record<string, string> }) {
   const action = productActions[actionId];
@@ -37,9 +38,9 @@ export function OnchainActionCard({ actionId, initialValues = {} }: { actionId: 
     return () => window.removeEventListener("moba:evidence-uploaded", useUploadedEvidence);
   }, [actionId]);
   useEffect(() => {
-    if (!receipt.isSuccess || !hash || syncedHash.current === hash || process.env.NEXT_PUBLIC_STATIC_HOSTING === "true") return;
+    if (!receipt.isSuccess || !hash || syncedHash.current === hash || !dynamicApiAvailable()) return;
     syncedHash.current = hash; setSyncState("syncing");
-    fetch("/api/indexer/transaction", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ transactionHash: hash, chainId }) })
+    apiFetch("/api/indexer/transaction", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ transactionHash: hash, chainId }) })
       .then(response => { if (!response.ok) throw new Error("sync failed"); return response.json(); })
       .then(data => { setSyncState("synced"); window.dispatchEvent(new CustomEvent("moba:lifecycle-updated", { detail: data })); })
       .catch(() => setSyncState("failed"));

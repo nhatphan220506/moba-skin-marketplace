@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 import { catalogSourceLabel, lifecycle, type CatalogItem } from "@/lib/product/catalog";
 import { lifecycleToCatalog } from "@/lib/product/lifecycleCatalog";
 import type { DesignLifecycle } from "@/types/design";
+import { apiFetch, dynamicApiAvailable } from "@/lib/product/apiClient";
 
 export function DesignDetail({ designId, fallback }: { designId: number; fallback?: CatalogItem }) {
   const [item,setItem]=useState<CatalogItem|undefined>(fallback); const [record,setRecord]=useState<DesignLifecycle>(); const [loading,setLoading]=useState(!fallback);
-  useEffect(()=>{ if(process.env.NEXT_PUBLIC_STATIC_HOSTING==="true"){setLoading(false);return;} fetch("/api/designs",{cache:"no-store"}).then(response=>response.ok?response.json():Promise.reject()).then((body:{designs:DesignLifecycle[]})=>{const live=body.designs.find(candidate=>candidate.public&&candidate.designId===designId); if(live){setRecord(live);setItem(lifecycleToCatalog(live)??fallback);} }).catch(()=>undefined).finally(()=>setLoading(false)); },[designId,fallback]);
+  useEffect(()=>{ if(!dynamicApiAvailable()){setLoading(false);return;} apiFetch("/api/designs").then(response=>response.ok?response.json():Promise.reject()).then((body:{designs:DesignLifecycle[]})=>{const live=body.designs.find(candidate=>candidate.public&&candidate.designId===designId); if(live){setRecord(live);setItem(lifecycleToCatalog(live)??fallback);} }).catch(()=>undefined).finally(()=>setLoading(false)); },[designId,fallback]);
   if(!item) return <main className="product-main"><section className="access-gate"><span>{loading?"LOADING LIFECYCLE":"ASSET NOT AVAILABLE"}</span><h2>{loading?"Reading the indexed product record…":"This design is not publicly listed."}</h2><p>Private drafts become accessible here only after every market-ready gate passes.</p><Link className="button-link" href="/explore">Back to marketplace</Link></section></main>;
   const basePath=process.env.NEXT_PUBLIC_BASE_PATH??"";
   const action=item.status==="Live auction"?{href:`/auctions/${item.auctionId??1}`,label:"Enter live auction"}:item.status==="Community vote"?{href:"/community",label:"Support this concept"}:item.id===1?{href:"/marketplace/1",label:"View authorised resale"}:{href:"/explore",label:"Follow this asset"};

@@ -12,6 +12,7 @@ export const DATA_FILES = {
   activations: "activations.json",
   files: "files.json",
   productDesigns: "product-designs.json",
+  authChallenges: "auth-challenges.json",
 } as const;
 
 export type DataCollection = keyof typeof DATA_FILES;
@@ -93,6 +94,27 @@ export async function updateCollection<T>(
   fallback: T,
   update: (current: T) => T | Promise<T>,
 ): Promise<T> {
+  if (postgresEnabled()) {
+    await ensureCollectionTable();
+    const client = await postgresPool().connect();
+    try {
+      await client.query("BEGIN");
+      await client.query("SELECT pg_advisory_xact_lock(hashtext($1))", [collection]);
+      const result = await client.query<{ payload: T }>("SELECT payload FROM collection_store WHERE collection = $1", [collection]);
+      const next = await update(result.rows[0]?.payload ?? fallback);
+      await client.query(
+        `INSERT INTO collection_store (collection, payload, updated_at)
+         VALUES ($1, $2::jsonb, now())
+         ON CONFLICT (collection) DO UPDATE SET payload = EXCLUDED.payload, updated_at = now()`,
+        [collection, JSON.stringify(next)],
+      );
+      await client.query("COMMIT");
+      return next;
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally { client.release(); }
+  }
   const current = await readCollection(collection, fallback);
   const next = await update(current);
   await writeCollection(collection, next);

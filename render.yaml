@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: moba-forge-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_DEFAULT_CHAIN_ID
+        value: "11155111"
+      - key: AUTH_CHAIN_ID
+        value: "11155111"
+      - key: ALLOWED_ORIGINS
+        value: https://nhatphan220506.github.io
+      - key: INDEXER_CONFIRMATIONS
+        value: "6"
+      - key: INDEXER_CHUNK_SIZE
+        value: "2000"
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: GAME_SERVICE_SECRET
+        generateValue: true
+      - key: SEPOLIA_RPC_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_STORAGE_BUCKET
+        value: private-design-evidence

@@ -2,9 +2,11 @@ import { NextResponse } from "next/server";
 
 import { routeError, validationError } from "@/lib/server/api";
 import { storeFile } from "@/lib/server/fileService";
+import { requireWalletRole } from "@/lib/server/walletAuth";
 
 export async function POST(request: Request) {
   try {
+    await requireWalletRole(request, ["ARTIST"]);
     if (!(request.headers.get("content-type") ?? "").includes("multipart/form-data")) {
       throw validationError("content-type must be multipart/form-data");
     }
