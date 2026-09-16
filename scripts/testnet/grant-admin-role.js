@@ -37,11 +37,19 @@ async function main() {
     ["MockVND.DEFAULT_ADMIN_ROLE", contracts.payment, hre.ethers.ZeroHash],
     ["MockVND.MINTER_ROLE", contracts.payment, await contracts.payment.MINTER_ROLE()],
     ["AssetRegistry.DEFAULT_ADMIN_ROLE", contracts.assetRegistry, hre.ethers.ZeroHash],
+    ["AssetRegistry.ARTIST_ROLE", contracts.assetRegistry, await contracts.assetRegistry.ARTIST_ROLE()],
+    ["AssetRegistry.VERIFIER_ROLE", contracts.assetRegistry, await contracts.assetRegistry.VERIFIER_ROLE()],
+    ["AssetRegistry.PUBLISHER_ROLE", contracts.assetRegistry, await contracts.assetRegistry.PUBLISHER_ROLE()],
     ["CommunityVoting.DEFAULT_ADMIN_ROLE", contracts.voting, hre.ethers.ZeroHash],
+    ["CommunityVoting.FAN_ROLE", contracts.voting, await contracts.voting.FAN_ROLE()],
     ["CompatibilityRegistry.DEFAULT_ADMIN_ROLE", contracts.compatibility, hre.ethers.ZeroHash],
+    ["CompatibilityRegistry.PUBLISHER_ROLE", contracts.compatibility, await contracts.compatibility.PUBLISHER_ROLE()],
+    ["CompatibilityRegistry.GAME_DEVELOPER_ROLE", contracts.compatibility, await contracts.compatibility.GAME_DEVELOPER_ROLE()],
     ["SkinEntitlement1155.DEFAULT_ADMIN_ROLE", contracts.entitlement, hre.ethers.ZeroHash],
+    ["SkinEntitlement1155.MINTER_ROLE", contracts.entitlement, await contracts.entitlement.MINTER_ROLE()],
     ["SkinEntitlement1155.PAUSER_ROLE", contracts.entitlement, await contracts.entitlement.PAUSER_ROLE()],
     ["PrimaryAuction.DEFAULT_ADMIN_ROLE", contracts.primary, hre.ethers.ZeroHash],
+    ["PrimaryAuction.PUBLISHER_ROLE", contracts.primary, await contracts.primary.PUBLISHER_ROLE()],
   ];
 
   const proof = {
@@ -77,7 +85,7 @@ async function main() {
 
   await fs.mkdir(path.dirname(EVIDENCE_PATH), { recursive: true });
   await fs.writeFile(EVIDENCE_PATH, `${JSON.stringify(proof, null, 2)}\n`);
-  console.log(`Verified ${proof.roles.length}/${proof.roles.length} admin capabilities for ${account}.`);
+  console.log(`Verified ${proof.roles.length}/${proof.roles.length} admin and operational roles for ${account}.`);
   console.log(`Evidence: ${EVIDENCE_PATH}`);
 }
 
