@@ -7,7 +7,7 @@ FROM node:20-alpine AS build
 WORKDIR /app
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
-RUN npm run build
+RUN npm run compile:contracts && npm run build
 
 FROM node:20-alpine AS runtime
 WORKDIR /app
