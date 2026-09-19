@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getAddress } from "viem";
 
 import { ServiceError, routeError, validationError } from "@/lib/server/api";
 import { grantDiscoverAccess } from "@/lib/server/discoverAccess";
@@ -16,13 +17,16 @@ function enforceRateLimit(address: string) {
 
 export async function POST(request: Request) {
   try {
-    const session = readWalletSession(request)!;
-    enforceRateLimit(session.address);
+    const session = readWalletSession(request, true);
     const body = await request.json().catch(() => { throw validationError("request body must be JSON"); });
+    let address: string;
+    try { address = session?.address ?? getAddress(String(body.address || "")); }
+    catch { throw validationError("A valid connected wallet address is required"); }
+    enforceRateLimit(address);
     const password = String(body.password || "").trim();
     if (!password) throw validationError("Access password is required");
-    const result = await grantDiscoverAccess(session, password);
-    attempts.delete(session.address);
+    const result = await grantDiscoverAccess(address, password);
+    attempts.delete(address);
     return NextResponse.json(result);
   } catch (error) {
     if (error instanceof ServiceError && error.code !== "AUTHENTICATION_REQUIRED") {

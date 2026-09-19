@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { useAccount, useChainId, useSwitchChain } from "wagmi";
 
 import { WalletControl } from "@/components/product/WalletControl";
-import { useWalletSession } from "@/components/product/useWalletSession";
 import { apiFetch, storeSession } from "@/lib/product/apiClient";
 
 type GrantResult = { roles?: string[]; transactionHashes?: string[]; token?: string; message?: string };
@@ -21,7 +20,6 @@ export function DiscoverAccessModal() {
   const { address, isConnected } = useAccount();
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
-  const { ensureSession } = useWalletSession();
 
   useEffect(() => {
     if (!open) return;
@@ -37,8 +35,7 @@ export function DiscoverAccessModal() {
     if (!address || chainId !== 11155111) return;
     setBusy(true); setError(""); setResult(null);
     try {
-      await ensureSession();
-      const response = await apiFetch("/api/access/grant", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ password }) }, address);
+      const response = await apiFetch("/api/access/grant", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ password, address }) }, address);
       const data = await response.json() as GrantResult;
       if (!response.ok) throw new Error(data.message || "Access could not be granted");
       if (!data.token) throw new Error("Prototype access session could not be created");
@@ -67,7 +64,7 @@ export function DiscoverAccessModal() {
             <label htmlFor="discover-password">Access password<input id="discover-password" type="password" autoComplete="off" value={password} onChange={event => setPassword(event.target.value)} placeholder="Enter the reviewer password" /></label>
             <button disabled={busy || !password}>{busy ? "Unlocking all workspaces…" : "Grant full prototype access"}</button>
           </form>}
-        {busy && <p className="discover-progress">Keep this window open while your signed wallet session is upgraded.</p>}
+        {busy && <p className="discover-progress">Keep this window open while full access is linked to your connected wallet.</p>}
         {error && <p className="discover-error" role="alert">{error}</p>}
         {result && <div className="discover-success"><strong>Access granted.</strong><p>{result.roles?.length || 0} prototype roles are active for this connected wallet. You can now explore every workspace.</p><Link className="button-link" href="/start" onClick={() => setOpen(false)}>Choose a workspace ↗</Link></div>}
       </section>
