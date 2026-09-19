@@ -496,6 +496,34 @@ body { background: #080b0e; }
 @media(max-width:720px){.asset-gallery{grid-template-columns:1fr}.asset-gallery>div{grid-column:auto}.asset-gallery img{height:270px}}
 @media(max-width:1060px){.role-picker{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.role-picker{grid-template-columns:1fr}.role-summary{align-items:flex-start;flex-direction:column}.queue-row{grid-template-columns:1fr}.queue-row>div:last-child{text-align:left}}
+
+/* Reviewer discover gate */
+.guide-banner { min-height: 34px; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 8px 18px; color: #080b0d; background: var(--acid); font-size: 10px; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
+.guide-banner span { padding-left: 12px; border-left: 1px solid rgba(8,11,13,.35); }
+.discover-trigger { padding: 26px 0 22px; color: #aab3af; background: transparent; border: 0; border-bottom: 2px solid transparent; border-radius: 0; font-size: 12px; font-weight: 400; }
+.discover-trigger:hover { color: var(--ink); border-color: var(--acid); transform: none; }
+.discover-modal-backdrop { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; background: rgba(2,4,5,.82); backdrop-filter: blur(12px); }
+.discover-modal { position: relative; width: min(620px,100%); max-height: calc(100vh - 40px); overflow-y: auto; padding: 38px; border: 1px solid #536331; background: radial-gradient(circle at 90% 5%,rgba(198,255,61,.13),transparent 32%),#0d1215; box-shadow: 0 35px 100px rgba(0,0,0,.7); text-align: left; }
+.discover-modal h2 { margin: 12px 45px 12px 0; font-size: clamp(30px,5vw,46px); line-height: 1; }
+.discover-intro { color: #9da8a3; line-height: 1.6; }
+.discover-close { position: absolute; right: 18px; top: 15px; padding: 4px 10px; color: #aeb8b4; background: transparent; border: 0; font-size: 28px; }
+.metamask-check,.discover-wallet-step { display: flex; align-items: center; gap: 13px; margin-top: 22px; padding: 15px; border: 1px solid #3b464b; background: #10171a; }
+.metamask-check>span,.discover-wallet-step>span { display: grid; place-items: center; flex: 0 0 34px; height: 34px; border: 1px solid currentColor; color: var(--amber); font-weight: 950; }
+.metamask-check.ready>span { color: var(--aqua); }
+.metamask-check div,.discover-wallet-step div { margin-right: auto; }
+.metamask-check strong,.metamask-check small,.discover-wallet-step strong,.discover-wallet-step small { display: block; }
+.metamask-check small,.discover-wallet-step small { margin-top: 4px; color: #7f8a85; font-size: 10px; }
+.metamask-check a { color: var(--acid); font-size: 10px; font-weight: 850; }
+.discover-access-form { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; margin-top: 22px; }
+.discover-access-form button { margin: 0; white-space: nowrap; }
+.discover-progress,.discover-error { margin: 14px 0 0; padding: 12px 14px; font-size: 11px; }
+.discover-progress { color: var(--aqua); border-left: 2px solid var(--aqua); background: rgba(79,224,197,.08); }
+.discover-error { color: #ffadb6; border-left: 2px solid #ff6f7d; background: rgba(255,111,125,.08); }
+.discover-success { margin-top: 18px; padding: 18px; border: 1px solid #4d6b3a; background: rgba(198,255,61,.07); }
+.discover-success>strong { color: var(--acid); font-size: 18px; }
+.discover-success p { color: #a8b2ae; }
+
+@media(max-width:720px){.guide-banner{justify-content:space-between;font-size:8px}.discover-modal{padding:28px 20px}.discover-access-form{grid-template-columns:1fr}.metamask-check,.discover-wallet-step{align-items:flex-start;flex-wrap:wrap}.metamask-check a,.discover-wallet-step button,.discover-wallet-step .wallet-button{margin-left:47px}.discover-trigger{padding:20px 0}}
 .static-hosting-banner {
   padding: 0.7rem 1.25rem;
   border-bottom: 1px solid rgba(202, 255, 90, 0.25);

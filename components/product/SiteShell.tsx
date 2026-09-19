@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { DiscoverAccessModal } from "@/components/product/DiscoverAccessModal";
 import { WalletControl } from "@/components/product/WalletControl";
 import { WorkspaceLink } from "@/components/product/RoleAccess";
 import { dynamicApiAvailable } from "@/lib/product/apiClient";
@@ -15,9 +16,10 @@ const nav = [
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   return <>
+    <a className="guide-banner" href="https://drive.google.com/drive/folders/1PMh1HRMGfABBXAq3psesych1oPKO4t81?usp=drive_link" target="_blank" rel="noreferrer">Discover how to use our web <span>Open the guide ↗</span></a>
     <header className="site-header">
       <Link className="brand" href="/"><span>MF</span><div><strong>MOBA FORGE</strong><small>COMMUNITY SKIN MARKET</small></div></Link>
-      <nav className="site-nav" aria-label="Primary navigation">{nav.map(([label, href]) => <Link className={pathname.startsWith(href) ? "active" : ""} href={href} key={href}>{label}</Link>)}</nav>
+      <nav className="site-nav" aria-label="Primary navigation">{nav.map(([label, href]) => label === "Discover" ? <DiscoverAccessModal key={href} /> : <Link className={pathname.startsWith(href) ? "active" : ""} href={href} key={href}>{label}</Link>)}</nav>
       <div className="header-account"><WorkspaceLink /><WalletControl /></div>
     </header>
     {process.env.NEXT_PUBLIC_STATIC_HOSTING === "true" && <div className="static-hosting-banner">{dynamicApiAvailable() ? "Production API connected · private workflows use wallet-signed sessions and Sepolia role checks." : "GitHub Pages demo · Sepolia wallet actions and published evidence remain available. Upload, private account and live indexer APIs require the full backend."}</div>}

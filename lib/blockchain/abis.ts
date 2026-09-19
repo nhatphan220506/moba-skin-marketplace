@@ -2,6 +2,7 @@ import { parseAbi } from "viem";
 
 export const accessControlAbi = parseAbi([
   "function hasRole(bytes32 role, address account) view returns (bool)",
+  "function grantRole(bytes32 role, address account)",
   "function ARTIST_ROLE() view returns (bytes32)",
   "function VERIFIER_ROLE() view returns (bytes32)",
   "function PUBLISHER_ROLE() view returns (bytes32)",
