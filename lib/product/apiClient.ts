@@ -18,6 +18,16 @@ export function storedSession(address?: string): string | null {
   } catch { window.sessionStorage.removeItem(key); return null; }
 }
 
+export function hasPrototypeAccess(address?: string): boolean {
+  const token = storedSession(address);
+  if (!token) return false;
+  try {
+    const encoded = token.split(".")[0].replaceAll("-", "+").replaceAll("_", "/");
+    const payload = JSON.parse(window.atob(encoded.padEnd(Math.ceil(encoded.length / 4) * 4, "="))) as { prototypeAccess?: boolean };
+    return payload.prototypeAccess === true;
+  } catch { return false; }
+}
+
 export function storeSession(address: string, token: string) {
   window.sessionStorage.setItem(`${SESSION_PREFIX}${address.toLowerCase()}`, token);
 }

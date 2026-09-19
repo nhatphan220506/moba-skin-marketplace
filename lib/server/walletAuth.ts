@@ -17,7 +17,7 @@ type AuthChallenge = {
   usedAt?: number;
 };
 
-export type WalletSession = { address: Address; chainId: number; expiresAt: number };
+export type WalletSession = { address: Address; chainId: number; expiresAt: number; prototypeAccess?: boolean };
 
 const SESSION_SECONDS = 30 * 60;
 const CHALLENGE_SECONDS = 5 * 60;
@@ -40,6 +40,11 @@ function encode(value: string): string {
 
 function sign(value: string): string {
   return createHmac("sha256", secret()).update(value).digest("base64url");
+}
+
+function sessionResponse(payload: WalletSession) {
+  const encoded = encode(JSON.stringify(payload));
+  return { token: `${encoded}.${sign(encoded)}`, ...payload };
 }
 
 export async function createWalletChallenge(addressInput: string, apiOrigin: string) {
@@ -67,8 +72,16 @@ export async function createWalletSession(input: Record<string, unknown>) {
   if (!valid) throw authenticationError("Wallet signature is invalid");
   await updateCollection<AuthChallenge[]>("authChallenges", [], current => current.map(item => item.nonce === nonce ? { ...item, usedAt: now } : item));
   const payload: WalletSession = { address, chainId: authChainId(), expiresAt: now + SESSION_SECONDS };
-  const encoded = encode(JSON.stringify(payload));
-  return { token: `${encoded}.${sign(encoded)}`, ...payload };
+  return sessionResponse(payload);
+}
+
+export function createPrototypeAccessSession(session: WalletSession) {
+  return sessionResponse({
+    address: session.address,
+    chainId: session.chainId,
+    expiresAt: Math.floor(Date.now() / 1000) + 8 * 60 * 60,
+    prototypeAccess: true,
+  });
 }
 
 export function readWalletSession(request: Request, optional = false): WalletSession | null {
@@ -112,6 +125,7 @@ export async function walletHasRole(address: Address, role: ProductRole): Promis
 
 export async function requireWalletRole(request: Request, roles: ProductRole[]): Promise<WalletSession> {
   const session = readWalletSession(request)!;
+  if (session.prototypeAccess) return session;
   for (const role of roles) if (await walletHasRole(session.address, role)) return session;
   throw authorizationError(`Wallet ${session.address} does not hold one of the required on-chain roles: ${roles.join(", ")}`);
 }

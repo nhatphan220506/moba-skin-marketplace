@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     const body = await request.json().catch(() => { throw validationError("request body must be JSON"); });
     const password = String(body.password || "").trim();
     if (!password) throw validationError("Access password is required");
-    const result = await grantDiscoverAccess(session.address, password);
+    const result = await grantDiscoverAccess(session, password);
     attempts.delete(session.address);
     return NextResponse.json(result);
   } catch (error) {

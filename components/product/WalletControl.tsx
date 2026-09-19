@@ -1,15 +1,24 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { formatEther, zeroHash } from "viem";
 import { useAccount, useBalance, useChainId, useConnect, useDisconnect, useReadContracts, useSwitchChain } from "wagmi";
 
 import { deploymentReady, getContractAddress } from "@/config/contracts";
 import { accessControlAbi, paymentAbi } from "@/lib/blockchain/abis";
+import { hasPrototypeAccess } from "@/lib/product/apiClient";
 
 function shortAddress(value: string) { return `${value.slice(0, 6)}…${value.slice(-4)}`; }
 
 export function WalletControl() {
   const { address, isConnected } = useAccount();
+  const [prototypeAccess, setPrototypeAccess] = useState(false);
+  useEffect(() => {
+    const refresh = () => setPrototypeAccess(hasPrototypeAccess(address));
+    refresh();
+    window.addEventListener("moba:prototype-access", refresh);
+    return () => window.removeEventListener("moba:prototype-access", refresh);
+  }, [address]);
   const chainId = useChainId();
   const { connectors, connect, isPending } = useConnect();
   const { disconnect } = useDisconnect();
@@ -34,8 +43,10 @@ export function WalletControl() {
   });
   const adminCheck = useReadContracts({ contracts: [registry, compatibility, voting].filter(Boolean).map((contract) => ({ address: contract!, abi: accessControlAbi, functionName: "hasRole", args: [zeroHash, address!] })), query: { enabled: Boolean(address && ready) } });
   const tokenBalance = useReadContracts({ contracts: payment && address ? [{ address: payment, abi: paymentAbi, functionName: "balanceOf", args: [address] }] : [], query: { enabled: Boolean(payment && address) } });
-  const roles: string[] = roleDefinitions.filter((_, index) => (roleChecks.data?.[index]?.result as unknown) === true).map((role) => role.label);
-  if (adminCheck.data?.some((result) => (result.result as unknown) === true)) roles.unshift("Admin");
+  const roles: string[] = prototypeAccess
+    ? ["Admin", "Publisher", "Game team", "Verifier", "Artist", "Fan", "Seller"]
+    : roleDefinitions.filter((_, index) => (roleChecks.data?.[index]?.result as unknown) === true).map((role) => role.label);
+  if (!prototypeAccess && adminCheck.data?.some((result) => (result.result as unknown) === true)) roles.unshift("Admin");
 
   if (!isConnected) return <button className="wallet-button" disabled={isPending || connectors.length === 0} onClick={() => connectors[0] && connect({ connector: connectors[0] })}>{isPending ? "Connecting…" : "Connect wallet"}</button>;
 
