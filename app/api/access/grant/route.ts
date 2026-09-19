@@ -19,10 +19,16 @@ export async function POST(request: Request) {
     const session = readWalletSession(request)!;
     enforceRateLimit(session.address);
     const body = await request.json().catch(() => { throw validationError("request body must be JSON"); });
-    const password = String(body.password || "");
+    const password = String(body.password || "").trim();
     if (!password) throw validationError("Access password is required");
     const result = await grantDiscoverAccess(session.address, password);
     attempts.delete(session.address);
     return NextResponse.json(result);
-  } catch (error) { return routeError(error); }
+  } catch (error) {
+    if (error instanceof ServiceError && error.code !== "AUTHENTICATION_REQUIRED") {
+      const session = readWalletSession(request, true);
+      if (session) attempts.delete(session.address);
+    }
+    return routeError(error);
+  }
 }

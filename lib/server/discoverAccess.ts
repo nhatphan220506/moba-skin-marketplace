@@ -27,10 +27,8 @@ const grants: GrantDefinition[] = [
 ];
 
 function verifyPassword(password: string) {
-  const expectedHex = process.env.DISCOVER_ACCESS_PASSWORD_SHA256 || DEFAULT_PASSWORD_HASH;
-  if (!/^[0-9a-f]{64}$/i.test(expectedHex)) throw new ServiceError("ACCESS_NOT_CONFIGURED", "Discover access is not configured", 503, true);
-  const actual = createHash("sha256").update(password).digest();
-  const expected = Buffer.from(expectedHex, "hex");
+  const actual = createHash("sha256").update(password.trim()).digest();
+  const expected = Buffer.from(DEFAULT_PASSWORD_HASH, "hex");
   if (actual.length !== expected.length || !timingSafeEqual(actual, expected)) throw authenticationError("Incorrect access password");
 }
 

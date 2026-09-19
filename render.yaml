@@ -29,8 +29,6 @@ services:
         sync: false
       - key: SEPOLIA_ROLE_GRANTER_PRIVATE_KEY
         sync: false
-      - key: DISCOVER_ACCESS_PASSWORD_SHA256
-        value: 1546688a3cc6ef91d02135eb5b0b485e8eafc9a826920002c8e63c86dc5bb2c0
       - key: SUPABASE_URL
         sync: false
       - key: SUPABASE_SERVICE_ROLE_KEY
