@@ -8,7 +8,7 @@ import { useAccount, useChainId, useSwitchChain } from "wagmi";
 import { WalletControl } from "@/components/product/WalletControl";
 import { apiFetch, storeSession } from "@/lib/product/apiClient";
 
-type GrantResult = { roles?: string[]; transactionHashes?: string[]; token?: string; message?: string };
+type GrantResult = { roles?: string[]; onChainRoles?: string[]; transactionHashes?: string[]; token?: string; message?: string };
 
 export function DiscoverAccessModal() {
   const [open, setOpen] = useState(false);
@@ -62,11 +62,11 @@ export function DiscoverAccessModal() {
           : chainId !== 11155111 ? <div className="discover-wallet-step"><span>02</span><div><strong>Switch to Sepolia</strong><small>Role grants are available on the public test network only.</small></div><button onClick={() => switchChain({ chainId: 11155111 })}>Switch network</button></div>
           : <form className="discover-access-form" onSubmit={grantAccess}>
             <label htmlFor="discover-password">Access password<input id="discover-password" type="password" autoComplete="off" value={password} onChange={event => setPassword(event.target.value)} placeholder="Enter the reviewer password" /></label>
-            <button disabled={busy || !password}>{busy ? "Unlocking all workspaces…" : "Grant full prototype access"}</button>
+            <button disabled={busy || !password}>{busy ? "Granting roles on Sepolia…" : "Grant full prototype access"}</button>
           </form>}
-        {busy && <p className="discover-progress">Keep this window open while full access is linked to your connected wallet.</p>}
+        {busy && <p className="discover-progress">Keep this window open while the backend grants and verifies every Sepolia role. MetaMask will not ask you to sign these grants.</p>}
         {error && <p className="discover-error" role="alert">{error}</p>}
-        {result && <div className="discover-success"><strong>Access granted.</strong><p>{result.roles?.length || 0} prototype roles are active for this connected wallet. You can now explore every workspace.</p><Link className="button-link" href="/start" onClick={() => setOpen(false)}>Choose a workspace ↗</Link></div>}
+        {result && <div className="discover-success"><strong>Full access granted.</strong><p>{result.onChainRoles?.length || 0} on-chain permissions are active for this connected wallet across {result.roles?.length || 0} workspaces.</p><Link className="button-link" href="/start" onClick={() => setOpen(false)}>Choose a workspace ↗</Link></div>}
       </section>
     </div>, document.body)}
   </>;
