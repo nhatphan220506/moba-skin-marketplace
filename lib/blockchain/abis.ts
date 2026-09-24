@@ -33,6 +33,7 @@ export const compatibilityAbi = parseAbi([
 ]);
 
 export const paymentAbi = parseAbi([
+  "function mint(address to, uint256 amount)",
   "function approve(address spender, uint256 amount) returns (bool)",
   "function balanceOf(address account) view returns (uint256)",
   "function allowance(address owner, address spender) view returns (uint256)",
